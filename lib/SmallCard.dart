@@ -3,24 +3,27 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'GlobalData.dart';
+import 'LocationData.dart';
+
 class SmallCard extends StatefulWidget {
   @override
   _SmallCardState createState() => _SmallCardState();
 }
 
 class _SmallCardState extends State<SmallCard> {
+  var globalData = GlobalData();
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        children: <Widget>[
-          card("Bucharest", "Romania", 33, 40, "cloudy"),
-          card("Sibiu", "Romania", 77, 23, "sunny"),
-          card("Brasov", "Romania", 125, 15, "cloudy"),
-          card("Timisoara", "Romania", 177, 32, "sunny"),
-        ],
+        children: globalData.cityList.map((object) => buildCard(object)).toList(),
       ),
     );
+  }
+
+  Widget buildCard(LocationData data) {
+    return card(data.city, data.country, data.quality, data.temperature[0], data.weather[0]);
   }
 
   Widget card(String city, String country, int quality, int temperature,
@@ -189,7 +192,7 @@ class _SmallCardState extends State<SmallCard> {
     } else if (quality < 200) {
       return Colors.purple.shade500;
     }
-    return Colors.white;
+    return Colors.teal.shade500;
   }
 
   Color getCardDarkColor(int quality) {
@@ -202,6 +205,6 @@ class _SmallCardState extends State<SmallCard> {
     } else if (quality < 200) {
       return Colors.purple.shade700;
     }
-    return Colors.white;
+    return Colors.teal.shade700;
   }
 }
