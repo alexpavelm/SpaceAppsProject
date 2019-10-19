@@ -13,42 +13,52 @@ class QualityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 90,
+      height: 110,
 //color: globalData.getCardColor(data.quality),
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
         child: Card(
-          color: Colors.white70,
+          color: globalData.getCardColor(data.quality),
           elevation: 0,
-          shape: Border(
-              left: BorderSide(
-                  color: globalData.getCardColor(data.quality), width: 20)),
           child: Row(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(left: 30.0),
+                padding: const EdgeInsets.only(left: 25.0),
                 child: Icon(globalData.getQualityIcon(data.quality),
-                    size: 45, color: Colors.black.withOpacity(0.6)),
+                    size: 35, color: Colors.white),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: Text(globalData.getQualityText(data.quality),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Raleway',
+                      fontSize: 25,
+                    )),
               ),
               Expanded(
-                  child: Text(data.quality.toString(),
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                        color: globalData.getCardColor(data.quality),
-                        fontFamily: 'Raleway',
-                        fontSize: 40,
-                        fontWeight: FontWeight.w900,
-                      )))
-//                        globalData.getWeatherIcon(data.weather[0]),
-//                        Padding(
-//                          padding: const EdgeInsets.all(5.0),
-//                          child: Text(data.temperature[0].toString(),
-//                          style: TextStyle(
-//                            fontSize: 25,
-//                            fontFamily: 'Raleway',
-//                            fontWeight: FontWeight.bold,
-//                          )),
-//                        ),
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 15.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      Text(data.quality.toString(),
+                          textAlign: TextAlign.right,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Raleway',
+                            fontSize: 45,
+                          )),
+                      Text("US AQI ",
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 12
+                          )),
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
         ),
