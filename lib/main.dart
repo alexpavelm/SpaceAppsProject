@@ -8,14 +8,15 @@ void main() {
   SystemChrome.setEnabledSystemUIOverlays([]);
 }
 
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: new ThemeData(
+        brightness: Brightness.light,
+        primaryColor: Colors.white, //Changing this will change the color of the TabBar
+        accentColor: Colors.lightBlue
       ),
       home: BottomNavBar(),
     );
