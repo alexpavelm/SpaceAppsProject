@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:space_apps_project/WeatherData.dart';
+import 'package:space_apps_project/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'FunFactObject.dart';
@@ -12,6 +14,8 @@ class GlobalData {
   List<LocationData> cityList;
   List<PingData> pingList;
   LocationData mainCity;
+  WeatherData weatherData;
+
   List<FunFactObject> funFacts;
   static final GlobalData _singleton = GlobalData._internal();
 
@@ -26,6 +30,8 @@ class GlobalData {
     funFacts.add(new FunFactObject("Did you know that public transport reduces polution by 15%?", "https://google.ro"));
     cityList = new List();
     mainCity = new LocationData("Amsterdam", "Netherlands", ["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15], 23, []);
+    weatherData = new WeatherData(this.mainCity.weather, this.mainCity.temperature);
+
     mainCity.pings.add(new PingData(52.3545358, 4.7635337, 23));
     mainCity.pings.add(new PingData(52.3521007, 4.886793, 34));
     mainCity.pings.add(new PingData(52.3478447, 4.7966966,13));
