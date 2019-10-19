@@ -2,14 +2,15 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:space_apps_project/main.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import 'FunFactObject.dart';
 import 'LocationData.dart';
 
 class GlobalData {
   List<LocationData> cityList;
   LocationData mainCity;
-
+  List<FunFactObject> funFacts;
   static final GlobalData _singleton = GlobalData._internal();
 
   factory GlobalData() {
@@ -18,6 +19,8 @@ class GlobalData {
 
   GlobalData._internal();
   void create() {
+    funFacts = new List();
+    funFacts.add(new FunFactObject("Did you know that public transport reduces polution by 15%?", "https://google.ro"));
     cityList = new List();
     mainCity = new LocationData("Amsterdam", "Netherlands", ["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15], 23, []);
     cityList.add(new LocationData("Amsterdam", "Netherlands", ["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15], 23, []));
@@ -31,6 +34,18 @@ class GlobalData {
     cityList.add(new LocationData("Manila", "Philippines", ["rainy", "rainy", "sunny", "sunny", "sunny"], [31, 30, 30, 30, 29], 55, []));
     cityList.add(new LocationData("Tianjin", "China", ["cloudy", "sunny", "cloudy", "cloudy", "cloudy"], [22, 20, 22, 24, 17], 194, []));
     cityList.add(new LocationData("Bucharest", "Romania", ["sunny", "sunny", "sunny", "sunny", "sunny"], [24, 22, 23, 21, 21], 74, []));
+  }
+
+  launchURL(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  FunFactObject getFunFact() {
+    return funFacts[0];
   }
 
   Icon getWeatherIcon(String weather) {
