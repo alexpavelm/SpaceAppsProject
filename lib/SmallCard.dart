@@ -97,7 +97,7 @@ class _SmallCardState extends State<SmallCard> {
                       children: <Widget>[
                         getWeatherIcon(weather),
                         Text(
-                          temperature.toString() + "°C",
+                          temperature.toString() + "*C",
                           style: TextStyle(fontSize: 25, fontFamily: 'Raleway'),
                         ),
                       ],
