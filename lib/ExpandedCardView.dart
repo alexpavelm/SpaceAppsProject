@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:space_apps_project/HealthTips.dart';
+import 'package:space_apps_project/QualityCard.dart';
+import 'package:space_apps_project/WeatherCard.dart';
 
 import 'GlobalData.dart';
 import 'LocationData.dart';
 
 class ExpandedCardView extends StatelessWidget {
   final LocationData data;
-  var globalData = GlobalData();
+  final globalData = GlobalData();
 
   ExpandedCardView(this.data);
 
@@ -55,19 +58,9 @@ class ExpandedCardView extends StatelessWidget {
                         color: Colors.black87
                     )),
               ),
-              Container(
-                height: 120,
-                color: globalData.getCardColor(data.quality),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 40, right: 40),
-                  child: Row(
-                    children: <Widget>[
-                      Icon(globalData.getQualityIcon(data.quality), size: 50, color: Colors.black.withOpacity(0.6),),
-
-                    ],
-                  ),
-                ),
-              ),
+              QualityCard(data),
+              WeatherCard(),
+              HealthTips(),
             ],
           )
 
