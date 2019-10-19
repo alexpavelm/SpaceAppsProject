@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:space_apps_project/CurrentLocation.dart';
 
 import 'FunFact.dart';
+import 'GlobalData.dart';
 import 'SmallCard.dart';
 
 class MainPage extends StatefulWidget {
@@ -10,9 +11,11 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  static var globalData = GlobalData();
   final List<Widget> _children = [
-    FunFact(),
     CurrentLocation(),
+    FunFact(globalData.getFunFact()),
+
     SmallCard()
   ];
   @override
