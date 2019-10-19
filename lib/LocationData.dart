@@ -6,8 +6,8 @@ class LocationData {
 
   String city;
   String country;
-  String weather;
-  int temperature;
+  List<String> weather;
+  List<int> temperature;
   int quality;
   List<PingData> pings;
 
