@@ -16,5 +16,11 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 hahah
 #Space Apps Project
+# Andrei test
 
-merge - Tudor
+test1 - Tudor
+
+bun ziua - Cristina
+
+putem sa nu facem ceva boring pls// Andrada
+
