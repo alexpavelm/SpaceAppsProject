@@ -26,8 +26,8 @@ class _SmallCardState extends State<SmallCard> {
     String city = data.city;
     String country = data.country;
     int quality = data.quality;
-    List<int> temperature = data.temperature;
-    List<String> weather = data.weather;
+    List<int> temperature = data.weatherData.temperature;
+    List<String> weather = data.weatherData.weather;
     return Hero(
       tag: city,
       child: Material(
