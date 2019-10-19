@@ -6,6 +6,8 @@ class LocationData {
   double carsPerThousand;
   double area;
 
+  LocationData(this.density, this.carsPerThousand, this.area);
+
   double GetCO2Emission() {
 
     double co2Emission;
