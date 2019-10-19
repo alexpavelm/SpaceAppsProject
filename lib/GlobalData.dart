@@ -8,11 +8,12 @@ import 'package:url_launcher/url_launcher.dart';
 import 'FunFactObject.dart';
 import 'LocationData.dart';
 import 'PingData.dart';
+import 'Questss.dart';
 
 class GlobalData {
   List<LocationData> cityList;
   LocationData mainCity;
-
+  List<Questss> quests;
   List<FunFactObject> funFacts;
   static final GlobalData _singleton = GlobalData._internal();
 
@@ -28,6 +29,7 @@ class GlobalData {
     funFacts.add(new FunFactObject("Do you know the impact of using renewable energy?", "https://www.ucsusa.org/resources/environmental-impacts-renewable-energy-technologies"));
     funFacts.add(new FunFactObject("Did you know that traffic jams increace carbon emissions?", "https://www.environmentalleader.com/2012/01/how-traffic-jams-affect-air-quality/"));
     cityList = new List();
+    quests = new List();
     mainCity = new LocationData("Amsterdam", "Netherlands",new WeatherData(["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15]) , 23, []);
     cityList.add(new LocationData("Amsterdam", "Netherlands", new WeatherData(["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15]), 23, []));
     cityList.add(new LocationData("Shanghai", "China", new WeatherData(["sunny", "cloudy", "cloudy", "cloudy", "rainy"], [20, 23, 23, 20, 23]), 127, []));
@@ -44,6 +46,9 @@ class GlobalData {
     mainCity.pings.add(new PingData(52.3545358, 4.7635337, 23));
     mainCity.pings.add(new PingData(52.3521007, 4.886793, 34));
     mainCity.pings.add(new PingData(52.3478447, 4.7966966,13));
+
+    quests.add(new Questss("Go to job by bicycle", 0));
+    quests.add(new Questss("Plant a flower", 1));
   }
 
   launchURL(String url) async {

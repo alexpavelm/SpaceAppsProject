@@ -17,6 +17,7 @@ class _SmallCardState extends State<SmallCard> {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+
         children: globalData.cityList.map((object) => card(object)).toList(),
       ),
     );
