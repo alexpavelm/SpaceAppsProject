@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:space_apps_project/MyAirTab.dart';
 class BottomNavBar extends StatefulWidget {
   @override
   State<BottomNavBar> createState() {
@@ -9,8 +10,8 @@ class BottomNavBar extends StatefulWidget {
 
 class BottomNavBarState extends State<BottomNavBar> {
   final List<Widget> _children = [
-    Center(child: Text("Main page"),),
-    Center(child: Text("Map page"),),
+    Center(child: Text("Map page")),
+    Center(child: MyAirTab()),
     Center(child: Text("Info page"),),
   ];
 
@@ -26,10 +27,10 @@ class BottomNavBarState extends State<BottomNavBar> {
               bottomNavigationBar: TabBar(
                 tabs: [
                   Tab(
-                    icon: Icon(Icons.location_on),
+                    icon: Icon(Icons.map),
                   ),
                   Tab(
-                    icon: Icon(Icons.map),
+                    icon: Icon(Icons.location_on),
                   ),
                   Tab(
                     icon: Icon(Icons.info),
