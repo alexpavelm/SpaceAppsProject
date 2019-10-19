@@ -28,11 +28,12 @@ class CurrentLocationState extends State<CurrentLocation> {
             child: Padding(
               padding: const EdgeInsets.all(5.0),
               child: Container(
-                height: 400,
+                height: 330,
                 child: Column(
                   children: <Widget>[
                     Container(
-                      height: 160,
+//                      color: Colors.lightBlue,
+                      height: 150,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -42,7 +43,7 @@ class CurrentLocationState extends State<CurrentLocation> {
                             children: <Widget>[
                               Text(globalData.mainCity.city,
                                   textAlign: TextAlign.center,
-                                  textScaleFactor: 2,
+                                  textScaleFactor: 3,
                                   style: TextStyle(
                                     fontFamily: 'Raleway',
                                     fontWeight: FontWeight.bold,
@@ -59,7 +60,8 @@ class CurrentLocationState extends State<CurrentLocation> {
                       ),
                     ),
                     Container(
-                      height: 100,
+//                      color: Colors.grey,
+                      height: 80,
                       child: Row(
 //                        mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
