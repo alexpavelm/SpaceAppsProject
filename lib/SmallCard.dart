@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SmallCard extends StatefulWidget {
   @override
@@ -15,7 +16,8 @@ class _SmallCardState extends State<SmallCard> {
         children: <Widget>[
           card("Bucharest", "Romania", 33, 40, "cloudy"),
           card("Sibiu", "Romania", 77, 23, "sunny"),
-          card("Brasov", "Romania", 20, 23, "rainy"),
+          card("Brasov", "Romania", 125, 15, "cloudy"),
+          card("Timisoara", "Romania", 177, 32, "sunny"),
         ],
       ),
     );
@@ -63,23 +65,17 @@ class _SmallCardState extends State<SmallCard> {
                     Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
+                            Icon(getQualityIcon(quality), size: 35, color: Colors.black.withOpacity(0.6),),
                             Padding(
-                              padding: const EdgeInsets.only(bottom: 5),
+                              padding: const EdgeInsets.only(bottom: 12),
                               child: AutoSizeText(
                                 getQualityText(quality),
                                 maxLines: 1,
                                 style: TextStyle(
                                     fontSize: 25,
                                     fontFamily: 'Raleway',
-                                    color: Colors.black45),
+                                    color: Colors.black.withOpacity(0.6)),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 15),
-                              child: Text(
-                                  quality.toString(),
-                                  style: TextStyle(fontSize: 20, fontFamily: 'Raleway'),
-                                ),
                             ),
                           ],
                         ),
@@ -88,9 +84,25 @@ class _SmallCardState extends State<SmallCard> {
               ),
               SizedBox.shrink(),
               Column(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 15),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        Text("AQI: ", style: TextStyle(fontFamily: 'Raleway'),),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: Text(
+                            quality.toString(),
+                            style: TextStyle(fontSize: 25, fontFamily: 'Raleway',
+                              color: getCardColor(quality), fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -152,6 +164,19 @@ class _SmallCardState extends State<SmallCard> {
       return "Unhealthy";
     }
     return "RUN AWAY";
+  }
+
+  IconData getQualityIcon(int quality) {
+    if (quality < 50) {
+      return FontAwesomeIcons.grin;
+    } else if (quality < 100) {
+      return FontAwesomeIcons.meh;
+    } else if (quality < 150) {
+      return FontAwesomeIcons.frown;
+    } else if (quality < 200) {
+      return FontAwesomeIcons.dizzy;
+    }
+    return FontAwesomeIcons.dizzy;
   }
 
   Color getCardColor(int quality) {

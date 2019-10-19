@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class FunFact extends StatelessWidget {
   @override
@@ -12,30 +13,18 @@ class FunFact extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.only(right: 10),
-                      child: Icon(Icons.arrow_forward_ios,
+                      padding: EdgeInsets.only(right: 15),
+                      child: Icon(FontAwesomeIcons.infoCircle,
                           color: Colors.lightBlueAccent, size: 30),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          "Fun fact!",
-                          style: TextStyle(
-                              fontStyle: FontStyle.italic,
-                              color: Colors.lightBlueAccent,
-                              fontFamily: 'Raleway'),
-                          maxLines: 3,
-                        ),
-                        Text(
-                          "Did you know that public transport reduces polution by 15%?",
-                          style: TextStyle(
-                            fontFamily: 'Raleway',
-                          ),
-                          maxLines: 3,
-                        )
-                      ],
-                    )
+                    const Expanded(
+                        child: Text(
+                      "Fun Fact!\nDid you know that public transport reduces polution by 15%?",
+                      style: TextStyle(
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    )),
                   ],
                 ))));
   }
