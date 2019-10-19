@@ -11,9 +11,6 @@ class LocationData {
   int quality;
   List<PingData> pings;
 
-
   LocationData(this.city, this.country, this.weather, this.temperature, this.quality, this.pings);
-
-
 
 }

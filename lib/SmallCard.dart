@@ -39,12 +39,12 @@ class _SmallCardState extends State<SmallCard> {
             children: <Widget>[
               Container(
                 width: 150,
-                color: getCardColor(quality),
+                color: globalData.getCardColor(quality),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Container(
-                      color: getCardDarkColor(quality),
+                      color: globalData.getCardDarkColor(quality),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
@@ -68,11 +68,11 @@ class _SmallCardState extends State<SmallCard> {
                     Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Icon(getQualityIcon(quality), size: 35, color: Colors.black.withOpacity(0.6),),
+                            Icon(globalData.getQualityIcon(quality), size: 35, color: Colors.black.withOpacity(0.6),),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 12),
                               child: AutoSizeText(
-                                getQualityText(quality),
+                                globalData.getQualityText(quality),
                                 maxLines: 1,
                                 style: TextStyle(
                                     fontSize: 25,
@@ -100,7 +100,7 @@ class _SmallCardState extends State<SmallCard> {
                           child: Text(
                             quality.toString(),
                             style: TextStyle(fontSize: 25, fontFamily: 'Raleway',
-                              color: getCardColor(quality), fontWeight: FontWeight.bold),
+                              color: globalData.getCardColor(quality), fontWeight: FontWeight.bold),
                           ),
                         ),
                       ],
@@ -110,7 +110,7 @@ class _SmallCardState extends State<SmallCard> {
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: <Widget>[
-                        getWeatherIcon(weather),
+                        globalData.getWeatherIcon(weather),
                         Text(
                           temperature.toString() + "*C",
                           style: TextStyle(fontSize: 25, fontFamily: 'Raleway'),
@@ -125,86 +125,5 @@ class _SmallCardState extends State<SmallCard> {
         ),
       ),
     );
-  }
-
-  Icon getWeatherIcon(String weather) {
-    switch (weather) {
-      case "sunny":
-        return Icon(
-          Icons.wb_sunny,
-          color: Colors.yellow,
-        );
-        break;
-      case "cloudy":
-        return Icon(
-          Icons.wb_cloudy,
-          color: Colors.blue,
-        );
-        break;
-      case "rainy":
-        return Icon(
-          Icons.grain,
-          color: Colors.white,
-        );
-        break;
-      default:
-        return Icon(
-          Icons.wb_sunny,
-          color: Colors.yellow,
-        );
-        break;
-    }
-  }
-
-  String getQualityText(int quality) {
-    if (quality < 50) {
-      return "Good";
-    } else if (quality < 100) {
-      return "Moderate";
-    } else if (quality < 150) {
-      return "Bad";
-    } else if (quality < 200) {
-      return "Unhealthy";
-    }
-    return "RUN AWAY";
-  }
-
-  IconData getQualityIcon(int quality) {
-    if (quality < 50) {
-      return FontAwesomeIcons.grin;
-    } else if (quality < 100) {
-      return FontAwesomeIcons.meh;
-    } else if (quality < 150) {
-      return FontAwesomeIcons.frown;
-    } else if (quality < 200) {
-      return FontAwesomeIcons.dizzy;
-    }
-    return FontAwesomeIcons.dizzy;
-  }
-
-  Color getCardColor(int quality) {
-    if (quality < 50) {
-      return Colors.green.shade500;
-    } else if (quality < 100) {
-      return Colors.orange.shade500;
-    } else if (quality < 150) {
-      return Colors.red.shade500;
-    } else if (quality < 200) {
-      return Colors.purple.shade500;
-    }
-    return Colors.teal.shade500;
-  }
-
-  Color getCardDarkColor(int quality) {
-    if (quality < 50) {
-      return Colors.green.shade700;
-    } else if (quality < 100) {
-      return Colors.orange.shade700;
-    } else if (quality < 150) {
-      return Colors.red.shade700;
-    } else if (quality < 200) {
-      return Colors.purple.shade700;
-    }
-    return Colors.teal.shade700;
   }
 }

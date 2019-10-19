@@ -1,7 +1,14 @@
+import 'dart:ui';
+
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:space_apps_project/main.dart';
+
 import 'LocationData.dart';
 
 class GlobalData {
   List<LocationData> cityList;
+  LocationData mainCity;
 
   static final GlobalData _singleton = GlobalData._internal();
 
@@ -12,6 +19,7 @@ class GlobalData {
   GlobalData._internal();
   void create() {
     cityList = new List();
+    mainCity = new LocationData("Amsterdam", "Netherlands", ["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15], 23, []);
     cityList.add(new LocationData("Amsterdam", "Netherlands", ["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15], 23, []));
     cityList.add(new LocationData("Shanghai", "China", ["sunny", "cloudy", "cloudy", "cloudy", "rainy"], [20, 23, 23, 20, 23], 127, []));
     cityList.add(new LocationData("Beijing", "China", ["sunny", "sunny", "sunny", "cloudy", "cloudy"], [18, 16, 18, 19, 11], 215, []));
@@ -23,5 +31,86 @@ class GlobalData {
     cityList.add(new LocationData("Manila", "Philippines", ["rainy", "rainy", "sunny", "sunny", "sunny"], [31, 30, 30, 30, 29], 55, []));
     cityList.add(new LocationData("Tianjin", "China", ["cloudy", "sunny", "cloudy", "cloudy", "cloudy"], [22, 20, 22, 24, 17], 194, []));
     cityList.add(new LocationData("Bucharest", "Romania", ["sunny", "sunny", "sunny", "sunny", "sunny"], [24, 22, 23, 21, 21], 74, []));
+  }
+
+  Icon getWeatherIcon(String weather) {
+    switch (weather) {
+      case "sunny":
+        return Icon(
+          Icons.wb_sunny,
+          color: Colors.yellow,
+        );
+        break;
+      case "cloudy":
+        return Icon(
+          Icons.wb_cloudy,
+          color: Colors.blue,
+        );
+        break;
+      case "rainy":
+        return Icon(
+          Icons.grain,
+          color: Colors.white,
+        );
+        break;
+      default:
+        return Icon(
+          Icons.wb_sunny,
+          color: Colors.yellow,
+        );
+        break;
+    }
+  }
+
+  String getQualityText(int quality) {
+    if (quality < 50) {
+      return "Good";
+    } else if (quality < 100) {
+      return "Moderate";
+    } else if (quality < 150) {
+      return "Bad";
+    } else if (quality < 200) {
+      return "Unhealthy";
+    }
+    return "RUN AWAY";
+  }
+
+  IconData getQualityIcon(int quality) {
+    if (quality < 50) {
+      return FontAwesomeIcons.grin;
+    } else if (quality < 100) {
+      return FontAwesomeIcons.meh;
+    } else if (quality < 150) {
+      return FontAwesomeIcons.frown;
+    } else if (quality < 200) {
+      return FontAwesomeIcons.dizzy;
+    }
+    return FontAwesomeIcons.dizzy;
+  }
+
+  Color getCardColor(int quality) {
+    if (quality < 50) {
+      return Colors.green.shade500;
+    } else if (quality < 100) {
+      return Colors.orange.shade500;
+    } else if (quality < 150) {
+      return Colors.red.shade500;
+    } else if (quality < 200) {
+      return Colors.purple.shade500;
+    }
+    return Colors.teal.shade500;
+  }
+
+  Color getCardDarkColor(int quality) {
+    if (quality < 50) {
+      return Colors.green.shade700;
+    } else if (quality < 100) {
+      return Colors.orange.shade700;
+    } else if (quality < 150) {
+      return Colors.red.shade700;
+    } else if (quality < 200) {
+      return Colors.purple.shade700;
+    }
+    return Colors.teal.shade700;
   }
 }
