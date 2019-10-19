@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'BottomNavBar.dart';
+import 'GlobalData.dart';
 
 void main() {
   runApp(MyApp());
   SystemChrome.setEnabledSystemUIOverlays([]);
+  var globalData = GlobalData();
+  globalData.create();
 }
 
 class MyApp extends StatelessWidget {

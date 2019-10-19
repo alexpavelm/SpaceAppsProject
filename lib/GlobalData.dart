@@ -2,6 +2,14 @@ import 'LocationData.dart';
 
 class GlobalData {
   List<LocationData> cityList;
+
+  static final GlobalData _singleton = GlobalData._internal();
+
+  factory GlobalData() {
+    return _singleton;
+  }
+
+  GlobalData._internal();
   void create() {
     cityList = new List();
     cityList.add(new LocationData("Amsterdam", "Netherlands", ["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15], 23, []));
