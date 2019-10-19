@@ -21,3 +21,6 @@ hahah
 test1 - Tudor
 
 bun ziua - Cristina
+
+salutare prieteni// Andrada
+alex nu am sters eu nimic // Andrada
