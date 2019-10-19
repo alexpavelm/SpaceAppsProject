@@ -21,3 +21,5 @@ hahah
 merge - Tudor
 
 bun ziua - Cristina
+
+salutare prieteni // Andrada
