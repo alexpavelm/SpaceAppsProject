@@ -20,42 +20,51 @@ class CurrentLocationState extends State<CurrentLocation> {
             child: Padding(
               padding: const EdgeInsets.all(5),
               child: Container(
-                  height: 300,
-                  width: 400,
-                  padding: const EdgeInsets.all(3.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Constanta",
-                        textAlign: TextAlign.left,
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                      ),
-                      Text(
-                        "current city",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(fontSize: 15),
-                      ),
-                      Row(
+                height: 300,
+                width: 400,
+                padding: const EdgeInsets.all(3.0),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-//                          child: Icon(Icons.c)
-                              )
+                          Text(
+                            "Constanta",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30,
+                                fontFamily: 'Railway'),
+                          ),
+                          Text(
+                            "current city",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Railway',
+                            ),
+                          ),
                         ],
                       ),
-                    ],
-                  )
-
-//                Text(
-//                  "Constanta",
-//                  textAlign: TextAlign.left,
-//                  style: TextStyle(
-//                      fontWeight: FontWeight.bold,
-//                      fontSize: 30),
-//                ),
-                  ),
+                    ),
+                    Expanded(
+                      child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          FittedBox(
+                            child: Text(
+                              "hello"
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
