@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:space_apps_project/SmallCard.dart';
-import 'package:space_apps_project/WeatherData.dart';
 
 import 'GlobalData.dart';
-import 'LocationData.dart';
 
 class CurrentLocation extends StatefulWidget {
   @override
@@ -106,9 +103,9 @@ class CurrentLocationState extends State<CurrentLocation> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
                                 getWeatherIcon(
-                                    globalData.weatherData.weather[0]),
+                                    globalData.mainCity.weatherData.weather[0]),
                                 Text(
-                                  globalData.weatherData.temperature[0]
+                                  globalData.mainCity.weatherData.temperature[0]
                                           .toString() +
                                       " °C",
                                   textScaleFactor: 2,
@@ -122,9 +119,9 @@ class CurrentLocationState extends State<CurrentLocation> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
                                 getWeatherIcon(
-                                    globalData.weatherData.weather[1]),
+                                    globalData.mainCity.weatherData.weather[1]),
                                 Text(
-                                  globalData.weatherData.temperature[1]
+                                  globalData.mainCity.weatherData.temperature[1]
                                           .toString() +
                                       " °C",
                                   textScaleFactor: 2,
@@ -138,9 +135,9 @@ class CurrentLocationState extends State<CurrentLocation> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
                                 getWeatherIcon(
-                                    globalData.weatherData.weather[2]),
+                                    globalData.mainCity.weatherData.weather[2]),
                                 Text(
-                                  globalData.weatherData.temperature[2]
+                                  globalData.mainCity.weatherData.temperature[2]
                                           .toString() +
                                       " °C",
                                   textScaleFactor: 2,
@@ -154,9 +151,9 @@ class CurrentLocationState extends State<CurrentLocation> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
                                 getWeatherIcon(
-                                    globalData.weatherData.weather[3]),
+                                    globalData.mainCity.weatherData.weather[3]),
                                 Text(
-                                  globalData.weatherData.temperature[3]
+                                  globalData.mainCity.weatherData.temperature[3]
                                           .toString() +
                                       " °C",
                                   textScaleFactor: 2,
@@ -170,9 +167,9 @@ class CurrentLocationState extends State<CurrentLocation> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
                                 getWeatherIcon(
-                                    globalData.weatherData.weather[4]),
+                                    globalData.mainCity.weatherData.weather[4]),
                                 Text(
-                                  globalData.weatherData.temperature[4]
+                                  globalData.mainCity.weatherData.temperature[4]
                                           .toString() +
                                       " °C",
                                   textScaleFactor: 2,

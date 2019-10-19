@@ -13,6 +13,19 @@ class ExpandedCardView extends StatelessWidget {
 
   ExpandedCardView(this.data);
 
+  Widget _flightShuttleBuilder(
+      BuildContext flightContext,
+      Animation<double> animation,
+      HeroFlightDirection flightDirection,
+      BuildContext fromHeroContext,
+      BuildContext toHeroContext,
+      ) {
+    return DefaultTextStyle(
+      style: DefaultTextStyle.of(toHeroContext).style,
+      child: toHeroContext.widget,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,12 +39,16 @@ class ExpandedCardView extends StatelessWidget {
       body: Center(
           child: Column(
             children: <Widget>[
-              Text(data.city,
-                  style: TextStyle(
-                      fontFamily: 'Raleway',
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold
-                  )),
+              Hero(
+                tag: data.city,
+                flightShuttleBuilder: _flightShuttleBuilder,
+                child: Text(data.city,
+                    style: TextStyle(
+                        fontFamily: 'Raleway',
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold
+                    )),
+              ),
               Padding(
                 padding: EdgeInsets.only(top: 6, bottom: 35),
                 child: Text(data.country,
@@ -42,7 +59,7 @@ class ExpandedCardView extends StatelessWidget {
                     )),
               ),
               QualityCard(data),
-              WeatherCard(),
+              WeatherCard(data.weatherData),
               HealthTips(),
             ],
           )
