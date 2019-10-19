@@ -22,5 +22,5 @@ merge - Tudor
 
 bun ziua - Cristina
 
-salutare prieteni// Andrada
-alex nu am sters eu nimic // Andrada
+putem sa nu facem ceva boring pls// Andrada
+
