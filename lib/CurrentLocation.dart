@@ -23,40 +23,52 @@ class CurrentLocationState extends State<CurrentLocation> {
                 height: 300,
                 width: 400,
                 padding: const EdgeInsets.all(3.0),
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Constanta",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30,
-                                fontFamily: 'Railway'),
-                          ),
-                          Text(
-                            "current city",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                fontSize: 15,
-                                fontFamily: 'Railway',
+                child: Column(
+                  children: [
+                    Container(
+                      height: 100,
+                      child: Row(
+                        children: <Widget>[
+                                Text(
+                                  "Constanta",
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30,
+                                      fontFamily: 'Raleway'),
+                                ),
+//                              Text(
+//                                "buna ziua",
+//                                textAlign: TextAlign.right,
+//                                style: TextStyle(
+//                                    fontWeight: FontWeight.bold,
+//                                    fontSize: 30,
+//                                    fontFamily: 'Raleway'),
+//                              ),
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                FittedBox(
+                                  child: Text("hello"),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
                     ),
-                    Expanded(
-                      child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          FittedBox(
-                            child: Text(
-                              "hello"
+                    Container(
+                      height: 100,
+                      child: Row(
+                        children: <Widget>[
+                          Text(
+                            "current city",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'Raleway',
                             ),
                           ),
                         ],
