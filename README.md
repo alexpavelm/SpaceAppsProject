@@ -22,4 +22,5 @@ merge - Tudor
 
 bun ziua - Cristina
 
-salutare prieteni // Andrada
+salutare prieteni// Andrada
+alex nu am sters eu nimic // Andrada
