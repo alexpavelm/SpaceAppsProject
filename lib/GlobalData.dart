@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:space_apps_project/WeatherData.dart';
 import 'package:space_apps_project/main.dart';
 
 import 'LocationData.dart';
@@ -9,6 +10,7 @@ import 'LocationData.dart';
 class GlobalData {
   List<LocationData> cityList;
   LocationData mainCity;
+  WeatherData weatherData;
 
   static final GlobalData _singleton = GlobalData._internal();
 
@@ -20,6 +22,7 @@ class GlobalData {
   void create() {
     cityList = new List();
     mainCity = new LocationData("Amsterdam", "Netherlands", ["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15], 23, []);
+    weatherData = new WeatherData(this.mainCity.weather, this.mainCity.temperature);
     cityList.add(new LocationData("Amsterdam", "Netherlands", ["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15], 23, []));
     cityList.add(new LocationData("Shanghai", "China", ["sunny", "cloudy", "cloudy", "cloudy", "rainy"], [20, 23, 23, 20, 23], 127, []));
     cityList.add(new LocationData("Beijing", "China", ["sunny", "sunny", "sunny", "cloudy", "cloudy"], [18, 16, 18, 19, 11], 215, []));
