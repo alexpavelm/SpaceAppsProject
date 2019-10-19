@@ -23,11 +23,11 @@ class _SmallCardState extends State<SmallCard> {
   }
 
   Widget buildCard(LocationData data) {
-    return card(data.city, data.country, data.quality, data.temperature[0], data.weather[0]);
+    return card(data.city, data.country, data.quality, data.temperature, data.weather);
   }
 
-  Widget card(String city, String country, int quality, int temperature,
-      String weather) {
+  Widget card(String city, String country, int quality, List<int> temperature,
+      List<String> weather) {
     return Padding(
       padding: const EdgeInsets.all(2.0),
       child: Card(
@@ -85,40 +85,102 @@ class _SmallCardState extends State<SmallCard> {
                   ],
                 ),
               ),
-              SizedBox.shrink(),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 15),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        Text("AQI: ", style: TextStyle(fontFamily: 'Raleway'),),
                         Padding(
-                          padding: const EdgeInsets.only(right: 8),
-                          child: Text(
-                            quality.toString(),
-                            style: TextStyle(fontSize: 25, fontFamily: 'Raleway',
-                              color: getCardColor(quality), fontWeight: FontWeight.bold),
+                          padding: const EdgeInsets.only(left: 20, top: 5),
+                          child: Row(
+                            children: <Widget>[
+                              getWeatherIcon(weather[0]),
+                              Text(
+                                temperature[0].toString() + "*C",
+                                style: TextStyle(fontSize: 23, fontFamily: 'Raleway'),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 20),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              Text("AQI: ", style: TextStyle(fontFamily: 'Raleway'),),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 8),
+                                child: Text(
+                                  quality.toString(),
+                                  style: TextStyle(fontSize: 25, fontFamily: 'Raleway',
+                                    color: getCardColor(quality), fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
+                    Divider(
+                      thickness: 1,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        getWeatherIcon(weather),
-                        Text(
-                          temperature.toString() + "*C",
-                          style: TextStyle(fontSize: 25, fontFamily: 'Raleway'),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 20, right: 5, bottom: 2),
+                            child: Column(
+                              children: <Widget>[
+                                Text("Mon."),
+                                getWeatherIcon(weather[1]),
+                                Text(
+                                  temperature[1].toString() + "*C",
+                                  style: TextStyle(fontSize: 17, fontFamily: 'Raleway'),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 5, bottom: 2),
+                            child: Column(
+                              children: <Widget>[
+                                Text("Tue."),
+                                getWeatherIcon(weather[2]),
+                                Text(
+                                  temperature[2].toString() + "*C",
+                                  style: TextStyle(fontSize: 17, fontFamily: 'Raleway'),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 5, right: 20, bottom: 2),
+                            child: Column(
+                              children: <Widget>[
+                                Text("Wed."),
+                                getWeatherIcon(weather[3]),
+                                Text(
+                                  temperature[3].toString() + "*C",
+                                  style: TextStyle(fontSize: 17, fontFamily: 'Raleway'),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ],
-                    ),
-                  ),
-                ],
+
+                    )
+                  ],
+                ),
               )
             ],
           ),
@@ -144,7 +206,7 @@ class _SmallCardState extends State<SmallCard> {
       case "rainy":
         return Icon(
           Icons.grain,
-          color: Colors.white,
+          color: Colors.grey,
         );
         break;
       default:
