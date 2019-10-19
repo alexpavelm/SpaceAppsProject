@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:space_apps_project/WeatherData.dart';
-import 'package:space_apps_project/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'FunFactObject.dart';
@@ -12,7 +11,6 @@ import 'PingData.dart';
 
 class GlobalData {
   List<LocationData> cityList;
-  List<PingData> pingList;
   LocationData mainCity;
   WeatherData weatherData;
 
@@ -25,9 +23,11 @@ class GlobalData {
 
   GlobalData._internal();
   void create() {
-    pingList = new List();
     funFacts = new List();
-    funFacts.add(new FunFactObject("Did you know that public transport reduces polution by 15%?", "https://google.ro"));
+    funFacts.add(new FunFactObject("Did you know that public transport reduces polution by 15%?", "https://www.thoughtco.com/public-transportation-for-fewer-emissions-1203955"));
+    funFacts.add(new FunFactObject("Trees and plants have a varying capacity to capture and/or filter air pollution.. ", "https://www.thoughtco.com/public-transportation-for-fewer-emissions-1203955"));
+    funFacts.add(new FunFactObject("Do you know the impact of using renewable energy?", "https://www.ucsusa.org/resources/environmental-impacts-renewable-energy-technologies"));
+    funFacts.add(new FunFactObject("Did you know that traffic jams increace carbon emissions?", "https://www.environmentalleader.com/2012/01/how-traffic-jams-affect-air-quality/"));
     cityList = new List();
     mainCity = new LocationData("Amsterdam", "Netherlands", ["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15], 23, []);
     weatherData = new WeatherData(this.mainCity.weather, this.mainCity.temperature);
