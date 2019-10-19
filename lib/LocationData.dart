@@ -2,20 +2,14 @@ import 'dart:core';
 
 class LocationData {
 
-  double density;
-  double carsPerThousand;
-  double area;
+  String city;
+  String coutry;
+  String weather;
+  int temperature;
+  int quality;
 
-  LocationData(this.density, this.carsPerThousand, this.area);
+  LocationData(this.city, this.coutry, this.weather, this.temperature, this.quality);
 
-  double GetCO2Emission() {
 
-    double co2Emission;
-
-    co2Emission = (density*carsPerThousand)/1000;
-    co2Emission *= area;
-
-    return co2Emission;
-  }
 
 }
