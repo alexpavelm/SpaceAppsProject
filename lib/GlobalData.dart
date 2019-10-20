@@ -48,6 +48,7 @@ class GlobalData {
     cityList.add(new LocationData("New York", "USA", new WeatherData(["rainy", "cloudy", "rainy", "sunny", "sunny"], [18, 21, 18, 17, 18]), 60, []));
     cityList.add(new LocationData("Berlin", "Germany", new WeatherData(["sunny", "sunny", "sunny", "sunny", "sunny"], [20, 21, 17, 17, 19]), 20, []));
     cityList.add(new LocationData("Bucharest", "Romania", new WeatherData(["sunny", "sunny", "sunny", "sunny", "sunny"], [24, 22, 23, 21, 21]), 74, []));
+    cityList.add(new LocationData("Buzau", "Romania", new WeatherData(["sunny", "sunny", "cloudy", "rainy", "sunny"], [22, 19, 18, 20, 17]), 19, []));
 
 
     cityList[0].pings.add(new PingData(52.3545358, 4.7635337, 23));
@@ -83,8 +84,9 @@ class GlobalData {
     cityList[10].pings.add(new PingData(44.4377397, 25.9542094, 46));
     cityList[10].pings.add(new PingData(44.4206436, 26.1467312, 52));
     cityList[10].pings.add(new PingData(44.4542507, 26.0188769, 37));
+    cityList[11].pings.add(new PingData(45.146942, 26.810281, 19));
 
-    quests.add(new Questss("Use public transport.", 0));
+    quests.add(new Questss("Use public transport today.", 0));
     quests.add(new Questss("Plant a tree.", 1));
   }
 
