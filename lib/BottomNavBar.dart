@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:space_apps_project/CurrentLocation.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:space_apps_project/MyAirTab.dart';
 import 'package:space_apps_project/InfoTab.dart';
 
@@ -32,13 +32,13 @@ class BottomNavBarState extends State<BottomNavBar> {
               bottomNavigationBar: TabBar(
                 tabs: [
                   Tab(
-                    icon: Icon(Icons.location_on),
+                    icon: Icon(FontAwesomeIcons.globeAmericas),
                   ),
                   Tab(
-                    icon: Icon(Icons.map),
+                    icon: Icon(FontAwesomeIcons.clipboardList),
                   ),
                   Tab(
-                    icon: Icon(Icons.info),
+                    icon: Icon(FontAwesomeIcons.questionCircle),
                   )
                 ],
                 labelColor: Colors.blue,
