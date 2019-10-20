@@ -124,7 +124,6 @@ class CurrentLocationState extends State<CurrentLocation> {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
                             Container(
-                              height: 190,
                               width: 72,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -132,7 +131,7 @@ class CurrentLocationState extends State<CurrentLocation> {
                                   Text("date"),
                                   Padding(
                                     padding: const EdgeInsets.all(2),
-                                    child: getWeatherIcon(
+                                    child: globalData.getWeatherIcon(
                                         globalData.mainCity.weatherData.weather[0]),
                                   ),
                                   Text(
@@ -148,7 +147,6 @@ class CurrentLocationState extends State<CurrentLocation> {
                               ),
                             ),
                             Container(
-                              height: 190,
                               width: 72,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -156,7 +154,7 @@ class CurrentLocationState extends State<CurrentLocation> {
                                   Text("date"),
                                   Padding(
                                     padding: const EdgeInsets.all(2),
-                                    child: getWeatherIcon(
+                                    child: globalData.getWeatherIcon(
                                         globalData.mainCity.weatherData.weather[1]),
                                   ),
                                   Text(
@@ -172,7 +170,6 @@ class CurrentLocationState extends State<CurrentLocation> {
                               ),
                             ),
                             Container(
-                              height: 190,
                               width: 72,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -180,7 +177,7 @@ class CurrentLocationState extends State<CurrentLocation> {
                                   Text("date"),
                                   Padding(
                                     padding: const EdgeInsets.all(2),
-                                    child: getWeatherIcon(
+                                    child: globalData.getWeatherIcon(
                                         globalData.mainCity.weatherData.weather[2]),
                                   ),
                                   Text(
@@ -196,7 +193,6 @@ class CurrentLocationState extends State<CurrentLocation> {
                               ),
                             ),
                             Container(
-                              height: 190,
                               width: 72,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -204,7 +200,7 @@ class CurrentLocationState extends State<CurrentLocation> {
                                   Text("date"),
                                   Padding(
                                     padding: const EdgeInsets.all(2.0),
-                                    child: getWeatherIcon(
+                                    child: globalData.getWeatherIcon(
                                         globalData.mainCity.weatherData.weather[3]),
                                   ),
                                   Text(
@@ -220,7 +216,6 @@ class CurrentLocationState extends State<CurrentLocation> {
                               ),
                             ),
                             Container(
-                              height: 190,
                               width: 72,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -228,7 +223,7 @@ class CurrentLocationState extends State<CurrentLocation> {
                                   Text("date"),
                                   Padding(
                                     padding: const EdgeInsets.all(2.0),
-                                    child: getWeatherIcon(
+                                    child: globalData.getWeatherIcon(
                                         globalData.mainCity.weatherData.weather[4]),
                                   ),
                                   Text(
@@ -255,39 +250,6 @@ class CurrentLocationState extends State<CurrentLocation> {
         ],
       ),
     );
-  }
-
-  Icon getWeatherIcon(String weather) {
-    switch (weather) {
-      case "sunny":
-        return Icon(
-          Icons.wb_sunny,
-          color: Colors.yellow,
-          size: 40,
-        );
-        break;
-      case "cloudy":
-        return Icon(
-          Icons.wb_cloudy,
-          color: Colors.blue,
-          size: 40,
-        );
-        break;
-      case "rainy":
-        return Icon(
-          Icons.grain,
-          color: Colors.white,
-          size: 40,
-        );
-        break;
-      default:
-        return Icon(
-          Icons.wb_sunny,
-          color: Colors.yellow,
-          size: 40,
-        );
-        break;
-    }
   }
 
   Widget buildWeather(String data) {

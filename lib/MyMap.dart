@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -16,9 +18,11 @@ class MyMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
-      width: 350,
-      child: MapSample(data),
+      height: 250,
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Card(child: MapSample(data)),
+      ),
     );
   }
 }
@@ -35,6 +39,7 @@ class MapSample extends StatefulWidget {
 class MapSampleState extends State<MapSample> {
   LocationData data;
   var globalData = GlobalData();
+
   MapSampleState(this.data);
 
   Completer<GoogleMapController> _controller = Completer();
@@ -48,15 +53,27 @@ class MapSampleState extends State<MapSample> {
     createCamera();
     createMarkers();
     return new Scaffold(
-      body: GoogleMap(
-              mapType: MapType.normal,
-              markers: _markers,
-              initialCameraPosition: _kGooglePlex,
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-              },
-            )
-    );
+        body: GoogleMap(
+      mapType: MapType.normal,
+      markers: _markers,
+      initialCameraPosition: _kGooglePlex,
+      onMapCreated: (GoogleMapController controller) {
+        _controller.complete(controller);
+      },
+      gestureRecognizers: Set()
+        ..add(Factory<PanGestureRecognizer>(() => PanGestureRecognizer()))
+        ..add(
+          Factory<VerticalDragGestureRecognizer>(
+              () => VerticalDragGestureRecognizer()),
+        )
+        ..add(
+          Factory<HorizontalDragGestureRecognizer>(
+              () => HorizontalDragGestureRecognizer()),
+        )
+        ..add(
+          Factory<ScaleGestureRecognizer>(() => ScaleGestureRecognizer()),
+        ),
+    ));
   }
 
   createCamera() {
@@ -69,17 +86,16 @@ class MapSampleState extends State<MapSample> {
   createMarkers() async {
     for (int i = 0; i < data.pings.length; i++) {
       _center = LatLng(data.pings[i].longitude, data.pings[i].latitude);
-      _markers.add(
-          Marker(
-              markerId: MarkerId(data.pings[i].longitude.toString()),
-              position: _center,
-              infoWindow: InfoWindow(
-                title: data.city + "Sensor " + i.toString(),
-                snippet: 'Space Apps',
-              ),
-              icon: getBitmapImage(data.quality))
-      );
-    };
+      _markers.add(Marker(
+          markerId: MarkerId(data.pings[i].longitude.toString()),
+          position: _center,
+          infoWindow: InfoWindow(
+            title: data.city + "Sensor " + i.toString(),
+            snippet: 'Space Apps',
+          ),
+          icon: getBitmapImage(data.quality)));
+    }
+    ;
   }
 
   BitmapDescriptor getBitmapImage(int quality) {
@@ -95,7 +111,4 @@ class MapSampleState extends State<MapSample> {
       return globalData.purpleMarker;
     }
   }
-
-
-
 }
