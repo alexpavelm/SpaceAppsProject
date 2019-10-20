@@ -19,8 +19,11 @@ class MyAirTabState extends State<MyAirTab> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: globalData.quests.length != 0 ?ListView(
-          children: globalData.quests.map((object) => quest(object)).toList()) : Text("HAHA"),
+      child: globalData.quests.length != 0
+          ? ListView(
+              children:
+                  globalData.quests.map((object) => quest(object)).toList())
+          : congrts(),
     );
   }
 
@@ -35,9 +38,7 @@ class MyAirTabState extends State<MyAirTab> {
                 child: new Text('YES'),
                 onPressed: () {
                   setState(() {
-
-                      globalData.quests
-                          .remove(globalData.quests[id]);
+                    globalData.quests.remove(globalData.quests[id]);
                   });
                   Navigator.of(context).pop();
                 },
@@ -51,6 +52,38 @@ class MyAirTabState extends State<MyAirTab> {
             ],
           );
         });
+  }
+
+  Widget congrts() {
+    final titles = [
+      'You have done your daily challanges',
+      '153 done the first quest',
+      '445 done the second quest',
+      '129 done the third quest'
+    ];
+    
+    return ListView.builder(
+      itemCount: titles.length,
+      itemBuilder: (context, index) {
+        return index == 0
+            ? Card(
+                //                           <-- Card widget
+                child: ListTile(
+                  title: Text(titles[index],
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Raleway')),
+                ),
+              )
+            : Card(
+                //                           <-- Card widget
+                child: ListTile(
+                    title: Text(titles[index],
+                        style:
+                            TextStyle(fontSize: 15, fontFamily: 'Raleway'))));
+      },
+    );
   }
 
   Widget quest(Questss data) {
@@ -69,7 +102,8 @@ class MyAirTabState extends State<MyAirTab> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         new Text(qst,
-                            style: TextStyle(fontSize: 25, fontFamily: 'Raleway')),
+                            style:
+                                TextStyle(fontSize: 25, fontFamily: 'Raleway')),
                       ],
                     ),
                     Column(
@@ -78,7 +112,11 @@ class MyAirTabState extends State<MyAirTab> {
                           child: FlatButton.icon(
                               color: Colors.blue.shade200,
                               icon: Icon(FontAwesomeIcons.check),
-                              label: Text('Done it?', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Raleway')),
+                              label: Text('Done it?',
+                                  style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Raleway')),
                               onPressed: () {
                                 confirmDialog(data.id);
                               }),
@@ -92,7 +130,6 @@ class MyAirTabState extends State<MyAirTab> {
           )
         : Padding(
             padding: const EdgeInsets.all(2.0),
-
             child: Card(
               color: Colors.green.shade700,
               clipBehavior: Clip.antiAlias,
