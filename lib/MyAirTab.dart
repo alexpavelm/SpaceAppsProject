@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:math';
 import 'GlobalData.dart';
 import 'Questss.dart';
-import 'package:confetti/confetti.dart';
 
 class MyAirTab extends StatefulWidget {
   @override
@@ -19,9 +19,38 @@ class MyAirTabState extends State<MyAirTab> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ListView(
-          children: globalData.quests.map((object) => quest(object)).toList()),
+      child: globalData.quests.length != 0 ?ListView(
+          children: globalData.quests.map((object) => quest(object)).toList()) : Text("HAHA"),
     );
+  }
+
+  Future confirmDialog(int id) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Please confirm"),
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text('YES'),
+                onPressed: () {
+                  setState(() {
+
+                      globalData.quests
+                          .remove(globalData.quests[id]);
+                  });
+                  Navigator.of(context).pop();
+                },
+              ),
+              new FlatButton(
+                child: new Text('NO'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
   }
 
   Widget quest(Questss data) {
@@ -36,25 +65,26 @@ class MyAirTabState extends State<MyAirTab> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    new Text(qst,
-                        style: TextStyle(fontSize: 25, fontFamily: 'Raleway')),
-                    FlatButton.icon(
-                        color: Colors.red,
-                        icon: Icon(Icons.sentiment_very_satisfied),
-                        label: Text('Done it ?'),
-                        onPressed: () {
-                          setState(() {
-                            if (globalData.quests.length == 1) {
-                              globalData.quests = new List();
-                              globalData.quests.add(
-                                  new Questss("Congratulations! You have finished your challanges!", -1));
-                              globalData.quests[0].finishquests = true;
-                            } else {
-                              globalData.quests
-                                  .remove(globalData.quests[data.id]);
-                            }
-                          });
-                        }),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        new Text(qst,
+                            style: TextStyle(fontSize: 25, fontFamily: 'Raleway')),
+                      ],
+                    ),
+                    Column(
+                      children: <Widget>[
+                        Expanded(
+                          child: FlatButton.icon(
+                              color: Colors.blue.shade200,
+                              icon: Icon(FontAwesomeIcons.check),
+                              label: Text('Done it?', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, fontFamily: 'Raleway')),
+                              onPressed: () {
+                                confirmDialog(data.id);
+                              }),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

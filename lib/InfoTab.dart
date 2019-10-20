@@ -33,7 +33,7 @@ class InfoTabState extends State<InfoTab> {
 
   Widget infoCard(IconData icon, String title, String text) {
     return Padding(
-        padding: const EdgeInsets.all(5.0),
+        padding: const EdgeInsets.all(2.0),
         child: Card(
             clipBehavior: Clip.antiAlias,
             child: Padding(
