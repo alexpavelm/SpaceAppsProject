@@ -111,7 +111,7 @@ class _SmallCardState extends State<SmallCard> {
                                   children: <Widget>[
                                     globalData.getWeatherIcon(weather[0]),
                                     Text(
-                                      temperature[0].toString() + "*C",
+                                      temperature[0].toString() + "°C",
                                       style: TextStyle(fontSize: 23, fontFamily: 'Raleway'),
                                     ),
                                   ],
@@ -128,7 +128,7 @@ class _SmallCardState extends State<SmallCard> {
                                       child: Text(
                                         quality.toString(),
                                         style: TextStyle(fontSize: 25, fontFamily: 'Raleway',
-                                          color: globalData.getCardColor(quality), fontWeight: FontWeight.bold),
+                                          color: globalData.getCardDarkColor(quality), fontWeight: FontWeight.bold),
                                       ),
                                     ),
                                   ],
@@ -147,10 +147,10 @@ class _SmallCardState extends State<SmallCard> {
                                   padding: const EdgeInsets.only(left: 20, right: 5, bottom: 2),
                                   child: Column(
                                     children: <Widget>[
-                                      Text("Mon."),
+                                      Text("Mon.", style: TextStyle(fontSize: 15, fontFamily: 'Raleway')),
                                       globalData.getWeatherIcon(weather[1]),
                                       Text(
-                                        temperature[1].toString() + "*C",
+                                        temperature[1].toString() + "°C",
                                         style: TextStyle(fontSize: 17, fontFamily: 'Raleway'),
                                       ),
                                     ],
@@ -162,10 +162,10 @@ class _SmallCardState extends State<SmallCard> {
                                   padding: const EdgeInsets.only(left: 5, right: 5, bottom: 2),
                                   child: Column(
                                     children: <Widget>[
-                                      Text("Tue."),
+                                      Text("Tue.", style: TextStyle(fontSize: 15, fontFamily: 'Raleway')),
                                       globalData.getWeatherIcon(weather[2]),
                                       Text(
-                                        temperature[2].toString() + "*C",
+                                        temperature[2].toString() + "°C",
                                         style: TextStyle(fontSize: 17, fontFamily: 'Raleway'),
                                       ),
                                     ],
@@ -177,10 +177,10 @@ class _SmallCardState extends State<SmallCard> {
                                   padding: const EdgeInsets.only(left: 5, right: 20, bottom: 2),
                                   child: Column(
                                     children: <Widget>[
-                                      Text("Wed."),
+                                      Text("Wed.", style: TextStyle(fontSize: 15, fontFamily: 'Raleway')),
                                       globalData.getWeatherIcon(weather[3]),
                                       Text(
-                                        temperature[3].toString() + "*C",
+                                        temperature[3].toString() + "°C",
                                         style: TextStyle(fontSize: 17, fontFamily: 'Raleway'),
                                       ),
                                     ],
