@@ -16,6 +16,7 @@ class GlobalData {
   List<Questss> quests;
   List<FunFactObject> funFacts;
   static final GlobalData _singleton = GlobalData._internal();
+  String done = "You are done for today";
 
   factory GlobalData() {
     return _singleton;
@@ -47,8 +48,9 @@ class GlobalData {
     mainCity.pings.add(new PingData(52.3521007, 4.886793, 34));
     mainCity.pings.add(new PingData(52.3478447, 4.7966966,13));
 
-    quests.add(new Questss("Go to job by bicycle", 0));
-    quests.add(new Questss("Plant a flower", 1));
+    quests.add(new Questss("Don't use the car today.", 0));
+    quests.add(new Questss("Plant a tree.", 1));
+    quests.add(new Questss("Save electricity", 2));
   }
 
   launchURL(String url) async {
