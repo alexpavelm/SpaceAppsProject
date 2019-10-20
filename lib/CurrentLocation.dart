@@ -143,7 +143,7 @@ class CurrentLocationState extends State<CurrentLocation> {
                       onTap: () {
                         setState(() {
                           globalData.mainCity = globalData.cityList[index];
-                          globalData.cityAssiged =
+                          globalData.cityAssigned =
                               Future.delayed(new Duration(microseconds: 1));
                           Navigator.of(context).pop();
                         });

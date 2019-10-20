@@ -16,6 +16,7 @@ class GlobalData {
   LocationData mainCity;
   List<Questss> quests;
   List<FunFactObject> funFacts;
+  Future cityAssigned;
   static final GlobalData _singleton = GlobalData._internal();
   BitmapDescriptor greenMarker, yellowMarker, orangeMarker, redMarker, purpleMarker;
 
