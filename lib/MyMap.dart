@@ -93,7 +93,7 @@ class MapSampleState extends State<MapSample> {
             title: data.city + "Sensor " + i.toString(),
             snippet: 'Space Apps',
           ),
-          icon: getBitmapImage(data.quality)));
+          icon: getBitmapImage(data.pings[i].quality)));
     }
     ;
   }
