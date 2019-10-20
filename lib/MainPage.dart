@@ -17,6 +17,7 @@ class _MainPageState extends State<MainPage> {
     CurrentLocation(),
     FunFact(globalData.getFunFact()),
     SmallCard()
+
   ];
 
   @override

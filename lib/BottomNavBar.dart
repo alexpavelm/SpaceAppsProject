@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:space_apps_project/CurrentLocation.dart';
 import 'package:space_apps_project/MyAirTab.dart';
 import 'package:space_apps_project/InfoTab.dart';
 

@@ -59,6 +59,38 @@ class MyAirTabState extends State<MyAirTab> {
         });
   }
 
+  Widget congrts() {
+    final titles = [
+      'Yay! You finished your daily challenges!',
+      '153 did the first quest',
+      '445 did the second quest',
+      '129 did the third quest'
+    ];
+
+    return ListView.builder(
+      itemCount: titles.length,
+      itemBuilder: (context, index) {
+        return index == 0
+            ? Card(
+                //                           <-- Card widget
+                child: ListTile(
+                  title: Text(titles[index],
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Raleway')),
+                ),
+              )
+            : Card(
+                //                           <-- Card widget
+                child: ListTile(
+                    title: Text(titles[index],
+                        style:
+                            TextStyle(fontSize: 15, fontFamily: 'Raleway'))));
+      },
+    );
+  }
+
   Widget quest(Questss data) {
     String qst = data.quest;
     return data.finishquests == false
