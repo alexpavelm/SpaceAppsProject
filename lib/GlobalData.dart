@@ -132,54 +132,62 @@ class GlobalData {
   }
 
   String getQualityText(int quality) {
-    if (quality < 50) {
+    if (quality < 51) {
       return "Good";
-    } else if (quality < 100) {
+    } else if (quality < 101) {
       return "Moderate";
-    } else if (quality < 150) {
-      return "Bad";
-    } else if (quality < 200) {
+    } else if (quality < 151) {
+      return "Poor";
+    } else if (quality < 201) {
       return "Unhealthy";
+    } else {
+      return "Dangerous";
+
     }
-    return "RUN AWAY";
   }
 
   IconData getQualityIcon(int quality) {
-    if (quality < 50) {
+    if (quality < 51) {
       return FontAwesomeIcons.grin;
-    } else if (quality < 100) {
+    } else if (quality < 101) {
       return FontAwesomeIcons.meh;
-    } else if (quality < 150) {
+    } else if (quality < 151) {
       return FontAwesomeIcons.frown;
-    } else if (quality < 200) {
-      return FontAwesomeIcons.dizzy;
+    } else if (quality < 201) {
+      return FontAwesomeIcons.sadTear;
+    } else {
+      return FontAwesomeIcons.exclamationCircle;
+
     }
-    return FontAwesomeIcons.dizzy;
   }
 
   Color getCardColor(int quality) {
-    if (quality < 50) {
+    if (quality < 51) {
       return Colors.green.shade500;
-    } else if (quality < 100) {
-      return Colors.orange.shade500;
-    } else if (quality < 150) {
-      return Colors.red.shade500;
-    } else if (quality < 200) {
-      return Colors.purple.shade500;
+    } else if (quality < 101) {
+      return Colors.yellow.shade500;
+    } else if (quality < 151) {
+      return Colors.orange.shade600;
+    } else if (quality < 201) {
+      return Colors.red.shade400;
+    } else {
+      return Colors.purple.shade400;
+
     }
-    return Colors.teal.shade500;
   }
 
   Color getCardDarkColor(int quality) {
-    if (quality < 50) {
+    if (quality < 51) {
       return Colors.green.shade700;
-    } else if (quality < 100) {
-      return Colors.orange.shade700;
-    } else if (quality < 150) {
-      return Colors.red.shade700;
-    } else if (quality < 200) {
-      return Colors.purple.shade700;
+    } else if (quality < 101) {
+      return Colors.yellow.shade700;
+    } else if (quality < 151) {
+      return Colors.orange.shade800;
+    } else if (quality < 201) {
+      return Colors.red.shade600;
+    } else {
+      return Colors.purple.shade600;
+
     }
-    return Colors.teal.shade700;
   }
 }
