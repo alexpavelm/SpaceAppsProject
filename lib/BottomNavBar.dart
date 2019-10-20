@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:space_apps_project/CurrentLocation.dart';
 import 'package:space_apps_project/MyAirTab.dart';
 import 'package:space_apps_project/InfoTab.dart';
 
@@ -28,6 +29,7 @@ class BottomNavBarState extends State<BottomNavBar> {
           color: Theme.of(context).scaffoldBackgroundColor,
           child: SafeArea(
             child: new Scaffold(
+
               body: TabBarView(children: _children), // new
               bottomNavigationBar: TabBar(
                 tabs: [
