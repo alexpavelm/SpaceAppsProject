@@ -86,7 +86,7 @@ class GlobalData {
     cityList[10].pings.add(new PingData(44.4542507, 26.0188769, 37));
     cityList[11].pings.add(new PingData(45.146942, 26.810281, 19));
 
-    quests.add(new Questss("Use public transport.", 0));
+    quests.add(new Questss("Use public transport today.", 0));
     quests.add(new Questss("Plant a tree.", 1));
   }
 
