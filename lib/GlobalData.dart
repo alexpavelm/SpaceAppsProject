@@ -10,6 +10,7 @@ import 'FunFactObject.dart';
 import 'LocationData.dart';
 import 'PingData.dart';
 import 'Questss.dart';
+import 'TipsList.dart';
 
 class GlobalData {
   List<LocationData> cityList;
@@ -40,13 +41,13 @@ class GlobalData {
     cityList.add(new LocationData("Amsterdam", "Netherlands", new WeatherData(["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15]), 23, []));
     cityList.add(new LocationData("Shanghai", "China", new WeatherData(["sunny", "cloudy", "cloudy", "cloudy", "rainy"], [20, 23, 23, 20, 23]), 127, []));
     cityList.add(new LocationData("Beijing", "China", new WeatherData(["sunny", "sunny", "sunny", "cloudy", "cloudy"], [18, 16, 18, 19, 11]), 215, []));
-    cityList.add(new LocationData("Paris", "France", new WeatherData(["rainy", "rainy", "cloudy", "sunny", "sunny"], [13, 14, 14, 20, 20]), 53, []));
+    cityList.add(new LocationData("Karachi", "Pakistan", new WeatherData(["sunny", "sunny", "sunny", "sunny", "sunny"], [36, 35, 34, 34, 34]), 164, []));
     cityList.add(new LocationData("Istanbul", "Turkey", new WeatherData(["sunny", "cloudy", "sunny", "rainy", "rainy"], [20, 20, 19, 19, 19]), 114, []));
-    cityList.add(new LocationData("London", "England", new WeatherData(["sunny", "rainy", "sunny", "sunny", "rainy"], [13, 14, 14, 15, 17]), 62, []));
+    cityList.add(new LocationData("Dhaka", "Bangladesh", new WeatherData(["cloudy", "cloudy", "sunny", "cloudy", "sunny"], [29, 29, 29, 28, 29]), 184, []));
     cityList.add(new LocationData("Tokyo", "Japan", new WeatherData(["cloudy", "cloudy", "rainy", "cloudy", "cloudy"], [25, 23, 16, 23, 20]), 70, []));
     cityList.add(new LocationData("Moscow", "Russia", new WeatherData(["cloudy", "cloudy", "cloudy", "cloudy", "cloudy"], [14, 14, 8, 14, 11]), 60, []));
-    cityList.add(new LocationData("New York", "USA", new WeatherData(["rainy", "cloudy", "rainy", "sunny", "sunny"], [18, 21, 18, 17, 18]), 60, []));
-    cityList.add(new LocationData("Berlin", "Germany", new WeatherData(["sunny", "sunny", "sunny", "sunny", "sunny"], [20, 21, 17, 17, 19]), 20, []));
+    cityList.add(new LocationData("Manila", "Philippines", new WeatherData(["rainy", "rainy", "sunny", "sunny", "sunny"], [31, 30, 30, 30, 29]), 55, []));
+    cityList.add(new LocationData("Tianjin", "China", new WeatherData(["cloudy", "sunny", "cloudy", "cloudy", "cloudy"], [22, 20, 22, 24, 17]), 194, []));
     cityList.add(new LocationData("Bucharest", "Romania", new WeatherData(["sunny", "sunny", "sunny", "sunny", "sunny"], [24, 22, 23, 21, 21]), 74, []));
 
     /*mainCity.pings.add(new PingData(52.3545358, 4.7635337, 23));
@@ -61,7 +62,7 @@ class GlobalData {
     cityList[2].pings.add(new PingData(39.9385449, 116.1165817, 205));
     cityList[2].pings.add(new PingData(39.9445038, 116.4851008, 192));
     cityList[2].pings.add(new PingData(39.8291187, 116.12079, 213));
-    cityList[3].pings.add(new PingData(25.1921412, 66.5935954, 53));
+    cityList[3].pings.add(new PingData(25.1921412, 66.5935954, 172));
     cityList[4].pings.add(new PingData(41.1922843, 28.3817107, 87));
     cityList[5].pings.add(new PingData(23.7805729, 90.2788949, 117));
     cityList[6].pings.add(new PingData(35.5040273, 138.6457897, 14));
@@ -74,9 +75,12 @@ class GlobalData {
     cityList[10].pings.add(new PingData(44.4206436, 26.1467312, 52));
     cityList[10].pings.add(new PingData(44.4542507, 26.0188769, 37));
 
-    quests.add(new Questss("Go to job by bicycle", 0));
+    quests.add(new Questss("Go to work by bicycle", 0));
     quests.add(new Questss("Plant a flower", 1));
+
+
   }
+
 
   launchURL(String url) async {
     if (await canLaunch(url)) {
@@ -192,4 +196,5 @@ class GlobalData {
 
     }
   }
+
 }

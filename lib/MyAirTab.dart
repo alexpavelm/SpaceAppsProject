@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'dart:math';
 import 'GlobalData.dart';
 import 'Questss.dart';
 
@@ -61,7 +60,7 @@ class MyAirTabState extends State<MyAirTab> {
 
   Widget congrts() {
     final titles = [
-      'Yay! You finished your daily challenges!',
+      'You completed your daily challenges',
       '153 did the first quest',
       '445 did the second quest',
       '129 did the third quest'

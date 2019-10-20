@@ -16,8 +16,8 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> _children = [
     CurrentLocation(),
     FunFact(globalData.getFunFact()),
-    SmallCard()
 
+    SmallCard()
   ];
 
   @override

@@ -29,108 +29,97 @@ class CurrentLocationState extends State<CurrentLocation> {
             );
           },
           child: Card(
-            child: Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 50.0, bottom: 20.0),
-                  child: Column(
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(globalData.mainCity.city,
-                              textAlign: TextAlign.center,
-                              textScaleFactor: 3,
-                              style: TextStyle(
-                                fontFamily: 'Raleway',
-                                fontWeight: FontWeight.bold,
-                              )),
-                          InkWell(
-                            onTap: () => showListOfCities(),
-                              child: Icon(Icons.settings,
-                                  color: Colors.black.withOpacity(0.6)))
-                        ],
-                      ),
-                      Text(
-                        globalData.mainCity.country,
-                        textScaleFactor: 1.2,
-                        style: TextStyle(
-                          fontFamily: 'Raleway',
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Text(
-                          printCurrentDate(),
-                          textScaleFactor: 1,
-                          style: TextStyle(
+            child: Column(children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 50.0, bottom: 20.0),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(globalData.mainCity.city,
+                            textAlign: TextAlign.center,
+                            textScaleFactor: 3,
+                            style: TextStyle(
                               fontFamily: 'Raleway',
-                              fontStyle: FontStyle.italic),
-                        ),
+                              fontWeight: FontWeight.bold,
+                            )),
+                        InkWell(
+                            onTap: () => showListOfCities(),
+                            child: Icon(Icons.settings,
+                                color: Colors.black.withOpacity(0.6)))
+                      ],
+                    ),
+                    Text(
+                      globalData.mainCity.country,
+                      style: TextStyle(
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.bold,
                       ),
-                    ],
-                  ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Text(
+                        printCurrentDate(),
+                        textScaleFactor: 1,
+                        style: TextStyle(
+                            fontFamily: 'Raleway', fontStyle: FontStyle.italic),
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Card(
-                    color: globalData.getCardColor(globalData.mainCity.quality),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Icon(
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Card(
+                  color: globalData.getCardColor(globalData.mainCity.quality),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Icon(
+                          globalData
+                              .getQualityIcon(globalData.mainCity.quality),
+                          size: 60,
+                          color: Colors.black.withOpacity(0.6),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 4, right: 4),
+                          child: Text(
                             globalData
-                                .getQualityIcon(globalData.mainCity.quality),
-                            size: 60,
-                            color: Colors.black.withOpacity(0.6),
+                                .getQualityText(globalData.mainCity.quality),
+                            style: TextStyle(
+                                fontFamily: 'Raleway',
+                                fontSize: 35,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black.withOpacity(0.6)),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 4, right: 4),
-                            child: Text(
-                              globalData
-                                  .getQualityText(globalData.mainCity.quality),
-                              style: TextStyle(
-                                  fontFamily: 'Raleway',
-                                  fontSize: 35,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black.withOpacity(0.6)),
+                        ),
+                        Row(children: <Widget>[
+                          Text(
+                            "AQI: ",
+                            style: TextStyle(
+                              fontFamily: 'Raleway',
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Row(
-                            children: <Widget>[
-                              Text(
-                                "AQI: ",
-                                style: TextStyle(
-                                  fontFamily: 'Raleway',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              Text(
-                                globalData.mainCity.quality.toString(),
-                                style: TextStyle(
-                                    fontFamily: 'Raleway',
-                                    fontSize: 35,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black.withOpacity(0.6)),
-                              ),
-                            ],
+                          Text(
+                            globalData.mainCity.quality.toString(),
+                            style: TextStyle(
+                                fontFamily: 'Raleway',
+                                fontSize: 35,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black.withOpacity(0.6)),
                           ),
-                        ],
-                      ),
+                        ])])))),
+                        WeatherCard(globalData.mainCity.weatherData)
+                      ],
                     ),
                   ),
                 ),
-                WeatherCard(globalData.mainCity.weatherData)
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+              ));
   }
 
   Widget buildWeather(String data) {
