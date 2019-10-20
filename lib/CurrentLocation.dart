@@ -24,23 +24,33 @@ class CurrentLocationState extends State<CurrentLocation> {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => ExpandedCardView(globalData.mainCity)),
+              MaterialPageRoute(
+                  builder: (context) => ExpandedCardView(globalData.mainCity)),
             );
           },
           child: Card(
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(top:50.0, bottom: 20.0),
+                  padding: const EdgeInsets.only(top: 50.0, bottom: 20.0),
                   child: Column(
                     children: <Widget>[
-                      Text(globalData.mainCity.city,
-                          textAlign: TextAlign.center,
-                          textScaleFactor: 3,
-                          style: TextStyle(
-                            fontFamily: 'Raleway',
-                            fontWeight: FontWeight.bold,
-                          )),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(globalData.mainCity.city,
+                              textAlign: TextAlign.center,
+                              textScaleFactor: 3,
+                              style: TextStyle(
+                                fontFamily: 'Raleway',
+                                fontWeight: FontWeight.bold,
+                              )),
+                          InkWell(
+                            onTap: () => showListOfCities(),
+                              child: Icon(Icons.settings,
+                                  color: Colors.black.withOpacity(0.6)))
+                        ],
+                      ),
                       Text(
                         globalData.mainCity.country,
                         textScaleFactor: 1.2,
@@ -56,18 +66,16 @@ class CurrentLocationState extends State<CurrentLocation> {
                           textScaleFactor: 1,
                           style: TextStyle(
                               fontFamily: 'Raleway',
-                              fontStyle: FontStyle.italic
-                          ),
+                              fontStyle: FontStyle.italic),
                         ),
                       ),
-
                     ],
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: Card(
-                    color:globalData.getCardColor(globalData.mainCity.quality),
+                    color: globalData.getCardColor(globalData.mainCity.quality),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -80,7 +88,7 @@ class CurrentLocationState extends State<CurrentLocation> {
                             color: Colors.black.withOpacity(0.6),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left:4, right: 4),
+                            padding: const EdgeInsets.only(left: 4, right: 4),
                             child: Text(
                               globalData
                                   .getQualityText(globalData.mainCity.quality),
@@ -88,8 +96,7 @@ class CurrentLocationState extends State<CurrentLocation> {
                                   fontFamily: 'Raleway',
                                   fontSize: 35,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.black.withOpacity(0.6)
-                              ),
+                                  color: Colors.black.withOpacity(0.6)),
                             ),
                           ),
                           Row(
@@ -108,19 +115,16 @@ class CurrentLocationState extends State<CurrentLocation> {
                                     fontFamily: 'Raleway',
                                     fontSize: 35,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black.withOpacity(0.6)
-                                ),
+                                    color: Colors.black.withOpacity(0.6)),
                               ),
                             ],
                           ),
-
                         ],
                       ),
                     ),
                   ),
                 ),
                 WeatherCard(globalData.mainCity.weatherData)
-
               ],
             ),
           ),
@@ -128,14 +132,60 @@ class CurrentLocationState extends State<CurrentLocation> {
       ),
     );
   }
+
   Widget buildWeather(String data) {
     return Text(data);
+  }
+
+  Future showListOfCities() {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return Container(
+            child: AlertDialog(
+              title: Text("Select a city"),
+              content: SizedBox(
+                width: MediaQuery.of(context).size.height * 0.8,
+                height: MediaQuery.of(context).size.width * 0.7,
+                child: ListView.separated(
+                  itemCount: globalData.cityList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return InkWell(
+                      onTap: () {
+                        setState(() {
+                          globalData.mainCity = globalData.cityList[index];
+                          globalData.cityAssiged =
+                              Future.delayed(new Duration(microseconds: 1));
+                          Navigator.of(context).pop();
+                        });
+                      },
+                      child: ListTile(
+                        title: Row(
+                          children: <Widget>[
+                            Text(globalData.cityList[index].city + ", "),
+                            Text(
+                              globalData.cityList[index].country,
+                              style: TextStyle(fontSize: 12),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return Divider(color: Colors.black);
+                  },
+                ),
+              ),
+            ),
+          );
+        });
   }
 
   String printCurrentDate() {
     var now = DateTime.now();
     String date = "";
-    switch(now.weekday) {
+    switch (now.weekday) {
       case 1:
         date += "Monday, ";
         break;
@@ -162,7 +212,7 @@ class CurrentLocationState extends State<CurrentLocation> {
         break;
     }
     date += now.day.toString() + " ";
-    switch(now.month) {
+    switch (now.month) {
       case 1:
         date += "Jan ";
         break;
@@ -205,5 +255,4 @@ class CurrentLocationState extends State<CurrentLocation> {
     }
     return date + now.year.toString();
   }
-
 }
