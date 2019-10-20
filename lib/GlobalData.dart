@@ -50,7 +50,9 @@ class GlobalData {
 
     cityList[0].pings.add(new PingData(52.3545358, 4.7635337, 23));
     cityList[0].pings.add(new PingData(52.3521007, 4.886793, 34));
-    cityList[0].pings.add(new PingData(52.3478447, 4.7966966,13));
+    cityList[0].pings.add(new PingData(52.3478447, 4.7966966, 13));
+    cityList[0].pings.add(new PingData(52.3762867, 4.8651617, 55));
+    cityList[0].pings.add(new PingData(52.3780961, 4.8359141, 27));
     cityList[1].pings.add(new PingData(31.2231277, 120.9148989, 122));
     cityList[1].pings.add(new PingData(31.1440299, 121.4306818, 154));
     cityList[1].pings.add(new PingData(31.2684233, 121.5421838,153));
@@ -68,10 +70,14 @@ class GlobalData {
     cityList[6].pings.add(new PingData(35.6434372, 139.7400523, 3));
     cityList[6].pings.add(new PingData(35.6527779, 139.7103776, 10));
     cityList[7].pings.add(new PingData(55.5807417, 36.8237404, 5));
-    cityList[8].pings.add(new PingData(14.5676285, 120.7397547, 54));
+    cityList[8].pings.add(new PingData(40.7077029, -74.014515, 30));
+    cityList[8].pings.add(new PingData(40.7644976, -73.9864182, 31));
+    cityList[8].pings.add(new PingData(40.6853428, -73.9105466, 38));
+    cityList[8].pings.add(new PingData(40.7177145, -74.0474245, 56));
+    cityList[8].pings.add(new PingData(40.6463789, -74.1526531, 40));
     cityList[9].pings.add(new PingData(52.5178642, 13.3978216, 20));
     cityList[9].pings.add(new PingData(52.5223822, 13.3949681, 12));
-    cityList[9].pings.add(new PingData(52.5178642, 13.3978216, 20));
+    cityList[9].pings.add(new PingData(52.5143651, 13.4184857, 15));
     cityList[10].pings.add(new PingData(44.4377397, 25.9542094, 46));
     cityList[10].pings.add(new PingData(44.4206436, 26.1467312, 52));
     cityList[10].pings.add(new PingData(44.4542507, 26.0188769, 37));
