@@ -56,10 +56,10 @@ class MyAirTabState extends State<MyAirTab> {
 
   Widget congrts() {
     final titles = [
-      'You have done your daily challanges',
-      '153 done the first quest',
-      '445 done the second quest',
-      '129 done the third quest'
+      'You completed your daily challenges',
+      '153 did the first quest',
+      '445 did the second quest',
+      '129 did the third quest'
     ];
     
     return ListView.builder(
@@ -112,7 +112,7 @@ class MyAirTabState extends State<MyAirTab> {
                           child: FlatButton.icon(
                               color: Colors.blue.shade200,
                               icon: Icon(FontAwesomeIcons.check),
-                              label: Text('Done it?',
+                              label: Text('Done?',
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,

@@ -31,7 +31,7 @@ class CurrentLocationState extends State<CurrentLocation> {
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.only(top:70.0, bottom:50),
                   child: Column(
                     children: <Widget>[
                       Text(globalData.mainCity.city,

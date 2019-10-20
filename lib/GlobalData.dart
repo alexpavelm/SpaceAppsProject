@@ -10,6 +10,7 @@ import 'FunFactObject.dart';
 import 'LocationData.dart';
 import 'PingData.dart';
 import 'Questss.dart';
+import 'TipsList.dart';
 
 class GlobalData {
   List<LocationData> cityList;
@@ -72,9 +73,12 @@ class GlobalData {
     cityList[10].pings.add(new PingData(44.4206436, 26.1467312, 52));
     cityList[10].pings.add(new PingData(44.4542507, 26.0188769, 37));
 
-    quests.add(new Questss("Go to job by bicycle", 0));
+    quests.add(new Questss("Go to work by bicycle", 0));
     quests.add(new Questss("Plant a flower", 1));
+
+
   }
+
 
   launchURL(String url) async {
     if (await canLaunch(url)) {
@@ -190,4 +194,5 @@ class GlobalData {
 
     }
   }
+
 }
