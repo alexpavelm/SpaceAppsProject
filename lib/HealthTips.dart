@@ -93,6 +93,4 @@ class HealthTips extends StatelessWidget {
       ),
     );
   }
-
-
 }
