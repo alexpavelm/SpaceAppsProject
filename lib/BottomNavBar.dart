@@ -29,6 +29,7 @@ class BottomNavBarState extends State<BottomNavBar> {
           color: Theme.of(context).scaffoldBackgroundColor,
           child: SafeArea(
             child: new Scaffold(
+
               body: TabBarView(children: _children), // new
               bottomNavigationBar: TabBar(
                 tabs: [

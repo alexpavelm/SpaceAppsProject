@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'dart:math';
 import 'GlobalData.dart';
 import 'Questss.dart';
 
@@ -17,12 +18,15 @@ class MyAirTabState extends State<MyAirTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: globalData.quests.length != 0
-          ? ListView(
-              children:
-                  globalData.quests.map((object) => quest(object)).toList())
-          : congrts(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: Text("Challenges", style: TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.bold),)),
+        backgroundColor: Colors.blue.shade200,
+      ),
+      body: Center(
+        child: globalData.quests.length != 0 ?ListView(
+            children: globalData.quests.map((object) => quest(object)).toList()) : Text("HAHA"),
+      ),
     );
   }
 
@@ -108,45 +112,6 @@ class MyAirTabState extends State<MyAirTab> {
             ))
       ],
     );
-//    return ListView.builder(
-//      itemCount: titles.length,
-//      itemBuilder: (context, index) {
-//        return Column(
-//          children: <Widget>[
-//            index == 0
-//                ? Card(
-//                    color: Colors.blue.shade300,
-//                    child: ListTile(
-//                      title: Text(titles[index],
-//                          textAlign: TextAlign.center,
-//                          style: TextStyle(
-//                              fontSize: 35,
-//                              fontWeight: FontWeight.bold,
-//                              fontFamily: 'Raleway')),
-//                    ),
-//                  )
-//                : Card(
-//                    color: Colors.blue.shade100,
-//                    child: ListTile(
-//                        title: Text(titles[index],
-//                            style: TextStyle(
-//                              fontSize: 15,
-//                              fontFamily: 'Raleway',
-//                            )))),
-//            Card(
-//                color: Colors.blue.shade100,
-//                child: ListTile(
-//                    title: Text(globalData.quests[1].quest,
-//                        style: TextStyle(
-//                          fontSize: 15,
-//                          fontFamily: 'Raleway',
-//                        ))))
-//          ],
-//        );
-//
-//        ;
-//      },
-//    );
   }
 
   Widget quest(Questss data) {
@@ -193,6 +158,7 @@ class MyAirTabState extends State<MyAirTab> {
           )
         : Padding(
             padding: const EdgeInsets.all(2.0),
+
             child: Card(
               color: Colors.green.shade700,
               clipBehavior: Clip.antiAlias,
