@@ -17,6 +17,8 @@ class GlobalData {
   LocationData mainCity;
   List<Questss> quests;
   List<FunFactObject> funFacts;
+  Future cityAssiged;
+
   static final GlobalData _singleton = GlobalData._internal();
   BitmapDescriptor greenMarker, yellowMarker, orangeMarker, redMarker, purpleMarker;
 
@@ -30,7 +32,7 @@ class GlobalData {
     funFacts = new List();
     cityList = new List();
     quests = new List();
-    mainCity = new LocationData("Amsterdam", "Netherlands",new WeatherData(["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15]) , 23, []);
+    //mainCity = new LocationData("Amsterdam", "Netherlands",new WeatherData(["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15]) , 23, []);
     funFacts.add(new FunFactObject("Did you know that public transport reduces polution by 15%?", "https://www.thoughtco.com/public-transportation-for-fewer-emissions-1203955"));
     funFacts.add(new FunFactObject("Trees and plants have a varying capacity to capture and/or filter air pollution.. ", "https://www.thoughtco.com/public-transportation-for-fewer-emissions-1203955"));
     funFacts.add(new FunFactObject("Do you know the impact of using renewable energy?", "https://www.ucsusa.org/resources/environmental-impacts-renewable-energy-technologies"));
@@ -48,9 +50,9 @@ class GlobalData {
     cityList.add(new LocationData("Tianjin", "China", new WeatherData(["cloudy", "sunny", "cloudy", "cloudy", "cloudy"], [22, 20, 22, 24, 17]), 194, []));
     cityList.add(new LocationData("Bucharest", "Romania", new WeatherData(["sunny", "sunny", "sunny", "sunny", "sunny"], [24, 22, 23, 21, 21]), 74, []));
 
-    mainCity.pings.add(new PingData(52.3545358, 4.7635337, 23));
+    /*mainCity.pings.add(new PingData(52.3545358, 4.7635337, 23));
     mainCity.pings.add(new PingData(52.3521007, 4.886793, 34));
-    mainCity.pings.add(new PingData(52.3478447, 4.7966966,13));
+    mainCity.pings.add(new PingData(52.3478447, 4.7966966,13));*/
     cityList[0].pings.add(new PingData(52.3545358, 4.7635337, 23));
     cityList[0].pings.add(new PingData(52.3521007, 4.886793, 34));
     cityList[0].pings.add(new PingData(52.3478447, 4.7966966,13));
