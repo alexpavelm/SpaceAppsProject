@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'GlobalData.dart';
 import 'Questss.dart';
-import 'package:confetti/confetti.dart';
 
 class MyAirTab extends StatefulWidget {
   @override
