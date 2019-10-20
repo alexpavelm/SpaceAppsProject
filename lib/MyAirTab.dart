@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -20,17 +21,24 @@ class MyAirTabState extends State<MyAirTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("Challenges", style: TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.bold),)),
+        title: Center(
+            child: Text(
+          "Challenges",
+          style: TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.bold),
+        )),
         backgroundColor: Colors.blue.shade200,
       ),
       body: Center(
-        child: globalData.quests.length != 0 ?ListView(
-            children: globalData.quests.map((object) => quest(object)).toList()) : Text("HAHA"),
+        child: globalData.quests.length != 0
+            ? ListView(
+                children:
+                    globalData.quests.map((object) => quest(object)).toList())
+            : congrts(),
       ),
     );
   }
 
-  Future confirmDialog(int id) {
+  Future confirmDialog(Questss id) {
     return showDialog(
         context: context,
         builder: (context) {
@@ -41,8 +49,8 @@ class MyAirTabState extends State<MyAirTab> {
                 child: new Text('YES'),
                 onPressed: () {
                   setState(() {
-                    globalData.copy.add(globalData.quests[id].quest);
-                    globalData.quests.remove(globalData.quests[id]);
+                    //globalData.copy.add(globalData.quests[id].quest);
+                    globalData.quests.remove(id);
                   });
                   Navigator.of(context).pop();
                 },
@@ -61,55 +69,164 @@ class MyAirTabState extends State<MyAirTab> {
   Widget congrts() {
     final titles = [
       'You have done your daily challanges !',
-      '153 done the first quest.',
-      '445 done the second quest.',
+      ' done the first quest.',
+      ' done the second quest.',
     ];
-    final qst = ['Use public transport.', 'Plant a flower.'];
+    final qst = ['Use public transport today.', 'Plant a tree.'];
     return Column(
       children: <Widget>[
-        Card(
-            child: ListTile(
-                title: Text(titles[0],
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontFamily: 'Raleway',
-                    )))),
-        Card(
-            color: Color.fromRGBO(0, 204, 204, 1),
-            child: ListTile(
-                title: Text(qst[0],
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Raleway',
-                    )))),
-        Card(
-            color: Color.fromRGBO(51, 153, 153, 1),
-            child: ListTile(
-                title: Text("445",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 50,
-                      fontFamily: 'Raleway',
-                    )))),
+
+        Text(titles[0],
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 30,
+              fontFamily: 'Raleway',
+            )),
         Card(
             color: Color.fromRGBO(0, 204, 204, 1),
             child: ListTile(
-                title: Text(qst[1],
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Raleway',
-                    )))),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(qst[0],
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Raleway',
+                        )),
+                    Icon(Icons.check)
+                  ],
+                ))),
+
         Card(
-            color: Color.fromRGBO(51, 153, 153, 1),
+            color: Color.fromRGBO(0, 204, 204, 1),
             child: ListTile(
-              title: Text("153",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 50,
-                    fontFamily: 'Raleway',
-                  )),
-            ))
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(qst[1],
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'Raleway',
+                        )),
+                    Icon(Icons.check)
+                  ],
+                ))),
+        new Divider(
+          thickness: 10,
+          indent: 6,
+          endIndent: 6,
+        ),
+
+        InkWell(
+          onTap: () => globalData.launchURL("ceva"),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
+            child: Container(
+              child: Row(
+                children: <Widget>[
+                  Icon(FontAwesomeIcons.infoCircle,
+                      color: Colors.lightBlueAccent, size: 30),
+                  Container(
+                    child: Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+
+                            Text(
+                              "315 people chose to use public transport over a personal car in the last 7 days",
+                              style: TextStyle(
+                                fontFamily: 'Raleway',
+                                fontWeight: FontWeight.w600,
+                              ),
+                              softWrap: true,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),InkWell(
+          onTap: () => globalData.launchURL("ceva"),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
+            child: Container(
+              child: Row(
+                children: <Widget>[
+                  Icon(FontAwesomeIcons.infoCircle,
+                      color: Colors.lightBlueAccent, size: 30),
+                  Container(
+                    child: Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+
+                            Text(
+                              "Is it hot in the city? Try planting a tree!",
+                              style: TextStyle(
+                                fontFamily: 'Raleway',
+                                fontWeight: FontWeight.w600,
+                              ),
+                              softWrap: true,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),InkWell(
+          onTap: () => globalData.launchURL("ceva"),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
+            child: Container(
+              child: Row(
+                children: <Widget>[
+                  Icon(FontAwesomeIcons.infoCircle,
+                      color: Colors.lightBlueAccent, size: 30),
+                  Container(
+                    child: Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+
+                            Text(
+                              "The best ways to reduce air pollution are by walking and riding bicycle.",
+                              style: TextStyle(
+                                fontFamily: 'Raleway',
+                                fontWeight: FontWeight.w600,
+                              ),
+                              softWrap: true,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        )
+
       ],
     );
   }
@@ -129,9 +246,11 @@ class MyAirTabState extends State<MyAirTab> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        new Text(qst,
+                        new AutoSizeText(qst,
+                            maxLines: 1,
+                            maxFontSize: 25,
                             style:
-                                TextStyle(fontSize: 25, fontFamily: 'Raleway')),
+                                TextStyle(fontSize: 23, fontFamily: 'Raleway')),
                       ],
                     ),
                     Column(
@@ -146,7 +265,7 @@ class MyAirTabState extends State<MyAirTab> {
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'Raleway')),
                               onPressed: () {
-                                confirmDialog(data.id);
+                                confirmDialog(data);
                               }),
                         ),
                       ],
@@ -158,7 +277,6 @@ class MyAirTabState extends State<MyAirTab> {
           )
         : Padding(
             padding: const EdgeInsets.all(2.0),
-
             child: Card(
               color: Colors.green.shade700,
               clipBehavior: Clip.antiAlias,
