@@ -15,6 +15,7 @@ class GlobalData {
   List<LocationData> cityList;
   LocationData mainCity;
   List<Questss> quests;
+  List<String> copy ;
   List<FunFactObject> funFacts;
   Future cityAssigned;
   static final GlobalData _singleton = GlobalData._internal();
@@ -30,13 +31,14 @@ class GlobalData {
     funFacts = new List();
     cityList = new List();
     quests = new List();
+    copy = new List();
     funFacts.add(new FunFactObject("Did you know that public transport reduces polution by 15%?", "https://www.thoughtco.com/public-transportation-for-fewer-emissions-1203955"));
     funFacts.add(new FunFactObject("Trees and plants have a varying capacity to capture and/or filter air pollution.. ", "https://www.thoughtco.com/public-transportation-for-fewer-emissions-1203955"));
     funFacts.add(new FunFactObject("Do you know the impact of using renewable energy?", "https://www.ucsusa.org/resources/environmental-impacts-renewable-energy-technologies"));
     funFacts.add(new FunFactObject("Did you know that traffic jams increace carbon emissions?", "https://www.environmentalleader.com/2012/01/how-traffic-jams-affect-air-quality/"));
 
     cityList.add(new LocationData("Amsterdam", "Netherlands", new WeatherData(["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15]), 23, []));
-    cityList.add(new LocationData("Shanghai", "China", new WeatherData(["sunny", "cloudy", "cloudy", "cloudy", "rainy"], [20, 23, 23, 20, 23]), 127, []));
+    cityList.add(new LocationData("Shanghai", "China", new WeatherData(["sunny", "cloudy", "cloudy", "cloudy", "rainy"], [20, 23, 23, 20, 23]), 152, []));
     cityList.add(new LocationData("Beijing", "China", new WeatherData(["sunny", "sunny", "sunny", "cloudy", "cloudy"], [18, 16, 18, 19, 11]), 215, []));
     cityList.add(new LocationData("Paris", "France", new WeatherData(["rainy", "rainy", "cloudy", "sunny", "sunny"], [13, 14, 14, 20, 20]), 53, []));
     cityList.add(new LocationData("Istanbul", "Turkey", new WeatherData(["sunny", "cloudy", "sunny", "rainy", "rainy"], [20, 20, 19, 19, 19]), 114, []));
@@ -82,8 +84,8 @@ class GlobalData {
     cityList[10].pings.add(new PingData(44.4206436, 26.1467312, 52));
     cityList[10].pings.add(new PingData(44.4542507, 26.0188769, 37));
 
-    quests.add(new Questss("Go to job by bicycle", 0));
-    quests.add(new Questss("Plant a flower", 1));
+    quests.add(new Questss("Use public transport.", 0));
+    quests.add(new Questss("Plant a tree.", 1));
   }
 
   launchURL(String url) async {
