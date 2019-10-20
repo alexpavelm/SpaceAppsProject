@@ -24,13 +24,14 @@ class GlobalData {
   GlobalData._internal();
   void create() {
     funFacts = new List();
+    cityList = new List();
+    quests = new List();
+    mainCity = new LocationData("Amsterdam", "Netherlands",new WeatherData(["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15]) , 23, []);
     funFacts.add(new FunFactObject("Did you know that public transport reduces polution by 15%?", "https://www.thoughtco.com/public-transportation-for-fewer-emissions-1203955"));
     funFacts.add(new FunFactObject("Trees and plants have a varying capacity to capture and/or filter air pollution.. ", "https://www.thoughtco.com/public-transportation-for-fewer-emissions-1203955"));
     funFacts.add(new FunFactObject("Do you know the impact of using renewable energy?", "https://www.ucsusa.org/resources/environmental-impacts-renewable-energy-technologies"));
     funFacts.add(new FunFactObject("Did you know that traffic jams increace carbon emissions?", "https://www.environmentalleader.com/2012/01/how-traffic-jams-affect-air-quality/"));
-    cityList = new List();
-    quests = new List();
-    mainCity = new LocationData("Amsterdam", "Netherlands",new WeatherData(["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15]) , 23, []);
+
     cityList.add(new LocationData("Amsterdam", "Netherlands", new WeatherData(["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15]), 23, []));
     cityList.add(new LocationData("Shanghai", "China", new WeatherData(["sunny", "cloudy", "cloudy", "cloudy", "rainy"], [20, 23, 23, 20, 23]), 127, []));
     cityList.add(new LocationData("Beijing", "China", new WeatherData(["sunny", "sunny", "sunny", "cloudy", "cloudy"], [18, 16, 18, 19, 11]), 215, []));
@@ -46,6 +47,27 @@ class GlobalData {
     mainCity.pings.add(new PingData(52.3545358, 4.7635337, 23));
     mainCity.pings.add(new PingData(52.3521007, 4.886793, 34));
     mainCity.pings.add(new PingData(52.3478447, 4.7966966,13));
+    cityList[0].pings.add(new PingData(52.3545358, 4.7635337, 23));
+    cityList[0].pings.add(new PingData(52.3521007, 4.886793, 34));
+    cityList[0].pings.add(new PingData(52.3478447, 4.7966966,13));
+    cityList[1].pings.add(new PingData(31.2231277, 120.9148989, 122));
+    cityList[1].pings.add(new PingData(31.1440299, 121.4306818, 154));
+    cityList[1].pings.add(new PingData(31.2684233, 121.5421838,153));
+    cityList[2].pings.add(new PingData(39.9385449, 116.1165817, 205));
+    cityList[2].pings.add(new PingData(39.9445038, 116.4851008, 192));
+    cityList[2].pings.add(new PingData(39.8291187, 116.12079, 213));
+    cityList[3].pings.add(new PingData(25.1921412, 66.5935954, 172));
+    cityList[4].pings.add(new PingData(41.1922843, 28.3817107, 87));
+    cityList[5].pings.add(new PingData(23.7805729, 90.2788949, 117));
+    cityList[6].pings.add(new PingData(35.5040273, 138.6457897, 14));
+    cityList[6].pings.add(new PingData(35.6434372, 139.7400523, 3));
+    cityList[6].pings.add(new PingData(35.6527779, 139.7103776, 10));
+    cityList[7].pings.add(new PingData(55.5807417, 36.8237404, 5));
+    cityList[8].pings.add(new PingData(14.5676285, 120.7397547, 54));
+    cityList[9].pings.add(new PingData(39.1246947, 117.0146545, 188));
+    cityList[10].pings.add(new PingData(44.4377397, 25.9542094, 46));
+    cityList[10].pings.add(new PingData(44.4206436, 26.1467312, 52));
+    cityList[10].pings.add(new PingData(44.4542507, 26.0188769, 37));
 
     quests.add(new Questss("Go to job by bicycle", 0));
     quests.add(new Questss("Plant a flower", 1));
