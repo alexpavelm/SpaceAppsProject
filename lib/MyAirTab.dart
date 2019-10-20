@@ -18,9 +18,15 @@ class MyAirTabState extends State<MyAirTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: globalData.quests.length != 0 ?ListView(
-          children: globalData.quests.map((object) => quest(object)).toList()) : Text("HAHA"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(child: Text("Challenges", style: TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.bold),)),
+        backgroundColor: Colors.blue.shade200,
+      ),
+      body: Center(
+        child: globalData.quests.length != 0 ?ListView(
+            children: globalData.quests.map((object) => quest(object)).toList()) : Text("HAHA"),
+      ),
     );
   }
 
