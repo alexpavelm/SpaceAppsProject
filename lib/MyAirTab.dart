@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'dart:math';
 import 'GlobalData.dart';
 import 'Questss.dart';
 
@@ -38,6 +37,7 @@ class MyAirTabState extends State<MyAirTab> {
                 child: new Text('YES'),
                 onPressed: () {
                   setState(() {
+                    globalData.copy.add(globalData.quests[id].quest);
                     globalData.quests.remove(globalData.quests[id]);
                   });
                   Navigator.of(context).pop();
@@ -56,34 +56,97 @@ class MyAirTabState extends State<MyAirTab> {
 
   Widget congrts() {
     final titles = [
-      'You have done your daily challanges',
-      '153 done the first quest',
-      '445 done the second quest',
-      '129 done the third quest'
+      'You have done your daily challanges !',
+      '153 done the first quest.',
+      '445 done the second quest.',
     ];
-    
-    return ListView.builder(
-      itemCount: titles.length,
-      itemBuilder: (context, index) {
-        return index == 0
-            ? Card(
-                //                           <-- Card widget
-                child: ListTile(
-                  title: Text(titles[index],
-                      style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Raleway')),
-                ),
-              )
-            : Card(
-                //                           <-- Card widget
-                child: ListTile(
-                    title: Text(titles[index],
-                        style:
-                            TextStyle(fontSize: 15, fontFamily: 'Raleway'))));
-      },
+    final qst = ['Use public transport.', 'Plant a flower.'];
+    return Column(
+      children: <Widget>[
+        Card(
+            child: ListTile(
+                title: Text(titles[0],
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontFamily: 'Raleway',
+                    )))),
+        Card(
+            color: Color.fromRGBO(0, 204, 204, 1),
+            child: ListTile(
+                title: Text(qst[0],
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Raleway',
+                    )))),
+        Card(
+            color: Color.fromRGBO(51, 153, 153, 1),
+            child: ListTile(
+                title: Text("445",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 50,
+                      fontFamily: 'Raleway',
+                    )))),
+        Card(
+            color: Color.fromRGBO(0, 204, 204, 1),
+            child: ListTile(
+                title: Text(qst[1],
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Raleway',
+                    )))),
+        Card(
+            color: Color.fromRGBO(51, 153, 153, 1),
+            child: ListTile(
+              title: Text("153",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 50,
+                    fontFamily: 'Raleway',
+                  )),
+            ))
+      ],
     );
+//    return ListView.builder(
+//      itemCount: titles.length,
+//      itemBuilder: (context, index) {
+//        return Column(
+//          children: <Widget>[
+//            index == 0
+//                ? Card(
+//                    color: Colors.blue.shade300,
+//                    child: ListTile(
+//                      title: Text(titles[index],
+//                          textAlign: TextAlign.center,
+//                          style: TextStyle(
+//                              fontSize: 35,
+//                              fontWeight: FontWeight.bold,
+//                              fontFamily: 'Raleway')),
+//                    ),
+//                  )
+//                : Card(
+//                    color: Colors.blue.shade100,
+//                    child: ListTile(
+//                        title: Text(titles[index],
+//                            style: TextStyle(
+//                              fontSize: 15,
+//                              fontFamily: 'Raleway',
+//                            )))),
+//            Card(
+//                color: Colors.blue.shade100,
+//                child: ListTile(
+//                    title: Text(globalData.quests[1].quest,
+//                        style: TextStyle(
+//                          fontSize: 15,
+//                          fontFamily: 'Raleway',
+//                        ))))
+//          ],
+//        );
+//
+//        ;
+//      },
+//    );
   }
 
   Widget quest(Questss data) {
@@ -112,7 +175,7 @@ class MyAirTabState extends State<MyAirTab> {
                           child: FlatButton.icon(
                               color: Colors.blue.shade200,
                               icon: Icon(FontAwesomeIcons.check),
-                              label: Text('Done it?',
+                              label: Text('Done ?',
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,

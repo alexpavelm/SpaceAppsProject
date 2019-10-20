@@ -15,6 +15,7 @@ class GlobalData {
   List<LocationData> cityList;
   LocationData mainCity;
   List<Questss> quests;
+  List<String> copy ;
   List<FunFactObject> funFacts;
   static final GlobalData _singleton = GlobalData._internal();
   BitmapDescriptor greenMarker, yellowMarker, orangeMarker, redMarker, purpleMarker;
@@ -29,6 +30,7 @@ class GlobalData {
     funFacts = new List();
     cityList = new List();
     quests = new List();
+    copy = new List();
     mainCity = new LocationData("Amsterdam", "Netherlands",new WeatherData(["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15]) , 23, []);
     funFacts.add(new FunFactObject("Did you know that public transport reduces polution by 15%?", "https://www.thoughtco.com/public-transportation-for-fewer-emissions-1203955"));
     funFacts.add(new FunFactObject("Trees and plants have a varying capacity to capture and/or filter air pollution.. ", "https://www.thoughtco.com/public-transportation-for-fewer-emissions-1203955"));
@@ -72,8 +74,8 @@ class GlobalData {
     cityList[10].pings.add(new PingData(44.4206436, 26.1467312, 52));
     cityList[10].pings.add(new PingData(44.4542507, 26.0188769, 37));
 
-    quests.add(new Questss("Go to job by bicycle", 0));
-    quests.add(new Questss("Plant a flower", 1));
+    quests.add(new Questss("Use public transport.", 0));
+    quests.add(new Questss("Plant a tree.", 1));
   }
 
   launchURL(String url) async {
