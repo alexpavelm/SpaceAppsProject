@@ -25,7 +25,7 @@ class CurrentLocationState extends State<CurrentLocation> {
             child: Padding(
               padding: const EdgeInsets.all(5.0),
               child: Container(
-                height: 350,
+                height: 370,
                 child: Column(
                   children: <Widget>[
                     Container(
@@ -115,96 +115,130 @@ class CurrentLocationState extends State<CurrentLocation> {
                       ),
                     ),
                     Container(
-//                      color:
-//                          globalData.getCardColor(globalData.mainCity.quality),
-                      height: 100,
+//                      color: Colors.yellow,
+                      height: 130,
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 10.0),
+                        padding: const EdgeInsets.only(top: 20.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
                             Container(
+                              height: 190,
                               width: 72,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
                                   Text("date"),
-                                  getWeatherIcon(
-                                      globalData.mainCity.weatherData.weather[0]),
+                                  Padding(
+                                    padding: const EdgeInsets.all(2),
+                                    child: getWeatherIcon(
+                                        globalData.mainCity.weatherData.weather[0]),
+                                  ),
                                   Text(
                                     globalData.mainCity.weatherData.temperature[0]
                                             .toString() +
                                         " °C",
-                                    textScaleFactor: 2,
+                                    textScaleFactor: 1.3,
+                                    style: TextStyle(
+                                      fontFamily: 'Raleway',
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
                             Container(
+                              height: 190,
                               width: 72,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
                                   Text("date"),
-                                  getWeatherIcon(
-                                      globalData.mainCity.weatherData.weather[1]),
+                                  Padding(
+                                    padding: const EdgeInsets.all(2),
+                                    child: getWeatherIcon(
+                                        globalData.mainCity.weatherData.weather[1]),
+                                  ),
                                   Text(
                                     globalData.mainCity.weatherData.temperature[1]
                                             .toString() +
                                         " °C",
-                                    textScaleFactor: 2,
+                                    textScaleFactor: 1.3,
+                                    style: TextStyle(
+                                      fontFamily: 'Raleway',
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
                             Container(
+                              height: 190,
                               width: 72,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
                                   Text("date"),
-                                  getWeatherIcon(
-                                      globalData.mainCity.weatherData.weather[2]),
+                                  Padding(
+                                    padding: const EdgeInsets.all(2),
+                                    child: getWeatherIcon(
+                                        globalData.mainCity.weatherData.weather[2]),
+                                  ),
                                   Text(
                                     globalData.mainCity.weatherData.temperature[2]
                                             .toString() +
                                         " °C",
-                                    textScaleFactor: 2,
+                                    textScaleFactor: 1.3,
+                                    style: TextStyle(
+                                      fontFamily: 'Raleway',
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
                             Container(
+                              height: 190,
                               width: 72,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
                                   Text("date"),
-                                  getWeatherIcon(
-                                      globalData.mainCity.weatherData.weather[3]),
+                                  Padding(
+                                    padding: const EdgeInsets.all(2.0),
+                                    child: getWeatherIcon(
+                                        globalData.mainCity.weatherData.weather[3]),
+                                  ),
                                   Text(
                                     globalData.mainCity.weatherData.temperature[3]
                                             .toString() +
                                         " °C",
-                                    textScaleFactor: 2,
+                                    textScaleFactor: 1.3,
+                                    style: TextStyle(
+                                      fontFamily: 'Raleway',
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
                             Container(
+                              height: 190,
                               width: 72,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
                                   Text("date"),
-                                  getWeatherIcon(
-                                      globalData.mainCity.weatherData.weather[4]),
+                                  Padding(
+                                    padding: const EdgeInsets.all(2.0),
+                                    child: getWeatherIcon(
+                                        globalData.mainCity.weatherData.weather[4]),
+                                  ),
                                   Text(
                                     globalData.mainCity.weatherData.temperature[4]
                                             .toString() +
                                         " °C",
-                                    textScaleFactor: 2,
+                                    textScaleFactor: 1.3,
+                                    style: TextStyle(
+                                      fontFamily: 'Raleway',
+                                  ),
                                   ),
                                 ],
                               ),
