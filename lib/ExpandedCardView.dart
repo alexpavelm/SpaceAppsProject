@@ -6,6 +6,7 @@ import 'package:space_apps_project/WeatherCard.dart';
 
 import 'GlobalData.dart';
 import 'LocationData.dart';
+import 'MyMap.dart';
 
 class ExpandedCardView extends StatelessWidget {
   final LocationData data;
@@ -61,6 +62,7 @@ class ExpandedCardView extends StatelessWidget {
               QualityCard(data),
               WeatherCard(data.weatherData),
               HealthTips(),
+              MyMap(data),
             ],
           )
 
