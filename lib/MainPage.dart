@@ -23,7 +23,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: globalData.cityAssiged,
+      future: globalData.cityAssigned,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return ListView(
@@ -96,7 +96,7 @@ class _MainPageState extends State<MainPage> {
             }),
           );
           Future.delayed(new Duration(seconds: 2), (() {
-            globalData.cityAssiged =
+            globalData.cityAssigned =
                 Future.delayed(new Duration(microseconds: 1));
             return Navigator.of(context).pop();
 
@@ -123,7 +123,7 @@ class _MainPageState extends State<MainPage> {
                       onTap: () {
                         setState(() {
                           globalData.mainCity = globalData.cityList[index];
-                          globalData.cityAssiged =
+                          globalData.cityAssigned =
                               Future.delayed(new Duration(microseconds: 1));
                           Navigator.of(context).pop();
                         });
