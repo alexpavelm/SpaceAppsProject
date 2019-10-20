@@ -50,17 +50,7 @@ class CurrentLocationState extends State<CurrentLocation> {
                           fontFamily: 'Raleway',
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Text(
-                          printCurrentDate(),
-                          textScaleFactor: 1,
-                          style: TextStyle(
-                            fontFamily: 'Raleway',
-                            fontStyle: FontStyle.italic
-                          ),
-                        ),
-                      ),
+
                     ],
                   ),
                 ),
@@ -132,78 +122,4 @@ class CurrentLocationState extends State<CurrentLocation> {
   Widget buildWeather(String data) {
     return Text(data);
   }
-
-  String printCurrentDate() {
-    var now = DateTime.now();
-    String date = "";
-    switch(now.weekday) {
-      case 1:
-        date += "Monday, ";
-        break;
-      case 2:
-        date += "Tuesday, ";
-        break;
-      case 3:
-        date += "Wednesday, ";
-        break;
-      case 4:
-        date += "Thursday, ";
-        break;
-      case 5:
-        date += "Friday, ";
-        break;
-      case 6:
-        date += "Saturday, ";
-        break;
-      case 7:
-        date += "Sunday, ";
-        break;
-      default:
-        date += "error";
-        break;
-    }
-    date += now.day.toString() + " ";
-    switch(now.month) {
-      case 1:
-        date += "Jan ";
-        break;
-      case 2:
-        date += "Feb ";
-        break;
-      case 3:
-        date += "Mar ";
-        break;
-      case 4:
-        date += "Apr ";
-        break;
-      case 5:
-        date += "May ";
-        break;
-      case 6:
-        date += "Jun ";
-        break;
-      case 7:
-        date += "Jul ";
-        break;
-      case 8:
-        date += "Aug ";
-        break;
-      case 9:
-        date += "Sep ";
-        break;
-      case 10:
-        date += "October ";
-        break;
-      case 11:
-        date += "Nov";
-        break;
-      case 12:
-        date += "Dec ";
-        break;
-      default:
-        date += "error";
-        break;
-    }
-    return date + now.year.toString();
   }
-}
