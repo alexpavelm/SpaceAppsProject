@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'dart:math';
 import 'GlobalData.dart';
 import 'Questss.dart';
 
@@ -32,7 +31,7 @@ class MyAirTabState extends State<MyAirTab> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text("Please confirm"),
+            title: Text("Are you sure?"),
             actions: <Widget>[
               new FlatButton(
                 child: new Text('YES'),
@@ -56,10 +55,10 @@ class MyAirTabState extends State<MyAirTab> {
 
   Widget congrts() {
     final titles = [
-      'You have done your daily challanges',
-      '153 done the first quest',
-      '445 done the second quest',
-      '129 done the third quest'
+      'Yay! You finished your daily challenges!',
+      '153 did the first quest',
+      '445 did the second quest',
+      '129 did the third quest'
     ];
     
     return ListView.builder(
