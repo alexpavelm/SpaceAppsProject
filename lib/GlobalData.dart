@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:space_apps_project/WeatherData.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -16,6 +17,7 @@ class GlobalData {
   List<Questss> quests;
   List<FunFactObject> funFacts;
   static final GlobalData _singleton = GlobalData._internal();
+  BitmapDescriptor greenMarker, yellowMarker, orangeMarker, redMarker, purpleMarker;
 
   factory GlobalData() {
     return _singleton;
@@ -23,6 +25,7 @@ class GlobalData {
 
   GlobalData._internal();
   void create() {
+    _createMarkerImageFromAsset();
     funFacts = new List();
     cityList = new List();
     quests = new List();
@@ -79,6 +82,20 @@ class GlobalData {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  Future  _createMarkerImageFromAsset() async {
+    ImageConfiguration configuration = ImageConfiguration();
+    greenMarker = await BitmapDescriptor.fromAssetImage(
+        configuration, "assets/greenmarker.png");
+    yellowMarker = await BitmapDescriptor.fromAssetImage(
+        configuration, "assets/yellowmarker.png");
+    orangeMarker = await BitmapDescriptor.fromAssetImage(
+        configuration, "assets/orangemarker.png");
+    redMarker = await BitmapDescriptor.fromAssetImage(
+        configuration, "assets/redmarker.png");
+    purpleMarker = await BitmapDescriptor.fromAssetImage(
+        configuration, "assets/purplemarker.png");
   }
 
   FunFactObject getFunFact() {

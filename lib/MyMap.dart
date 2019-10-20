@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import 'GlobalData.dart';
 import 'LocationData.dart';
+import 'PingData.dart';
 
 class MyMap extends StatelessWidget {
   LocationData data;
@@ -32,36 +34,28 @@ class MapSample extends StatefulWidget {
 
 class MapSampleState extends State<MapSample> {
   LocationData data;
-
+  var globalData = GlobalData();
   MapSampleState(this.data);
 
   Completer<GoogleMapController> _controller = Completer();
 
   static CameraPosition _kGooglePlex;
-
-  static CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
   static LatLng _center;
-
-  static MarkerId markerId = MarkerId("1");
-
-  Set<Marker> _markers;
+  Set<Marker> _markers = new Set();
 
   @override
   Widget build(BuildContext context) {
     createCamera();
+    createMarkers();
     return new Scaffold(
       body: GoogleMap(
-        mapType: MapType.normal,
-        markers: _markers,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      ),
+              mapType: MapType.normal,
+              markers: _markers,
+              initialCameraPosition: _kGooglePlex,
+              onMapCreated: (GoogleMapController controller) {
+                _controller.complete(controller);
+              },
+            )
     );
   }
 
@@ -70,16 +64,38 @@ class MapSampleState extends State<MapSample> {
       target: LatLng(data.pings[0].longitude, data.pings[0].latitude),
       zoom: 11,
     );
-    _center = LatLng(data.pings[0].longitude, data.pings[0].latitude);
-    _markers = new Set();
-    _markers.add(
-      Marker(
-          markerId: markerId,
-          position: _center,
-          infoWindow: InfoWindow(
-            title: 'Custom Marker',
-            snippet: 'Inducesmile.com',
-          ),)
-    );
   }
+
+  createMarkers() async {
+    for (int i = 0; i < data.pings.length; i++) {
+      _center = LatLng(data.pings[i].longitude, data.pings[i].latitude);
+      _markers.add(
+          Marker(
+              markerId: MarkerId(data.pings[i].longitude.toString()),
+              position: _center,
+              infoWindow: InfoWindow(
+                title: data.city + "Sensor " + i.toString(),
+                snippet: 'Space Apps',
+              ),
+              icon: getBitmapImage(data.quality))
+      );
+    };
+  }
+
+  BitmapDescriptor getBitmapImage(int quality) {
+    if (quality < 51) {
+      return globalData.greenMarker;
+    } else if (quality < 101) {
+      return globalData.yellowMarker;
+    } else if (quality < 151) {
+      return globalData.orangeMarker;
+    } else if (quality < 201) {
+      return globalData.redMarker;
+    } else {
+      return globalData.purpleMarker;
+    }
+  }
+
+
+
 }
