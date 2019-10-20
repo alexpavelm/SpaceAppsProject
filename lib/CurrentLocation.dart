@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:space_apps_project/DateFormat.dart';
 
 import 'ExpandedCardView.dart';
 import 'GlobalData.dart';
@@ -32,7 +31,7 @@ class CurrentLocationState extends State<CurrentLocation> {
             child: Column(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.only(top: 40, bottom: 40),
+                  padding: const EdgeInsets.only(top:50.0, bottom: 40.0),
                   child: Column(
                     children: <Widget>[
                       Text(globalData.mainCity.city,
@@ -44,10 +43,21 @@ class CurrentLocationState extends State<CurrentLocation> {
                           )),
                       Text(
                         globalData.mainCity.country,
-                        textScaleFactor: 1.3,
+                        textScaleFactor: 1.2,
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
                           fontFamily: 'Raleway',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text(
+                          printCurrentDate(),
+                          textScaleFactor: 1,
+                          style: TextStyle(
+                              fontFamily: 'Raleway',
+                              fontStyle: FontStyle.italic
+                          ),
                         ),
                       ),
 
@@ -95,10 +105,10 @@ class CurrentLocationState extends State<CurrentLocation> {
                               Text(
                                 globalData.mainCity.quality.toString(),
                                 style: TextStyle(
-                                  fontFamily: 'Raleway',
-                                  fontSize: 35,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black.withOpacity(0.6)
+                                    fontFamily: 'Raleway',
+                                    fontSize: 35,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black.withOpacity(0.6)
                                 ),
                               ),
                             ],
@@ -118,8 +128,82 @@ class CurrentLocationState extends State<CurrentLocation> {
       ),
     );
   }
-
   Widget buildWeather(String data) {
     return Text(data);
   }
+
+  String printCurrentDate() {
+    var now = DateTime.now();
+    String date = "";
+    switch(now.weekday) {
+      case 1:
+        date += "Monday, ";
+        break;
+      case 2:
+        date += "Tuesday, ";
+        break;
+      case 3:
+        date += "Wednesday, ";
+        break;
+      case 4:
+        date += "Thursday, ";
+        break;
+      case 5:
+        date += "Friday, ";
+        break;
+      case 6:
+        date += "Saturday, ";
+        break;
+      case 7:
+        date += "Sunday, ";
+        break;
+      default:
+        date += "error";
+        break;
+    }
+    date += now.day.toString() + " ";
+    switch(now.month) {
+      case 1:
+        date += "Jan ";
+        break;
+      case 2:
+        date += "Feb ";
+        break;
+      case 3:
+        date += "Mar ";
+        break;
+      case 4:
+        date += "Apr ";
+        break;
+      case 5:
+        date += "May ";
+        break;
+      case 6:
+        date += "Jun ";
+        break;
+      case 7:
+        date += "Jul ";
+        break;
+      case 8:
+        date += "Aug ";
+        break;
+      case 9:
+        date += "Sep ";
+        break;
+      case 10:
+        date += "October ";
+        break;
+      case 11:
+        date += "Nov";
+        break;
+      case 12:
+        date += "Dec ";
+        break;
+      default:
+        date += "error";
+        break;
+    }
+    return date + now.year.toString();
   }
+
+}
