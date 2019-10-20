@@ -6,6 +6,7 @@ import 'package:space_apps_project/WeatherCard.dart';
 
 import 'GlobalData.dart';
 import 'LocationData.dart';
+import 'MyMap.dart';
 
 class ExpandedCardView extends StatelessWidget {
   final LocationData data;
@@ -37,30 +38,35 @@ class ExpandedCardView extends StatelessWidget {
         elevation: 0,
       ),
       body: Center(
-          child: Column(
+          child: ListView(
             children: <Widget>[
-              Hero(
-                tag: data.city,
-                flightShuttleBuilder: _flightShuttleBuilder,
-                child: Text(data.city,
-                    style: TextStyle(
-                        fontFamily: 'Raleway',
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold
-                    )),
+              Center(
+                child: Hero(
+                  tag: data.city,
+                  flightShuttleBuilder: _flightShuttleBuilder,
+                  child: Text(data.city,
+                      style: TextStyle(
+                          fontFamily: 'Raleway',
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold
+                      )),
+                ),
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 6, bottom: 35),
-                child: Text(data.country,
-                    style: TextStyle(
-                        fontFamily: 'Raleway',
-                        fontSize: 17,
-                        color: Colors.black87
-                    )),
+              Center(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 6, bottom: 35),
+                  child: Text(data.country,
+                      style: TextStyle(
+                          fontFamily: 'Raleway',
+                          fontSize: 17,
+                          color: Colors.black87
+                      )),
+                ),
               ),
               QualityCard(data),
               WeatherCard(data.weatherData),
               HealthTips(),
+              MyMap(data),
             ],
           )
 

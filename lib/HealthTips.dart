@@ -7,19 +7,19 @@ class HealthTips extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child: Padding(
-          padding: const EdgeInsets.only(left: 20.0, right: 20),
+          padding: const EdgeInsets.only(top:10, left: 4.0, right: 4),
           child: Card(
               child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(top: 10.0, bottom: 10),
+                padding: const EdgeInsets.only(top: 10.0, bottom: 5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left: 28.0),
-                      child: Text("Health recommendations:\n",
+                      padding: const EdgeInsets.only(left: 28.0, bottom: 15),
+                      child: Text("Health recommendations:",
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,

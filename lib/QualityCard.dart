@@ -13,10 +13,9 @@ class QualityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 110,
-//color: globalData.getCardColor(data.quality),
+      height: 100,
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+        padding: const EdgeInsets.only(left: 4, right: 4),
         child: Card(
           color: globalData.getCardColor(data.quality),
           elevation: 0,
@@ -38,7 +37,7 @@ class QualityCard extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 15.0),
+                  padding: const EdgeInsets.only(right: 20.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.end,
