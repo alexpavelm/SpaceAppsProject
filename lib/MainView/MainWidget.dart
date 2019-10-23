@@ -41,7 +41,7 @@ class _MainWidgetState extends State<MainWidget> {
                 ),
               ),
               gpsButton(),
-              listButton()
+              laterButton()
             ],
           );
         }
@@ -49,7 +49,7 @@ class _MainWidgetState extends State<MainWidget> {
     );
   }
 
-  Widget listButton() {
+  Widget laterButton() {
     return FlatButton(
       color: Colors.blue.shade200,
       child: Container(
@@ -57,15 +57,27 @@ class _MainWidgetState extends State<MainWidget> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(Icons.list),
-            Text("Get location from list",
+            Icon(Icons.watch_later),
+            Text("I'll select it later",
                 style: TextStyle(
                     fontFamily: 'Raleway', fontWeight: FontWeight.bold)),
           ],
         ),
       ),
       onPressed: () {
-        showListOfCities();
+        setState(() {
+          //globalData.mainCity = City.fromSnapshot(globalData.cityList[10]);
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) {
+              return Scaffold(body: Center(child: CircularProgressIndicator()));
+            }),
+          );
+            globalData.cityAssigned =
+                Future.delayed(new Duration(microseconds: 1));
+            Navigator.of(context).pop();
+        });
       },
     );
   }

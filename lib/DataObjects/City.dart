@@ -7,7 +7,7 @@ class City {
   final String name;
   final String country;
   final int aqi;
- // final bool isProvided;
+  final bool isPredicted;
   final double lat;
   final double long;
   final String provider;
@@ -18,14 +18,14 @@ class City {
       : assert(map['name'] != null),
         assert(map['country'] != null),
         assert(map['aqi'] != null),
-       // assert(map['isProvided'] != null),
+        assert(map['isPredicted'] != null),
         assert(map['lat'] != null),
         assert(map['long'] != null),
         assert(map['provider'] != null),
         name = map['name'],
         country = map['country'],
         aqi = map['aqi'],
-       // isProvided = map['isProvided'],
+        isPredicted = map['isPredicted'],
         lat = map['lat'],
         long = map['long'],
         provider = map['provider'];
