@@ -5,11 +5,11 @@ import 'package:space_apps_project/DataObjects/WeatherData.dart';
 
 import '../GlobalData.dart';
 
-class WeatherCard extends StatelessWidget {
+class WeatherWidget extends StatelessWidget {
   final WeatherData data;
   final globalData = GlobalData();
 
-  WeatherCard(this.data);
+  WeatherWidget(this.data);
 
   @override
   Widget build(BuildContext context) {

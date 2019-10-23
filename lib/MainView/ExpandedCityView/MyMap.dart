@@ -51,7 +51,7 @@ class MapSampleState extends State<MapSample> {
   @override
   Widget build(BuildContext context) {
     createCamera();
-    createMarkers();
+    //createMarkers();
     return new Scaffold(
         body: GoogleMap(
       mapType: MapType.normal,
@@ -78,12 +78,12 @@ class MapSampleState extends State<MapSample> {
 
   createCamera() {
     _kGooglePlex = CameraPosition(
-      target: LatLng(data.pings[0].longitude, data.pings[0].latitude),
+      target: LatLng(data.long, data.lat),
       zoom: 11,
     );
   }
 
-  createMarkers() async {
+  /*createMarkers() async {
     for (int i = 0; i < data.pings.length; i++) {
       _center = LatLng(data.pings[i].longitude, data.pings[i].latitude);
       _markers.add(Marker(
@@ -96,7 +96,7 @@ class MapSampleState extends State<MapSample> {
           icon: getBitmapImage(data.pings[i].quality)));
     }
     ;
-  }
+  }*/
 
   BitmapDescriptor getBitmapImage(int quality) {
     if (quality < 51) {

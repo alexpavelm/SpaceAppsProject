@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:space_apps_project/DataObjects/City.dart';
 
 import 'package:space_apps_project/MainView/ExpandedCityView/ExpandedCardView.dart';
 import '../GlobalData.dart';
@@ -74,7 +75,7 @@ class CurrentCityWidgetState extends State<CurrentCityWidget> {
                   padding: const EdgeInsets.all(4.0),
                   child: Card(
                       color:
-                          globalData.getCardColor(globalData.mainCity.quality),
+                          globalData.getCardColor(globalData.mainCity.aqi),
                       child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
@@ -82,7 +83,7 @@ class CurrentCityWidgetState extends State<CurrentCityWidget> {
                               children: <Widget>[
                                 Icon(
                                   globalData.getQualityIcon(
-                                      globalData.mainCity.quality),
+                                      globalData.mainCity.aqi),
                                   size: 60,
                                   color: Colors.black.withOpacity(0.6),
                                 ),
@@ -91,7 +92,7 @@ class CurrentCityWidgetState extends State<CurrentCityWidget> {
                                       const EdgeInsets.only(left: 4, right: 4),
                                   child: Text(
                                     globalData.getQualityText(
-                                        globalData.mainCity.quality),
+                                        globalData.mainCity.aqi),
                                     style: TextStyle(
                                         fontFamily: 'Raleway',
                                         fontSize: 35,
@@ -109,7 +110,7 @@ class CurrentCityWidgetState extends State<CurrentCityWidget> {
                                     ),
                                   ),
                                   Text(
-                                    globalData.mainCity.quality.toString(),
+                                    globalData.mainCity.aqi.toString(),
                                     style: TextStyle(
                                         fontFamily: 'Raleway',
                                         fontSize: 35,
@@ -118,7 +119,7 @@ class CurrentCityWidgetState extends State<CurrentCityWidget> {
                                   ),
                                 ])
                               ])))),
-              WeatherCard(globalData.mainCity.weatherData)
+              //WeatherWidget(globalData.mainCity.weatherData)
             ],
           ),
         ),
@@ -146,7 +147,7 @@ class CurrentCityWidgetState extends State<CurrentCityWidget> {
                     return InkWell(
                       onTap: () {
                         setState(() {
-                          globalData.mainCity = globalData.cityList[index];
+                          globalData.mainCity = City.fromSnapshot(globalData.cityList[index]);
                           globalData.cityAssigned =
                               Future.delayed(new Duration(microseconds: 1));
                           Navigator.of(context).pop();
@@ -155,9 +156,9 @@ class CurrentCityWidgetState extends State<CurrentCityWidget> {
                       child: ListTile(
                         title: Row(
                           children: <Widget>[
-                            Text(globalData.cityList[index].name + ", "),
+                            Text(City.fromSnapshot(globalData.cityList[index]).name + ", "),
                             Text(
-                              globalData.cityList[index].country,
+                              City.fromSnapshot(globalData.cityList[index]).country,
                               style: TextStyle(fontSize: 12),
                             ),
                           ],

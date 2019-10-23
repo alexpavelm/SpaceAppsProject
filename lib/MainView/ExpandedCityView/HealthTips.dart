@@ -69,9 +69,9 @@ class HealthTips extends StatelessWidget {
           ),
           Column(
             children: <Widget>[
-              tip(getTipsList(data.quality)[0].icon, getTipsList(data.quality)[0].string),
-              tip(getTipsList(data.quality)[1].icon, getTipsList(data.quality)[1].string),
-              tip(getTipsList(data.quality)[2].icon, getTipsList(data.quality)[2].string),
+              tip(getTipsList(data.aqi)[0].icon, getTipsList(data.aqi)[0].string),
+              tip(getTipsList(data.aqi)[1].icon, getTipsList(data.aqi)[1].string),
+              tip(getTipsList(data.aqi)[2].icon, getTipsList(data.aqi)[2].string),
             ],
           )
         ],

@@ -64,7 +64,7 @@ class ExpandedCardView extends StatelessWidget {
                 ),
               ),
               QualityCard(data),
-              WeatherCard(data.weatherData),
+              //WeatherWidget(data.weatherData),
               HealthTips(data),
               MyMap(data),
             ],

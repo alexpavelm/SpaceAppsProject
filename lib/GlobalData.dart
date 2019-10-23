@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -13,7 +14,7 @@ import 'package:space_apps_project/DataObjects/Challenge.dart';
 import 'DataObjects/WeatherData.dart';
 
 class GlobalData {
-  List<City> cityList;
+  List<DocumentSnapshot> cityList;
   City mainCity;
   List<Challenge> quests;
   List<String> copy ;
@@ -38,7 +39,7 @@ class GlobalData {
     funFacts.add(new FunFact("Do you know the impact of using renewable energy?", "https://www.ucsusa.org/resources/environmental-impacts-renewable-energy-technologies"));
     funFacts.add(new FunFact("Did you know that traffic jams increace carbon emissions?", "https://www.environmentalleader.com/2012/01/how-traffic-jams-affect-air-quality/"));
 
-    cityList.add(new City("Amsterdam", "Netherlands", new WeatherData(["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15]), 23, []));
+   /* cityList.add(new City("Amsterdam", "Netherlands", new WeatherData(["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15]), 23, []));
     cityList.add(new City("Shanghai", "China", new WeatherData(["sunny", "cloudy", "cloudy", "cloudy", "rainy"], [20, 23, 23, 20, 23]), 152, []));
     cityList.add(new City("Beijing", "China", new WeatherData(["sunny", "sunny", "sunny", "cloudy", "cloudy"], [18, 16, 18, 19, 11]), 215, []));
     cityList.add(new City("Paris", "France", new WeatherData(["rainy", "rainy", "cloudy", "sunny", "sunny"], [13, 14, 14, 20, 20]), 53, []));
@@ -85,7 +86,7 @@ class GlobalData {
     cityList[10].pings.add(new Ping(44.4377397, 25.9542094, 46));
     cityList[10].pings.add(new Ping(44.4206436, 26.1467312, 52));
     cityList[10].pings.add(new Ping(44.4542507, 26.0188769, 37));
-    cityList[11].pings.add(new Ping(45.146942, 26.810281, 19));
+    cityList[11].pings.add(new Ping(45.146942, 26.810281, 19));*/
 
     quests.add(new Challenge("Use public transport today.", 0));
     quests.add(new Challenge("Plant a tree.", 1));

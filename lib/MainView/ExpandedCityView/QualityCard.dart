@@ -18,18 +18,18 @@ class QualityCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: 4, right: 4),
         child: Card(
-          color: globalData.getCardColor(data.quality),
+          color: globalData.getCardColor(data.aqi),
           elevation: 0,
           child: Row(
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(left: 25.0),
-                child: Icon(globalData.getQualityIcon(data.quality),
+                child: Icon(globalData.getQualityIcon(data.aqi),
                     size: 35, color: Colors.black.withOpacity(0.6)),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0),
-                child: Text(globalData.getQualityText(data.quality),
+                child: Text(globalData.getQualityText(data.aqi),
                     style: TextStyle(
                       color: Colors.black.withOpacity(0.6),
                       fontFamily: 'Raleway',
@@ -51,7 +51,7 @@ class QualityCard extends StatelessWidget {
                                 fontSize: 15
                             )),
                       ),
-                      Text(data.quality.toString(),
+                      Text(data.aqi.toString(),
                           textAlign: TextAlign.right,
                           style: TextStyle(
                             color: Colors.black.withOpacity(0.6),

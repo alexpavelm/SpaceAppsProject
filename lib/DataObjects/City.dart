@@ -1,16 +1,36 @@
 import 'dart:core';
 
-import 'Ping.dart';
-import 'WeatherData.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class City {
 
-  String name;
-  String country;
-  WeatherData weatherData;
-  int quality;
-  List<Ping> pings;
+  final String name;
+  final String country;
+  final int aqi;
+ // final bool isProvided;
+  final double lat;
+  final double long;
+  final String provider;
+  final DocumentReference reference;
 
-  City(this.name, this.country, this.weatherData, this.quality, this.pings);
+
+  City.fromMap(Map<String, dynamic> map, {this.reference})
+      : assert(map['name'] != null),
+        assert(map['country'] != null),
+        assert(map['aqi'] != null),
+       // assert(map['isProvided'] != null),
+        assert(map['lat'] != null),
+        assert(map['long'] != null),
+        assert(map['provider'] != null),
+        name = map['name'],
+        country = map['country'],
+        aqi = map['aqi'],
+       // isProvided = map['isProvided'],
+        lat = map['lat'],
+        long = map['long'],
+        provider = map['provider'];
+
+  City.fromSnapshot(DocumentSnapshot snapshot)
+      : this.fromMap(snapshot.data, reference: snapshot.reference);
 
 }

@@ -1,22 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:space_apps_project/DataObjects/City.dart';
 import 'package:space_apps_project/MainView/CurrentCityWidget.dart';
 
 import 'package:space_apps_project/MainView/FunFactWidget.dart';
 import '../GlobalData.dart';
-import 'CityWidget.dart';
+import 'CitiesView.dart';
 
-class MainPage extends StatefulWidget {
+class MainWidget extends StatefulWidget {
   @override
-  _MainPageState createState() => _MainPageState();
+  _MainWidgetState createState() => _MainWidgetState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _MainWidgetState extends State<MainWidget> {
   static var globalData = GlobalData();
   final List<Widget> _children = [
-    CurrentCityWidget(),
+    //CurrentCityWidget(),
     FunFactWidget(globalData.getFunFact()),
-    SmallCard()
+    CitiesView()
   ];
 
   @override
@@ -86,7 +87,7 @@ class _MainPageState extends State<MainPage> {
       ),
       onPressed: () {
         setState(() {
-          globalData.mainCity = globalData.cityList[10];
+          //globalData.mainCity = City.fromSnapshot(globalData.cityList[10]);
 
           Navigator.push(
             context,
@@ -120,7 +121,7 @@ class _MainPageState extends State<MainPage> {
                     return InkWell(
                       onTap: () {
                         setState(() {
-                          globalData.mainCity = globalData.cityList[index];
+                          globalData.mainCity = City.fromSnapshot(globalData.cityList[index]);
                           globalData.cityAssigned =
                               Future.delayed(new Duration(microseconds: 1));
                           Navigator.of(context).pop();
@@ -129,9 +130,9 @@ class _MainPageState extends State<MainPage> {
                       child: ListTile(
                         title: Row(
                           children: <Widget>[
-                            Text(globalData.cityList[index].name + ", "),
+                            Text(City.fromSnapshot(globalData.cityList[index]).name + ", "),
                             Text(
-                              globalData.cityList[index].country,
+                              City.fromSnapshot(globalData.cityList[index]).country,
                               style: TextStyle(fontSize: 12),
                             ),
                           ],

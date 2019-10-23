@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,29 +8,38 @@ import 'package:space_apps_project/DataObjects/City.dart';
 
 import '../GlobalData.dart';
 
-class SmallCard extends StatefulWidget {
+class CitiesView extends StatefulWidget {
   @override
-  _SmallCardState createState() => _SmallCardState();
+  _CitiesViewState createState() => _CitiesViewState();
 }
 
-class _SmallCardState extends State<SmallCard> {
+class _CitiesViewState extends State<CitiesView> {
   var globalData = GlobalData();
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: globalData.cityList.map((object) => card(object)).toList(),
-      ),
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection('cities').snapshots(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) return Center(child: CircularProgressIndicator(),);
+        globalData.cityList = snapshot.data.documents;
+        return buildList(globalData.cityList);
+      },
+    );
+  }
+
+  Widget buildList(List<DocumentSnapshot> snapshot) {
+    return Column(
+      children: snapshot.map((data) => card(City.fromSnapshot(data))).toList(),
     );
   }
 
   Widget card(City data) {
     String city = data.name;
     String country = data.country;
-    int quality = data.quality;
-    List<int> temperature = data.weatherData.temperature;
-    List<String> weather = data.weatherData.weather;
+    int quality = data.aqi;
+    //List<int> temperature = data.weatherData.temperature;
+    //List<String> weather = data.weatherData.weather;
     return Hero(
       tag: city,
       child: Material(
@@ -118,9 +128,9 @@ class _SmallCardState extends State<SmallCard> {
                                     const EdgeInsets.only(left: 20, top: 5),
                                 child: Row(
                                   children: <Widget>[
-                                    globalData.getWeatherIcon(weather[0]),
+                                    globalData.getWeatherIcon("sunny"),
                                     Text(
-                                      temperature[0].toString() + "°C",
+                                      "10 °C",
                                       style: TextStyle(
                                           fontSize: 23, fontFamily: 'Raleway'),
                                     ),
@@ -169,9 +179,9 @@ class _SmallCardState extends State<SmallCard> {
                                           style: TextStyle(
                                               fontSize: 15,
                                               fontFamily: 'Raleway')),
-                                      globalData.getWeatherIcon(weather[1]),
+                                      globalData.getWeatherIcon("sunny"),
                                       Text(
-                                        temperature[1].toString() + "°C",
+                                        "10 °C",
                                         style: TextStyle(
                                             fontSize: 17,
                                             fontFamily: 'Raleway'),
@@ -190,9 +200,9 @@ class _SmallCardState extends State<SmallCard> {
                                           style: TextStyle(
                                               fontSize: 15,
                                               fontFamily: 'Raleway')),
-                                      globalData.getWeatherIcon(weather[2]),
+                                      globalData.getWeatherIcon("sunny"),
                                       Text(
-                                        temperature[2].toString() + "°C",
+                                        "10 °C",
                                         style: TextStyle(
                                             fontSize: 17,
                                             fontFamily: 'Raleway'),
@@ -211,9 +221,9 @@ class _SmallCardState extends State<SmallCard> {
                                           style: TextStyle(
                                               fontSize: 15,
                                               fontFamily: 'Raleway')),
-                                      globalData.getWeatherIcon(weather[3]),
+                                      globalData.getWeatherIcon("sunny"),
                                       Text(
-                                        temperature[3].toString() + "°C",
+                                        "10 °C",
                                         style: TextStyle(
                                             fontSize: 17,
                                             fontFamily: 'Raleway'),
