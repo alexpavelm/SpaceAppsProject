@@ -72,19 +72,24 @@ class _CitiesViewState extends State<CitiesView> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
-                                  Column(
-                                    children: <Widget>[
-                                      Text(
-                                        city,
-                                        style: TextStyle(
-                                            fontSize: 23,
-                                            fontFamily: 'Raleway'),
-                                      ),
-                                      Text(country,
+                                  Container(
+                                    width: 134,
+                                    child: Column(
+                                      children: <Widget>[
+                                        AutoSizeText(
+                                          city,
+                                          maxLines: 1,
                                           style: TextStyle(
-                                              fontSize: 15,
-                                              fontFamily: 'Raleway')),
-                                    ],
+                                              fontSize: 23,
+                                              fontFamily: 'Raleway'),
+                                        ),
+                                        AutoSizeText(country,
+                                            maxLines: 1,
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                fontFamily: 'Raleway')),
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
