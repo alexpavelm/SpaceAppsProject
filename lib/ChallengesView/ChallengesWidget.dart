@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'dart:math';
 
 import '../GlobalData.dart';
 import '../DataObjects/Challenge.dart';
@@ -76,7 +75,6 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
     final qst = ['Use public transport today.', 'Plant a tree.'];
     return Column(
       children: <Widget>[
-
         Text(titles[0],
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -87,41 +85,40 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
             color: Color.fromRGBO(0, 204, 204, 1),
             child: ListTile(
                 title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(qst[0],
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'Raleway',
-                        )),
-                    Icon(Icons.check)
-                  ],
-                ))),
-
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(qst[0],
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Raleway',
+                    )),
+                Icon(Icons.check)
+              ],
+            ))),
         Card(
             color: Color.fromRGBO(0, 204, 204, 1),
             child: ListTile(
                 title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(qst[1],
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'Raleway',
-                        )),
-                    Icon(Icons.check)
-                  ],
-                ))),
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(qst[1],
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Raleway',
+                    )),
+                Icon(Icons.check)
+              ],
+            ))),
         new Divider(
           thickness: 10,
           indent: 6,
           endIndent: 6,
         ),
-
         InkWell(
           onTap: () => globalData.launchURL("ceva"),
           child: Padding(
-            padding: const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
+            padding:
+                const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
             child: Container(
               child: Row(
                 children: <Widget>[
@@ -134,7 +131,6 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-
                             Text(
                               "315 people chose to use public transport over a personal car in the last 7 days",
                               style: TextStyle(
@@ -154,10 +150,12 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
               ),
             ),
           ),
-        ),InkWell(
+        ),
+        InkWell(
           onTap: () => globalData.launchURL("ceva"),
           child: Padding(
-            padding: const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
+            padding:
+                const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
             child: Container(
               child: Row(
                 children: <Widget>[
@@ -170,7 +168,6 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-
                             Text(
                               "Is it hot in the city? Try planting a tree!",
                               style: TextStyle(
@@ -190,10 +187,12 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
               ),
             ),
           ),
-        ),InkWell(
+        ),
+        InkWell(
           onTap: () => globalData.launchURL("ceva"),
           child: Padding(
-            padding: const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
+            padding:
+                const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
             child: Container(
               child: Row(
                 children: <Widget>[
@@ -206,7 +205,6 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-
                             Text(
                               "The best ways to reduce air pollution are by walking and riding bicycle.",
                               style: TextStyle(
@@ -227,7 +225,6 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
             ),
           ),
         )
-
       ],
     );
   }

@@ -17,7 +17,8 @@ class FunFactWidget extends StatelessWidget {
     return InkWell(
       onTap: () => globalData.launchURL(data.link),
       child: Padding(
-        padding: const EdgeInsets.only(left: 10, top: 20, bottom: 20, right: 10),
+        padding:
+            const EdgeInsets.only(left: 10, top: 20, bottom: 20, right: 10),
         child: Container(
           child: Row(
             children: <Widget>[

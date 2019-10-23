@@ -15,12 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Space Apps Project',
       theme: new ThemeData(
-        brightness: Brightness.light,
-        primaryColor: Colors.white,
-        accentColor: Colors.lightBlue
-      ),
+          brightness: Brightness.light,
+          primaryColor: Colors.white,
+          accentColor: Colors.lightBlue),
       home: BottomNavBar(),
     );
   }

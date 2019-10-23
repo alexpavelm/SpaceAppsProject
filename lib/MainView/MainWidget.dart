@@ -16,7 +16,6 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> _children = [
     CurrentCityWidget(),
     FunFactWidget(globalData.getFunFact()),
-
     SmallCard()
   ];
 
@@ -99,7 +98,6 @@ class _MainPageState extends State<MainPage> {
             globalData.cityAssigned =
                 Future.delayed(new Duration(microseconds: 1));
             return Navigator.of(context).pop();
-
           }));
         });
       },
