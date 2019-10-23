@@ -5,4 +5,5 @@
              Flutter draws its first frame -->
         <item name="android:windowBackground">@drawable/launch_background</item>
     </style>
+    <string name="google_maps_api_key">AIzaSyAs6fbf-9byMkIl28V-vVM08JxMb-LNu3g</string>
 </resources>
