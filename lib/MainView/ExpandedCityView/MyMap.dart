@@ -78,7 +78,7 @@ class MapSampleState extends State<MapSample> {
 
   createCamera() {
     _kGooglePlex = CameraPosition(
-      target: LatLng(data.long, data.lat),
+      target: LatLng(data.lat, data.long),
       zoom: 11,
     );
   }
