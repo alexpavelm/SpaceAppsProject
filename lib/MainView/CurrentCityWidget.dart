@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'ExpandedCardView.dart';
-import 'GlobalData.dart';
-import 'WeatherCard.dart';
+import 'package:space_apps_project/MainView/ExpandedCityView/ExpandedCardView.dart';
+import '../GlobalData.dart';
+import 'WeatherWidget.dart';
 
-class CurrentLocation extends StatefulWidget {
+class CurrentCityWidget extends StatefulWidget {
   @override
-  State<CurrentLocation> createState() {
-    return CurrentLocationState();
+  State<CurrentCityWidget> createState() {
+    return CurrentCityWidgetState();
   }
 }
 
-class CurrentLocationState extends State<CurrentLocation> {
+class CurrentCityWidgetState extends State<CurrentCityWidget> {
   var globalData = GlobalData();
 
   @override
@@ -37,7 +37,7 @@ class CurrentLocationState extends State<CurrentLocation> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text(globalData.mainCity.city,
+                        Text(globalData.mainCity.name,
                             textAlign: TextAlign.center,
                             textScaleFactor: 3,
                             style: TextStyle(
@@ -151,7 +151,7 @@ class CurrentLocationState extends State<CurrentLocation> {
                       child: ListTile(
                         title: Row(
                           children: <Widget>[
-                            Text(globalData.cityList[index].city + ", "),
+                            Text(globalData.cityList[index].name + ", "),
                             Text(
                               globalData.cityList[index].country,
                               style: TextStyle(fontSize: 12),

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'GlobalData.dart';
-import 'LocationData.dart';
-import 'WeatherData.dart';
+import 'package:space_apps_project/DataObjects/WeatherData.dart';
+
+import '../GlobalData.dart';
 
 class WeatherCard extends StatelessWidget {
   final WeatherData data;

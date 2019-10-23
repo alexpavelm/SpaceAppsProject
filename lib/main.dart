@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: new ThemeData(
         brightness: Brightness.light,
-        primaryColor: Colors.white, //Changing this will change the color of the TabBar
+        primaryColor: Colors.white,
         accentColor: Colors.lightBlue
       ),
       home: BottomNavBar(),

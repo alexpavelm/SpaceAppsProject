@@ -6,12 +6,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import 'GlobalData.dart';
-import 'LocationData.dart';
-import 'PingData.dart';
+import 'package:space_apps_project/DataObjects/City.dart';
+
+import '../../GlobalData.dart';
 
 class MyMap extends StatelessWidget {
-  LocationData data;
+  City data;
 
   MyMap(this.data);
 
@@ -28,7 +28,7 @@ class MyMap extends StatelessWidget {
 }
 
 class MapSample extends StatefulWidget {
-  LocationData data;
+  City data;
 
   MapSample(this.data);
 
@@ -37,7 +37,7 @@ class MapSample extends StatefulWidget {
 }
 
 class MapSampleState extends State<MapSample> {
-  LocationData data;
+  City data;
   var globalData = GlobalData();
 
   MapSampleState(this.data);
@@ -90,7 +90,7 @@ class MapSampleState extends State<MapSample> {
           markerId: MarkerId(data.pings[i].longitude.toString()),
           position: _center,
           infoWindow: InfoWindow(
-            title: data.city + "Sensor " + i.toString(),
+            title: data.name + "Sensor " + i.toString(),
             snippet: 'Space Apps',
           ),
           icon: getBitmapImage(data.pings[i].quality)));

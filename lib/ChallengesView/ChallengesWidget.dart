@@ -3,17 +3,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:math';
-import 'GlobalData.dart';
-import 'Questss.dart';
 
-class MyAirTab extends StatefulWidget {
+import '../GlobalData.dart';
+import '../DataObjects/Challenge.dart';
+
+class ChallengesWidget extends StatefulWidget {
   @override
-  State<MyAirTab> createState() {
-    return MyAirTabState();
+  State<ChallengesWidget> createState() {
+    return ChallengesWidgetState();
   }
 }
 
-class MyAirTabState extends State<MyAirTab> {
+class ChallengesWidgetState extends State<ChallengesWidget> {
   var globalData = GlobalData();
   bool donetxt = false;
 
@@ -38,7 +39,7 @@ class MyAirTabState extends State<MyAirTab> {
     );
   }
 
-  Future confirmDialog(Questss id) {
+  Future confirmDialog(Challenge id) {
     return showDialog(
         context: context,
         builder: (context) {
@@ -231,7 +232,7 @@ class MyAirTabState extends State<MyAirTab> {
     );
   }
 
-  Widget quest(Questss data) {
+  Widget quest(Challenge data) {
     String qst = data.quest;
     return data.finishquests == false
         ? Padding(

@@ -1,9 +1,9 @@
-class Questss{
+class Challenge{
 
   String quest;
   int id;
   bool finishquests = false;
 
-  Questss(this.quest, this.id);
+  Challenge(this.quest, this.id);
 
 }

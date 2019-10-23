@@ -2,14 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'FunFactObject.dart';
-import 'GlobalData.dart';
+import 'package:space_apps_project/DataObjects/FunFact.dart';
 
-class FunFact extends StatelessWidget {
-  FunFactObject data;
+import '../GlobalData.dart';
+
+class FunFactWidget extends StatelessWidget {
+  FunFact data;
   var globalData = GlobalData();
 
-  FunFact(this.data);
+  FunFactWidget(this.data);
 
   @override
   Widget build(BuildContext context) {

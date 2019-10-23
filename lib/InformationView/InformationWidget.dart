@@ -2,14 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class InfoTab extends StatefulWidget {
+class InformationWidget extends StatefulWidget {
   @override
-  State<InfoTab> createState() {
-    return InfoTabState();
+  State<InformationWidget> createState() {
+    return InformationWidgetState();
   }
 }
 
-class InfoTabState extends State<InfoTab> {
+class InformationWidgetState extends State<InformationWidget> {
   @override
   Widget build(BuildContext context) {
     return Center(

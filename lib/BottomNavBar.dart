@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:space_apps_project/CurrentLocation.dart';
-import 'package:space_apps_project/MyAirTab.dart';
-import 'package:space_apps_project/InfoTab.dart';
+import 'package:space_apps_project/ChallengesView/ChallengesWidget.dart';
 
-import 'MainPage.dart';
+import 'package:space_apps_project/MainView/MainWidget.dart';
+
+import 'InformationView/InformationWidget.dart';
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -17,8 +17,8 @@ class BottomNavBar extends StatefulWidget {
 class BottomNavBarState extends State<BottomNavBar> {
   final List<Widget> _children = [
     MainPage(),
-    MyAirTab(),
-    InfoTab(),
+    ChallengesWidget(),
+    InformationWidget(),
   ];
 
   @override

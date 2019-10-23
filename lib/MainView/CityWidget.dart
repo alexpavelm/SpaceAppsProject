@@ -2,9 +2,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'ExpandedCardView.dart';
-import 'GlobalData.dart';
-import 'LocationData.dart';
+import 'package:space_apps_project/MainView/ExpandedCityView/ExpandedCardView.dart';
+import 'package:space_apps_project/DataObjects/City.dart';
+
+import '../GlobalData.dart';
 
 class SmallCard extends StatefulWidget {
   @override
@@ -23,8 +24,8 @@ class _SmallCardState extends State<SmallCard> {
     );
   }
 
-  Widget card(LocationData data) {
-    String city = data.city;
+  Widget card(City data) {
+    String city = data.name;
     String country = data.country;
     int quality = data.quality;
     List<int> temperature = data.weatherData.temperature;

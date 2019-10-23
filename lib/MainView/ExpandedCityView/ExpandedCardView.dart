@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:space_apps_project/HealthTips.dart';
-import 'package:space_apps_project/QualityCard.dart';
-import 'package:space_apps_project/WeatherCard.dart';
+import 'package:space_apps_project/DataObjects/City.dart';
+import 'package:space_apps_project/MainView/ExpandedCityView/HealthTips.dart';
+import 'package:space_apps_project/MainView/ExpandedCityView/QualityCard.dart';
+import 'package:space_apps_project/MainView/WeatherWidget.dart';
 
-import 'GlobalData.dart';
-import 'LocationData.dart';
+import '../../GlobalData.dart';
 import 'MyMap.dart';
 
 class ExpandedCardView extends StatelessWidget {
-  final LocationData data;
+  final City data;
   final globalData = GlobalData();
 
   ExpandedCardView(this.data);
@@ -42,9 +42,9 @@ class ExpandedCardView extends StatelessWidget {
             children: <Widget>[
               Center(
                 child: Hero(
-                  tag: data.city,
+                  tag: data.name,
                   flightShuttleBuilder: _flightShuttleBuilder,
-                  child: Text(data.city,
+                  child: Text(data.name,
                       style: TextStyle(
                           fontFamily: 'Raleway',
                           fontSize: 30,

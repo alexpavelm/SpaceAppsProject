@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'GlobalData.dart';
-import 'LocationData.dart';
+import 'package:space_apps_project/DataObjects/City.dart';
+
+import '../../GlobalData.dart';
 
 class QualityCard extends StatelessWidget {
-  final LocationData data;
+  final City data;
   final globalData = GlobalData();
 
   QualityCard(this.data);

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:space_apps_project/CurrentLocation.dart';
+import 'package:space_apps_project/MainView/CurrentCityWidget.dart';
 
-import 'FunFact.dart';
-import 'GlobalData.dart';
-import 'SmallCard.dart';
+import 'package:space_apps_project/MainView/FunFactWidget.dart';
+import '../GlobalData.dart';
+import 'CityWidget.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -14,8 +14,8 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   static var globalData = GlobalData();
   final List<Widget> _children = [
-    CurrentLocation(),
-    FunFact(globalData.getFunFact()),
+    CurrentCityWidget(),
+    FunFactWidget(globalData.getFunFact()),
 
     SmallCard()
   ];
@@ -131,7 +131,7 @@ class _MainPageState extends State<MainPage> {
                       child: ListTile(
                         title: Row(
                           children: <Widget>[
-                            Text(globalData.cityList[index].city + ", "),
+                            Text(globalData.cityList[index].name + ", "),
                             Text(
                               globalData.cityList[index].country,
                               style: TextStyle(fontSize: 12),

@@ -1,12 +1,12 @@
 import 'dart:core';
 
-class PingData {
+class Ping {
 
   double longitude;
   double latitude;
   int quality;
 
 
-  PingData(this.longitude, this.latitude, this.quality);
+  Ping(this.longitude, this.latitude, this.quality);
 
 }

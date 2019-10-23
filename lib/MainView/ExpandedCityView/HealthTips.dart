@@ -4,14 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'GlobalData.dart';
-import 'LocationData.dart';
-import 'TipsList.dart';
+import 'package:space_apps_project/DataObjects/City.dart';
+import 'package:space_apps_project/DataObjects/HealthTip.dart';
+
+import '../../GlobalData.dart';
 
 class HealthTips extends StatelessWidget {
   var globalData = GlobalData();
-  final LocationData data;
-  List<List<TipsList>> tipslist;
+  final City data;
+  List<List<HealthTip>> tipslist;
 
   HealthTips(this.data);
 
@@ -22,25 +23,25 @@ class HealthTips extends StatelessWidget {
     tipslist[2] = new List();
 
     tipslist[0].add(
-        new TipsList(Icons.directions_bike, "  Enjoy outdoor activities."));
-    tipslist[0].add(new TipsList(
+        new HealthTip(Icons.directions_bike, "  Enjoy outdoor activities."));
+    tipslist[0].add(new HealthTip(
         FontAwesomeIcons.windows, "  Open your windows.")); //verde si galben
-    tipslist[0].add(new TipsList(
+    tipslist[0].add(new HealthTip(
         FontAwesomeIcons.airFreshener, "  Go outside.")); //verde si galben
-    tipslist[1].add(new TipsList(FontAwesomeIcons.mask,
+    tipslist[1].add(new HealthTip(FontAwesomeIcons.mask,
         "  Sensitive groups should wear a mask out."));
-    tipslist[1].add(new TipsList(
+    tipslist[1].add(new HealthTip(
         FontAwesomeIcons.running, "  Avoid exercising near busy roads."));
-    tipslist[1].add(new TipsList(FontAwesomeIcons.campground,
+    tipslist[1].add(new HealthTip(FontAwesomeIcons.campground,
         "  Postpone outdoor recreational activities."));
-    tipslist[2].add(new TipsList(FontAwesomeIcons.windows,
+    tipslist[2].add(new HealthTip(FontAwesomeIcons.windows,
         "  Close your windows to avoid dirty air."));
     tipslist[2].add(
-        new TipsList(FontAwesomeIcons.mask, "  Wear a mask outdoors."));
-    tipslist[2].add(new TipsList(
+        new HealthTip(FontAwesomeIcons.mask, "  Wear a mask outdoors."));
+    tipslist[2].add(new HealthTip(
         FontAwesomeIcons.running, "  Avoid outdoor exercise.")); //rosu
   }
-    List<TipsList> getTipsList(int quality) {
+    List<HealthTip> getTipsList(int quality) {
       if (quality < 100) {
         return tipslist[0];
       }

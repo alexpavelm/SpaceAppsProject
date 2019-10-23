@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-class TipsList {
+class HealthTip {
   IconData icon;
   String string;
 
-  TipsList(this.icon, this.string);
+  HealthTip(this.icon, this.string);
 
 }
