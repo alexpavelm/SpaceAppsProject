@@ -7,6 +7,7 @@ import 'package:space_apps_project/MainView/ExpandedCityView/ExpandedCardView.da
 import 'package:space_apps_project/DataObjects/City.dart';
 
 import '../GlobalData.dart';
+import 'WeatherWidget.dart';
 
 class CitiesView extends StatefulWidget {
   @override
@@ -131,16 +132,7 @@ class _CitiesViewState extends State<CitiesView> {
                               Padding(
                                 padding:
                                     const EdgeInsets.only(left: 20, top: 5),
-                                child: Row(
-                                  children: <Widget>[
-                                    globalData.getWeatherIcon("sunny"),
-                                    Text(
-                                      "10 °C",
-                                      style: TextStyle(
-                                          fontSize: 23, fontFamily: 'Raleway'),
-                                    ),
-                                  ],
-                                ),
+                                child: WeatherWidget(data)
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(right: 20),
@@ -180,7 +172,7 @@ class _CitiesViewState extends State<CitiesView> {
                                       left: 20, right: 5, bottom: 2),
                                   child: Column(
                                     children: <Widget>[
-                                      Text("Mon.",
+                                      Text(getDayOfWeek(DateTime.now().weekday),
                                           style: TextStyle(
                                               fontSize: 15,
                                               fontFamily: 'Raleway')),
@@ -201,7 +193,7 @@ class _CitiesViewState extends State<CitiesView> {
                                       left: 5, right: 5, bottom: 2),
                                   child: Column(
                                     children: <Widget>[
-                                      Text("Tue.",
+                                      Text(getDayOfWeek(DateTime.now().add(Duration(days: 1)).weekday),
                                           style: TextStyle(
                                               fontSize: 15,
                                               fontFamily: 'Raleway')),
@@ -222,7 +214,7 @@ class _CitiesViewState extends State<CitiesView> {
                                       left: 5, right: 20, bottom: 2),
                                   child: Column(
                                     children: <Widget>[
-                                      Text("Wed.",
+                                      Text(getDayOfWeek(DateTime.now().add(Duration(days: 2)).weekday),
                                           style: TextStyle(
                                               fontSize: 15,
                                               fontFamily: 'Raleway')),
@@ -250,5 +242,18 @@ class _CitiesViewState extends State<CitiesView> {
         ),
       ),
     );
+  }
+
+  String getDayOfWeek(int day) {
+    switch(day) {
+      case 0: return "Mon."; break;
+      case 1: return "Tue."; break;
+      case 2: return "Wed."; break;
+      case 3: return "Thu."; break;
+      case 4: return "Fri."; break;
+      case 5: return "Sat."; break;
+      case 6: return "Sun."; break;
+      default: return "OOPS."; break;
+    }
   }
 }

@@ -1,21 +1,51 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:space_apps_project/DataObjects/City.dart';
 
 import 'package:space_apps_project/DataObjects/WeatherData.dart';
-
+import 'package:http/http.dart' as http;
 import '../GlobalData.dart';
 
-class WeatherWidget extends StatelessWidget {
-  final WeatherData data;
-  final globalData = GlobalData();
+class WeatherWidget extends StatefulWidget {
+  final City data;
 
   WeatherWidget(this.data);
+
+  @override
+  _WeatherWidgetState createState() => _WeatherWidgetState();
+}
+
+class _WeatherWidgetState extends State<WeatherWidget> {
+  final globalData = GlobalData();
+  bool isLoading = false;
+  WeatherData weatherData;
+
+  @override
+  void initState() {
+    super.initState();
+
+    loadWeather();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
-      child: Container(
+     child: isLoading ? CircularProgressIndicator() : Container(
+       child: Row(
+         children: <Widget>[
+           globalData.getWeatherIcon("sunny"),
+           Text(
+             weatherData.temp.floor().toString() + "°C",
+             style: TextStyle(
+                 fontSize: 23, fontFamily: 'Raleway'),
+           ),
+         ],
+       ),
+     ),
+     /* child: Container(
           height: 130,
           color: Colors.white,
             child: Column(
@@ -107,7 +137,33 @@ class WeatherWidget extends StatelessWidget {
                 ),
               ],
             ),
-          ),
+          ),*/
     );
+  }
+
+  loadWeather() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    final lat = widget.data.lat;
+    final lon = widget.data.long;
+    final weatherResponse = await http.get(
+        'https://api.openweathermap.org/data/2.5/weather?APPID=28a50b82164ccaedebaed3d2898215a4&lat=${lat
+            .toString()}&lon=${lon.toString()}&units=metric');
+//    final forecastResponse = await http.get(
+//        'https://api.openweathermap.org/data/2.5/forecast?APPID=28a50b82164ccaedebaed3d2898215a4&lat=${lat
+//            .toString()}&lon=${lon.toString()}&units=metric');
+
+    if (weatherResponse.statusCode == 200) {
+      return setState(() {
+        weatherData = new WeatherData.fromJson(jsonDecode(weatherResponse.body));
+        isLoading = false;
+      });
+    }
+
+    setState(() {
+      isLoading = false;
+    });
   }
 }
