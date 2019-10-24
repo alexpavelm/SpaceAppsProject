@@ -22,6 +22,7 @@ class GlobalData {
   List<Ping> pings;
   Future cityAssigned;
   int score = 0;
+  Future currentCity;
   static final GlobalData _singleton = GlobalData._internal();
   BitmapDescriptor greenMarker, yellowMarker, orangeMarker, redMarker, purpleMarker;
   final databaseReference = Firestore.instance;
