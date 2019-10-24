@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
@@ -39,8 +40,14 @@ class MapSample extends StatefulWidget {
 class MapSampleState extends State<MapSample> {
   City data;
   var globalData = GlobalData();
+  static List<double> lat = new List();
+  static List<double> long = new List();
+  static List<int> quality = new List();
+  static int data_size = 0;
+  static int firstTime = 0;
 
   MapSampleState(this.data);
+
 
   Completer<GoogleMapController> _controller = Completer();
 
@@ -51,6 +58,9 @@ class MapSampleState extends State<MapSample> {
   @override
   Widget build(BuildContext context) {
     createCamera();
+    print('To look');
+    print(globalData.pings);
+    createMarkers();
     //createMarkers();
     return new Scaffold(
         body: GoogleMap(
@@ -83,6 +93,10 @@ class MapSampleState extends State<MapSample> {
     );
   }
 
+
+
+
+
   /*createMarkers() async {
     for (int i = 0; i < data.pings.length; i++) {
       _center = LatLng(data.pings[i].longitude, data.pings[i].latitude);
@@ -109,6 +123,20 @@ class MapSampleState extends State<MapSample> {
       return globalData.redMarker;
     } else {
       return globalData.purpleMarker;
+    }
+  }
+
+  void createMarkers() async {
+    for (int i = 0; i < globalData.pings.length; i++) {
+      _center = LatLng(globalData.pings[i].longitude, globalData.pings[i].latitude);
+      _markers.add(Marker(
+          markerId: MarkerId(globalData.pings[i].longitude.toString()),
+          position: _center,
+          infoWindow: InfoWindow(
+            title: data.name + "Sensor " + i.toString(),
+            snippet: 'Space Apps',
+          ),
+          icon: getBitmapImage(globalData.pings[i].quality)));
     }
   }
 }

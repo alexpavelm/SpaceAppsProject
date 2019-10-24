@@ -23,15 +23,24 @@ class GlobalData {
   List<Challenge> quests;
   List<String> copy ;
   List<FunFact> funFacts;
+  List<Ping> pings;
   Future cityAssigned;
+  int score = 0;
   Future currentCity;
   static final GlobalData _singleton = GlobalData._internal();
   BitmapDescriptor greenMarker, yellowMarker, orangeMarker, redMarker, purpleMarker;
-
+  final databaseReference = Firestore.instance;
   factory GlobalData() {
     return _singleton;
   }
-
+  void getDataAboutPings() {
+    databaseReference
+        .collection("pings")
+        .getDocuments()
+        .then((QuerySnapshot snapshot) {
+      snapshot.documents.forEach((f) => saveData(f.data));
+    });
+  }
   GlobalData._internal();
   void create() {
     _createMarkerImageFromAsset();
@@ -39,6 +48,7 @@ class GlobalData {
     cityList = new List();
     quests = new List();
     copy = new List();
+    pings = new List();
     funFacts.add(new FunFact("Did you know that public transport reduces polution by 15%?", "https://www.thoughtco.com/public-transportation-for-fewer-emissions-1203955"));
     funFacts.add(new FunFact("Trees and plants have a varying capacity to capture and/or filter air pollution.. ", "https://www.thoughtco.com/public-transportation-for-fewer-emissions-1203955"));
     funFacts.add(new FunFact("Do you know the impact of using renewable energy?", "https://www.ucsusa.org/resources/environmental-impacts-renewable-energy-technologies"));
@@ -94,7 +104,9 @@ class GlobalData {
     cityList[11].pings.add(new Ping(45.146942, 26.810281, 19));*/
 
     quests.add(new Challenge("Use public transport today.", 0));
-    quests.add(new Challenge("Plant a tree.", 1));
+    quests.add(new Challenge("Use public transport today.", 1));
+    quests.add(new Challenge("Plant a tree.", 2));
+    getDataAboutPings();
   }
 
   launchURL(String url) async {
@@ -166,7 +178,11 @@ class GlobalData {
 
     }
   }
-
+  saveData(Map<String, dynamic> map) async {
+    print('saveData');
+    pings.add(new Ping(map.values.toList()[1], map.values.toList()[0], map.values.toList()[2]));
+    //print(map.values.toList()[2]);
+  }
   IconData getQualityIcon(int quality) {
     if (quality < 51) {
       return FontAwesomeIcons.grin;

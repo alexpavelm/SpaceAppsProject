@@ -15,9 +15,11 @@ class ChallengesWidget extends StatefulWidget {
 
 class ChallengesWidgetState extends State<ChallengesWidget> {
   var globalData = GlobalData();
+  int scoreToPrint;
 
   @override
   Widget build(BuildContext context) {
+    scoreToPrint = 0;
     return Scaffold(
       appBar: AppBar(
         title: Center(
@@ -30,9 +32,9 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
       body: Column(
         children: <Widget>[
           Center(
-            child: globalData.quests.length != 0
-                ? SizedBox(
-                    height: 90 * globalData.quests.length.toDouble(),
+            child: globalData.quests.length != 1
+                ? Container(
+                    height: 70 * globalData.quests.length.toDouble(),
                     child: ListView(
                         children: globalData.quests
                             .map((object) => quest(object))
@@ -56,7 +58,7 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                "315 people chose to use public transport over personal car in the last 7 days.",
+                                "315 people chose to use public transport over a personal car in the last 7 days",
                                 style: TextStyle(
                                   fontFamily: 'Raleway',
                                   fontWeight: FontWeight.w600,
@@ -76,7 +78,6 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
             ),
           ),
           InkWell(
-            onTap: () => globalData.launchURL("ceva"),
             child: Padding(
               padding:
                   const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
@@ -113,7 +114,6 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
             ),
           ),
           InkWell(
-            onTap: () => globalData.launchURL("ceva"),
             child: Padding(
               padding:
                   const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
@@ -148,7 +148,7 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -164,6 +164,7 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
               new FlatButton(
                 child: new Text('YES'),
                 onPressed: () {
+                  globalData.score += 50;
                   setState(() {
                     //globalData.copy.add(globalData.quests[id].quest);
                     globalData.quests.remove(id);
@@ -184,15 +185,17 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
 
   Widget congrts() {
     final titles = [
-      'You completed your daily challenges !',
+      'You completed your daily challanges !',
       ' did the first quest.',
       ' did the second quest.',
     ];
     final qst = ['Use public transport today.', 'Plant a tree.'];
+    //Icon(FontAwesomeIcons.adn);
+    var toPrintScore = "AirPoints: " + globalData.score.toString() + " ";
     return Column(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(bottom: 15, top: 15),
+          padding: const EdgeInsets.only(top: 20.0, bottom: 20),
           child: Text(titles[0],
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -209,11 +212,13 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
                 Text(qst[0],
                     style: TextStyle(
                       fontSize: 20,
-                      fontFamily: 'Raleway',
                       color: Colors.white,
+                      fontFamily: 'Raleway',
                     )),
-                Icon(Icons.check,
-                color: Colors.white)
+                Icon(
+                  Icons.check,
+                  color: Colors.white,
+                )
               ],
             ))),
         Card(
@@ -225,13 +230,36 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
                 Text(qst[1],
                     style: TextStyle(
                       fontSize: 20,
-                      fontFamily: 'Raleway',
                       color: Colors.white,
+                      fontFamily: 'Raleway',
                     )),
-                Icon(Icons.check,
-                color: Colors.white)
+                Icon(Icons.check, color: Colors.white)
               ],
             ))),
+        Card(
+          color: Colors.green.shade700,
+          clipBehavior: Clip.antiAlias,
+          child: Container(
+            height: 35,
+            child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(toPrintScore,
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Raleway',
+                            color: Colors.white),
+                        textAlign: TextAlign.center),
+                    Icon(
+                      FontAwesomeIcons.leaf,
+                      size: 15,
+                      color: Colors.white,
+                    ),
+                  ],
+                )),
+          ),
+        ),
         new Divider(
           thickness: 10,
           indent: 6,
@@ -243,62 +271,93 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
 
   Widget quest(Challenge data) {
     String qst = data.quest;
-    return data.finishquests == false
-        ? Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: Card(
-              clipBehavior: Clip.antiAlias,
-              child: Container(
-                height: 80,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        new AutoSizeText(qst,
-                            maxLines: 1,
-                            maxFontSize: 20,
-                            style:
-                                TextStyle(fontSize: 23, fontFamily: 'Raleway')),
-                      ],
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Expanded(
-                          child: FlatButton.icon(
-                              color: globalData.secondaryColor,
-                              icon: Icon(FontAwesomeIcons.check),
-                              label: Text('Done?',
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Raleway')),
-                              onPressed: () {
-                                confirmDialog(data);
-                              }),
-                        ),
-                      ],
-                    ),
-                  ],
+    if (scoreToPrint == 0) {
+      scoreToPrint++;
+
+      print("Score");
+      var toPrintScore = "AirPoints: " + globalData.score.toString() + " ";
+      return Card(
+        color: Colors.green.shade700,
+        clipBehavior: Clip.antiAlias,
+        child: Container(
+          height: 35,
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(toPrintScore,
+                    style: TextStyle(fontSize: 20, fontFamily: 'Raleway', color: Colors.white),
+                    textAlign: TextAlign.center),
+                Icon(
+                  FontAwesomeIcons.leaf,
+                  size: 15,
+                  color: Colors.white,
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    } else {
+      print(scoreToPrint);
+      scoreToPrint++;
+      return data.finishquests == false
+          ? Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Card(
+                clipBehavior: Clip.antiAlias,
+                child: Container(
+                  height: 70,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          new AutoSizeText(qst,
+                              maxLines: 1,
+                              maxFontSize: 20,
+                              style: TextStyle(
+                                  fontSize: 20, fontFamily: 'Raleway')),
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Expanded(
+                            child: FlatButton.icon(
+                                color: globalData.secondaryColor,
+                                icon: Icon(FontAwesomeIcons.check),
+                                label: Text('Done?',
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Raleway')),
+                                onPressed: () {
+                                  confirmDialog(data);
+                                }),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          )
-        : Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: Card(
-              color: Colors.green.shade700,
-              clipBehavior: Clip.antiAlias,
-              child: Container(
-                height: 100,
-                child: Center(
-                  child: new Text(qst,
-                      style: TextStyle(fontSize: 20, fontFamily: 'Raleway'),
-                      textAlign: TextAlign.center),
+            )
+          : Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Card(
+                color: globalData.secondaryColor,
+                clipBehavior: Clip.antiAlias,
+                child: Container(
+                  height: 100,
+                  child: Center(
+                    child: new Text(qst,
+                        style: TextStyle(fontSize: 20, fontFamily: 'Raleway'),
+                        textAlign: TextAlign.center),
+                  ),
                 ),
               ),
-            ),
-          );
+            );
+    }
   }
 }
