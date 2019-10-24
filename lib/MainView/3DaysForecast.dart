@@ -31,6 +31,7 @@ class _Days3ForecastState extends State<Days3Forecast> with AutomaticKeepAliveCl
 
     if(forecastData == null) {
       loadWeather();
+
     }
   }
 

@@ -33,8 +33,6 @@ class _WeatherWidgetState extends State<WeatherWidget> with AutomaticKeepAliveCl
 
   @override
   Widget build(BuildContext context) {
-    weatherData = new WeatherData.fromJson(jsonDecode(widget.data.weather.body));
-
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
      child: isLoading ? CircularProgressIndicator() : Container(
