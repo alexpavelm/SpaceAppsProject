@@ -1,6 +1,7 @@
 import 'dart:core';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:http/http.dart' as http;
 
 class City {
 
@@ -12,6 +13,8 @@ class City {
   final double long;
   final String provider;
   final DocumentReference reference;
+  http.Response weather;
+  http.Response forecast;
 
 
   City.fromMap(Map<String, dynamic> map, {this.reference})

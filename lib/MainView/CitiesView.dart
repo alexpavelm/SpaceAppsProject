@@ -7,6 +7,7 @@ import 'package:space_apps_project/MainView/ExpandedCityView/ExpandedCardView.da
 import 'package:space_apps_project/DataObjects/City.dart';
 
 import '../GlobalData.dart';
+import '3DaysForecast.dart';
 import 'WeatherWidget.dart';
 
 class CitiesView extends StatefulWidget {
@@ -14,7 +15,7 @@ class CitiesView extends StatefulWidget {
   _CitiesViewState createState() => _CitiesViewState();
 }
 
-class _CitiesViewState extends State<CitiesView> {
+class _CitiesViewState extends State<CitiesView> with AutomaticKeepAliveClientMixin{
   var globalData = GlobalData();
 
   @override
@@ -24,6 +25,7 @@ class _CitiesViewState extends State<CitiesView> {
       builder: (context, snapshot) {
         if (!snapshot.hasData) return Center(child: CircularProgressIndicator(),);
         globalData.cityList = snapshot.data.documents;
+        globalData.mainCity = City.fromSnapshot(globalData.cityList[0]);
         return buildList(globalData.cityList);
       },
     );
@@ -163,74 +165,7 @@ class _CitiesViewState extends State<CitiesView> {
                           Divider(
                             thickness: 1,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Container(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 20, right: 5, bottom: 2),
-                                  child: Column(
-                                    children: <Widget>[
-                                      Text(getDayOfWeek(DateTime.now().weekday),
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              fontFamily: 'Raleway')),
-                                      globalData.getWeatherIcon("sunny"),
-                                      Text(
-                                        "10 °C",
-                                        style: TextStyle(
-                                            fontSize: 17,
-                                            fontFamily: 'Raleway'),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 5, right: 5, bottom: 2),
-                                  child: Column(
-                                    children: <Widget>[
-                                      Text(getDayOfWeek(DateTime.now().add(Duration(days: 1)).weekday),
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              fontFamily: 'Raleway')),
-                                      globalData.getWeatherIcon("sunny"),
-                                      Text(
-                                        "10 °C",
-                                        style: TextStyle(
-                                            fontSize: 17,
-                                            fontFamily: 'Raleway'),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 5, right: 20, bottom: 2),
-                                  child: Column(
-                                    children: <Widget>[
-                                      Text(getDayOfWeek(DateTime.now().add(Duration(days: 2)).weekday),
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              fontFamily: 'Raleway')),
-                                      globalData.getWeatherIcon("sunny"),
-                                      Text(
-                                        "10 °C",
-                                        style: TextStyle(
-                                            fontSize: 17,
-                                            fontFamily: 'Raleway'),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )
+                          Days3Forecast(data)
                         ],
                       ),
                     )
@@ -244,16 +179,6 @@ class _CitiesViewState extends State<CitiesView> {
     );
   }
 
-  String getDayOfWeek(int day) {
-    switch(day) {
-      case 0: return "Mon."; break;
-      case 1: return "Tue."; break;
-      case 2: return "Wed."; break;
-      case 3: return "Thu."; break;
-      case 4: return "Fri."; break;
-      case 5: return "Sat."; break;
-      case 6: return "Sun."; break;
-      default: return "OOPS."; break;
-    }
-  }
+  @override
+  bool get wantKeepAlive => true;
 }

@@ -20,6 +20,7 @@ class GlobalData {
   List<String> copy ;
   List<FunFact> funFacts;
   Future cityAssigned;
+  Future currentCity;
   static final GlobalData _singleton = GlobalData._internal();
   BitmapDescriptor greenMarker, yellowMarker, orangeMarker, redMarker, purpleMarker;
 
