@@ -5,6 +5,7 @@ import 'package:space_apps_project/ChallengesView/ChallengesWidget.dart';
 
 import 'package:space_apps_project/MainView/MainWidget.dart';
 
+import 'GlobalData.dart';
 import 'InformationView/InformationWidget.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -23,6 +24,7 @@ class BottomNavBarState extends State<BottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+    var globalData = GlobalData();
     return DefaultTabController(
       length: 3,
       child: Container(
@@ -42,7 +44,7 @@ class BottomNavBarState extends State<BottomNavBar> {
                   icon: Icon(FontAwesomeIcons.questionCircle),
                 )
               ],
-              labelColor: Colors.blue,
+              labelColor: globalData.mainColor,
               unselectedLabelColor: Colors.grey,
               indicatorColor: Colors.blue,
             ),

@@ -15,7 +15,6 @@ class ChallengesWidget extends StatefulWidget {
 
 class ChallengesWidgetState extends State<ChallengesWidget> {
   var globalData = GlobalData();
-  bool donetxt = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +25,131 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
           "Challenges",
           style: TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.bold),
         )),
-        backgroundColor: Colors.blue.shade200,
+        backgroundColor: globalData.mainColor,
       ),
-      body: Center(
-        child: globalData.quests.length != 0
-            ? ListView(
-                children:
-                    globalData.quests.map((object) => quest(object)).toList())
-            : congrts(),
+      body: Column(
+        children: <Widget>[
+          Center(
+            child: globalData.quests.length != 0
+                ? SizedBox(
+                    height: 90 * globalData.quests.length.toDouble(),
+                    child: ListView(
+                        children: globalData.quests
+                            .map((object) => quest(object))
+                            .toList()))
+                : congrts(),
+          ),
+          InkWell(
+            child: Padding(
+              padding:
+                  const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
+              child: Container(
+                child: Row(
+                  children: <Widget>[
+                    Icon(FontAwesomeIcons.infoCircle,
+                        color: globalData.mainColor, size: 30),
+                    Container(
+                      child: Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                "315 people chose to use public transport over personal car in the last 7 days.",
+                                style: TextStyle(
+                                  fontFamily: 'Raleway',
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                softWrap: true,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () => globalData.launchURL("ceva"),
+            child: Padding(
+              padding:
+                  const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
+              child: Container(
+                child: Row(
+                  children: <Widget>[
+                    Icon(FontAwesomeIcons.infoCircle,
+                        color: globalData.mainColor, size: 30),
+                    Container(
+                      child: Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                "Is it hot in the city? Try planting a tree!",
+                                style: TextStyle(
+                                  fontFamily: 'Raleway',
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                softWrap: true,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () => globalData.launchURL("ceva"),
+            child: Padding(
+              padding:
+                  const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
+              child: Container(
+                child: Row(
+                  children: <Widget>[
+                    Icon(FontAwesomeIcons.infoCircle,
+                        color: globalData.mainColor, size: 30),
+                    Container(
+                      child: Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                "The best ways to reduce air pollution are by walking and riding bicycle.",
+                                style: TextStyle(
+                                  fontFamily: 'Raleway',
+                                  fontWeight: FontWeight.w600,
+                                ),
+                                softWrap: true,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -68,21 +184,24 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
 
   Widget congrts() {
     final titles = [
-      'You have done your daily challanges !',
-      ' done the first quest.',
-      ' done the second quest.',
+      'You completed your daily challenges !',
+      ' did the first quest.',
+      ' did the second quest.',
     ];
     final qst = ['Use public transport today.', 'Plant a tree.'];
     return Column(
       children: <Widget>[
-        Text(titles[0],
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 30,
-              fontFamily: 'Raleway',
-            )),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 15, top: 15),
+          child: Text(titles[0],
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 30,
+                fontFamily: 'Raleway',
+              )),
+        ),
         Card(
-            color: Color.fromRGBO(0, 204, 204, 1),
+            color: globalData.secondaryColor,
             child: ListTile(
                 title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,12 +210,14 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Raleway',
+                      color: Colors.white,
                     )),
-                Icon(Icons.check)
+                Icon(Icons.check,
+                color: Colors.white)
               ],
             ))),
         Card(
-            color: Color.fromRGBO(0, 204, 204, 1),
+            color: globalData.secondaryColor,
             child: ListTile(
                 title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -105,8 +226,10 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Raleway',
+                      color: Colors.white,
                     )),
-                Icon(Icons.check)
+                Icon(Icons.check,
+                color: Colors.white)
               ],
             ))),
         new Divider(
@@ -114,117 +237,6 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
           indent: 6,
           endIndent: 6,
         ),
-        InkWell(
-          onTap: () => globalData.launchURL("ceva"),
-          child: Padding(
-            padding:
-                const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
-            child: Container(
-              child: Row(
-                children: <Widget>[
-                  Icon(FontAwesomeIcons.infoCircle,
-                      color: Colors.lightBlueAccent, size: 30),
-                  Container(
-                    child: Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              "315 people chose to use public transport over a personal car in the last 7 days",
-                              style: TextStyle(
-                                fontFamily: 'Raleway',
-                                fontWeight: FontWeight.w600,
-                              ),
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
-        InkWell(
-          onTap: () => globalData.launchURL("ceva"),
-          child: Padding(
-            padding:
-                const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
-            child: Container(
-              child: Row(
-                children: <Widget>[
-                  Icon(FontAwesomeIcons.infoCircle,
-                      color: Colors.lightBlueAccent, size: 30),
-                  Container(
-                    child: Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              "Is it hot in the city? Try planting a tree!",
-                              style: TextStyle(
-                                fontFamily: 'Raleway',
-                                fontWeight: FontWeight.w600,
-                              ),
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ),
-        InkWell(
-          onTap: () => globalData.launchURL("ceva"),
-          child: Padding(
-            padding:
-                const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
-            child: Container(
-              child: Row(
-                children: <Widget>[
-                  Icon(FontAwesomeIcons.infoCircle,
-                      color: Colors.lightBlueAccent, size: 30),
-                  Container(
-                    child: Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              "The best ways to reduce air pollution are by walking and riding bicycle.",
-                              style: TextStyle(
-                                fontFamily: 'Raleway',
-                                fontWeight: FontWeight.w600,
-                              ),
-                              softWrap: true,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-        )
       ],
     );
   }
@@ -237,7 +249,7 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
             child: Card(
               clipBehavior: Clip.antiAlias,
               child: Container(
-                height: 100,
+                height: 80,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
@@ -246,7 +258,7 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
                       children: <Widget>[
                         new AutoSizeText(qst,
                             maxLines: 1,
-                            maxFontSize: 25,
+                            maxFontSize: 20,
                             style:
                                 TextStyle(fontSize: 23, fontFamily: 'Raleway')),
                       ],
@@ -255,9 +267,9 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
                       children: <Widget>[
                         Expanded(
                           child: FlatButton.icon(
-                              color: Colors.blue.shade200,
+                              color: globalData.secondaryColor,
                               icon: Icon(FontAwesomeIcons.check),
-                              label: Text('Done ?',
+                              label: Text('Done?',
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,

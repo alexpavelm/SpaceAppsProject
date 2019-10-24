@@ -51,7 +51,7 @@ class _MainWidgetState extends State<MainWidget> {
 
   Widget laterButton() {
     return FlatButton(
-      color: Colors.blue.shade200,
+      color: globalData.mainColor,
       child: Container(
         width: 200,
         child: Row(
@@ -84,7 +84,7 @@ class _MainWidgetState extends State<MainWidget> {
 
   Widget gpsButton() {
     return FlatButton(
-      color: Colors.blue.shade200,
+      color: globalData.mainColor,
       child: Container(
         width: 200,
         child: Row(

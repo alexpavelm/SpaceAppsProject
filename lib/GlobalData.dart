@@ -14,6 +14,10 @@ import 'package:space_apps_project/DataObjects/Challenge.dart';
 import 'DataObjects/WeatherData.dart';
 
 class GlobalData {
+  //COLORS
+  Color mainColor = Color.fromRGBO(116,164,209,1);
+  Color secondaryColor = Color.fromRGBO(89,127,166, 1);
+
   List<DocumentSnapshot> cityList;
   City mainCity;
   List<Challenge> quests;
