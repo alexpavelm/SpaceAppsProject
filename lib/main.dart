@@ -14,6 +14,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print("Ceva");
     return MaterialApp(
       title: 'Space Apps Project',
       theme: new ThemeData(

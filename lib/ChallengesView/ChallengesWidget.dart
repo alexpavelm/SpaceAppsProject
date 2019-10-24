@@ -16,9 +16,11 @@ class ChallengesWidget extends StatefulWidget {
 class ChallengesWidgetState extends State<ChallengesWidget> {
   var globalData = GlobalData();
   bool donetxt = false;
+  int scoreToPrint;
 
   @override
   Widget build(BuildContext context) {
+    scoreToPrint = 0;
     return Scaffold(
       appBar: AppBar(
         title: Center(
@@ -29,7 +31,7 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
         backgroundColor: Colors.blue.shade200,
       ),
       body: Center(
-        child: globalData.quests.length != 0
+        child: globalData.quests.length != 1
             ? ListView(
                 children:
                     globalData.quests.map((object) => quest(object)).toList())
@@ -48,6 +50,7 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
               new FlatButton(
                 child: new Text('YES'),
                 onPressed: () {
+                  globalData.score += 50;
                   setState(() {
                     //globalData.copy.add(globalData.quests[id].quest);
                     globalData.quests.remove(id);
@@ -73,6 +76,8 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
       ' done the second quest.',
     ];
     final qst = ['Use public transport today.', 'Plant a tree.'];
+    //Icon(FontAwesomeIcons.adn);
+    var toPrintScore = "AirPoints: " + globalData.score.toString();
     return Column(
       children: <Widget>[
         Text(titles[0],
@@ -81,6 +86,26 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
               fontSize: 30,
               fontFamily: 'Raleway',
             )),
+        Card(
+          color: Colors.green.shade700,
+          clipBehavior: Clip.antiAlias,
+          child: Container(
+            height: 50,
+            child: Center(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(toPrintScore,
+                    style: TextStyle(fontSize: 20, fontFamily: 'Raleway'),
+                    textAlign: TextAlign.center),
+                Icon(
+                  FontAwesomeIcons.leaf,
+                  size: 15,
+                ),
+              ],
+            )),
+          ),
+        ),
         Card(
             color: Color.fromRGBO(0, 204, 204, 1),
             child: ListTile(
@@ -231,62 +256,93 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
 
   Widget quest(Challenge data) {
     String qst = data.quest;
-    return data.finishquests == false
-        ? Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: Card(
-              clipBehavior: Clip.antiAlias,
-              child: Container(
-                height: 100,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        new AutoSizeText(qst,
-                            maxLines: 1,
-                            maxFontSize: 25,
-                            style:
-                                TextStyle(fontSize: 23, fontFamily: 'Raleway')),
-                      ],
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Expanded(
-                          child: FlatButton.icon(
-                              color: Colors.blue.shade200,
-                              icon: Icon(FontAwesomeIcons.check),
-                              label: Text('Done ?',
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      fontFamily: 'Raleway')),
-                              onPressed: () {
-                                confirmDialog(data);
-                              }),
-                        ),
-                      ],
-                    ),
-                  ],
+    if (scoreToPrint == 0) {
+      scoreToPrint++;
+
+      print("Score");
+      var toPrintScore = "AirPoints: " + globalData.score.toString();
+      return Card(
+        color: Colors.green.shade700,
+        clipBehavior: Clip.antiAlias,
+        child: Container(
+          height: 50,
+          child: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(toPrintScore,
+                    style: TextStyle(fontSize: 20, fontFamily: 'Raleway'),
+                    textAlign: TextAlign.center),
+                Icon(
+                  FontAwesomeIcons.leaf,
+                  size: 15,
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    } else {
+      print(scoreToPrint);
+      scoreToPrint++;
+      return data.finishquests == false
+          ? Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Card(
+                clipBehavior: Clip.antiAlias,
+                child: Container(
+                  height: 100,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          new AutoSizeText(qst,
+                              maxLines: 1,
+                              maxFontSize: 25,
+                              style: TextStyle(
+                                  fontSize: 20, fontFamily: 'Raleway')),
+                          //Aici era 23 valoarea
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Expanded(
+                            child: FlatButton.icon(
+                                color: Colors.blue.shade200,
+                                icon: Icon(FontAwesomeIcons.check),
+                                label: Text('Done ?',
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Raleway')),
+                                onPressed: () {
+                                  confirmDialog(data);
+                                }),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          )
-        : Padding(
-            padding: const EdgeInsets.all(2.0),
-            child: Card(
-              color: Colors.green.shade700,
-              clipBehavior: Clip.antiAlias,
-              child: Container(
-                height: 100,
-                child: Center(
-                  child: new Text(qst,
-                      style: TextStyle(fontSize: 20, fontFamily: 'Raleway'),
-                      textAlign: TextAlign.center),
+            )
+          : Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Card(
+                color: Colors.green.shade700,
+                clipBehavior: Clip.antiAlias,
+                child: Container(
+                  height: 100,
+                  child: Center(
+                    child: new Text(qst,
+                        style: TextStyle(fontSize: 20, fontFamily: 'Raleway'),
+                        textAlign: TextAlign.center),
+                  ),
                 ),
               ),
-            ),
-          );
+            );
+    }
   }
 }
