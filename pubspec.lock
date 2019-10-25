@@ -15,6 +15,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  barcode_scan:
+    dependency: "direct main"
+    description:
+      name: barcode_scan
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.8"
   boolean_selector:
     dependency: transitive
     description:
@@ -166,12 +173,12 @@ packages:
     source: hosted
     version: "1.6.4"
   path_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path_provider
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.4.0"
+    version: "0.5.0"
   pedantic:
     dependency: transitive
     description:
@@ -179,13 +186,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0+1"
-  platform:
+  qr:
     dependency: transitive
     description:
-      name: platform
+      name: qr
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.1"
+    version: "1.2.0"
+  qr_flutter:
+    dependency: "direct main"
+    description:
+      name: qr_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.6"
   quiver:
     dependency: transitive
     description:

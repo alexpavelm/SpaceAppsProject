@@ -2,10 +2,12 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+//import 'package:barcode_scan/barcode_scan.dart';
 import '../GlobalData.dart';
 import '../DataObjects/Challenge.dart';
-
+import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
+import 'dart:async';
 class ChallengesWidget extends StatefulWidget {
   @override
   State<ChallengesWidget> createState() {
@@ -16,7 +18,7 @@ class ChallengesWidget extends StatefulWidget {
 class ChallengesWidgetState extends State<ChallengesWidget> {
   var globalData = GlobalData();
   int scoreToPrint;
-
+  String barcode = "";
   @override
   Widget build(BuildContext context) {
     scoreToPrint = 0;
@@ -154,34 +156,26 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
     );
   }
 
-  Future confirmDialog(Challenge id) {
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: Text("Please confirm"),
-            actions: <Widget>[
-              new FlatButton(
-                child: new Text('YES'),
-                onPressed: () {
-                  globalData.score += 50;
-                  setState(() {
-                    //globalData.copy.add(globalData.quests[id].quest);
-                    globalData.quests.remove(id);
-                  });
-                  Navigator.of(context).pop();
-                },
-              ),
-              new FlatButton(
-                child: new Text('NO'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              )
-            ],
-          );
-        });
+  Future confirmDialog(Challenge id) async{
+//
+//    try {
+//      String barcode = await BarcodeScanner.scan();
+//      setState(() => this.barcode = barcode);
+//    } on PlatformException catch (e) {
+//      if (e.code == BarcodeScanner.CameraAccessDenied) {
+//        setState(() {
+//          this.barcode = 'The user did not grant the camera permission!';
+//        });
+//      } else {
+//        setState(() => this.barcode = 'Unknown error: $e');
+//      }
+//    } on FormatException{
+//      setState(() => this.barcode = 'null (User returned using the "back"-button before scanning anything. Result)');
+//    } catch (e) {
+//      setState(() => this.barcode = 'Unknown error: $e');
+//    }
   }
+
 
   Widget congrts() {
     final titles = [
