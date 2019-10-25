@@ -177,9 +177,7 @@ class GlobalData {
     }
   }
   saveData(Map<String, dynamic> map) async {
-    print('saveData');
     pings.add(new Ping(map.values.toList()[1], map.values.toList()[0], map.values.toList()[2]));
-    //print(map.values.toList()[2]);
   }
   IconData getQualityIcon(int quality) {
     if (quality < 51) {
