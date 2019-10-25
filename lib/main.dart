@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Space Apps Project',
+      title: 'Space Apps Project ',
       theme: new ThemeData(
           brightness: Brightness.light,
           primaryColor: Colors.white,
