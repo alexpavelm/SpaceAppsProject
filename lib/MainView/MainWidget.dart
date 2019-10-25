@@ -15,7 +15,7 @@ class MainWidget extends StatefulWidget {
 class _MainWidgetState extends State<MainWidget> {
   static var globalData = GlobalData();
   final List<Widget> _children = [
-    //CurrentCityWidget(),
+    CurrentCityWidget(),
     FunFactWidget(globalData.getFunFact()),
     CitiesView()
   ];
@@ -99,6 +99,7 @@ class _MainWidgetState extends State<MainWidget> {
       ),
       onPressed: () {
         setState(() {
+          globalData.isGPS = true;
           //globalData.mainCity = City.fromSnapshot(globalData.cityList[10]);
 
           Navigator.push(
@@ -107,11 +108,9 @@ class _MainWidgetState extends State<MainWidget> {
               return Scaffold(body: Center(child: CircularProgressIndicator()));
             }),
           );
-          Future.delayed(new Duration(seconds: 2), (() {
-            globalData.cityAssigned =
-                Future.delayed(new Duration(microseconds: 1));
-            return Navigator.of(context).pop();
-          }));
+          globalData.cityAssigned =
+              Future.delayed(new Duration(microseconds: 1));
+          Navigator.of(context).pop();
         });
       },
     );

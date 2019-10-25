@@ -1,10 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart';
 import 'package:space_apps_project/DataObjects/City.dart';
 
 import 'package:space_apps_project/MainView/ExpandedCityView/ExpandedCardView.dart';
 import '../GlobalData.dart';
+import '../user_location.dart';
 
 var currentLocation;
 
@@ -20,8 +23,16 @@ class CurrentCityWidgetState extends State<CurrentCityWidget> {
   var globalData = GlobalData();
 
   @override
+  void initState() {
+    super.initState();
+    if(globalData.isGPS){
+      getLocation();
+    }
+
+  }
+
+  @override
   Widget build(BuildContext context) {
-    getCurrentLocation();
     return FutureBuilder(
       future: currentLocation,
       builder: (_, snapshot) {
@@ -141,17 +152,35 @@ class CurrentCityWidgetState extends State<CurrentCityWidget> {
       }
     );
   }
+  getLocation() async {
+    var lat, long;
+    var globalData = GlobalData();
+    Location location = Location();
+    if(globalData.userLocation == null) {
+      location.requestPermission().then((granted) {
 
-  Future getCurrentLocation() async {
-    var location = new Location();
+        if (granted) {
+          location.onLocationChanged().listen((locationData) async{
+            if (locationData != null && globalData.userLocation == null) {
+              List<Placemark> placemark = await Geolocator().placemarkFromCoordinates(locationData.latitude, locationData.longitude, localeIdentifier: 'en_UK'.toString());
+              globalData.userLocation = UserLocation(
+                latitude: lat,
+                longitude: long,
+                cityName: placemark[0].locality,
+              );
+              globalData.mainCity =  City.fromSnapshot(globalData.cityList.firstWhere((city)
+              => city.data["name"].toString().contains(globalData.userLocation.cityName)));
+              currentLocation = Future.delayed(new Duration(microseconds: 1));
+              setState(() {
 
-// Platform messages may fail, so we use a try/catch PlatformException.
-    try {
-      currentLocation = await location.getLocation();
-    } on Exception catch (e) {
-      currentLocation = null;
-      print(e);
+              });
+            }
+          });
+        }
+      });
     }
+
+
   }
 
   Widget buildWeather(String data) {

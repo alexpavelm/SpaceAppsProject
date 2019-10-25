@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:space_apps_project/user_location.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:space_apps_project/DataObjects/FunFact.dart';
@@ -23,6 +24,9 @@ class GlobalData {
   List<FunFact> funFacts;
   List<Ping> pings;
   Future cityAssigned;
+  Future locationAssigned;
+  UserLocation userLocation;
+  bool isGPS = false;
   int score = 0;
   Future currentCity;
   static final GlobalData _singleton = GlobalData._internal();
