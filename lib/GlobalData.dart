@@ -11,8 +11,6 @@ import 'package:space_apps_project/DataObjects/City.dart';
 import 'package:space_apps_project/DataObjects/Ping.dart';
 import 'package:space_apps_project/DataObjects/Challenge.dart';
 
-import 'DataObjects/WeatherData.dart';
-
 class GlobalData {
   //COLORS
   Color mainColor = Color.fromRGBO(116,164,209,1);

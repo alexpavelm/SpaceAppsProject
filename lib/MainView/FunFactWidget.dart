@@ -23,7 +23,7 @@ class FunFactWidget extends StatelessWidget {
           child: Row(
             children: <Widget>[
               Icon(FontAwesomeIcons.infoCircle,
-                  color: Colors.lightBlueAccent, size: 30),
+                  color: globalData.mainColor, size: 30),
               Container(
                 child: Expanded(
                   child: Padding(
@@ -37,7 +37,7 @@ class FunFactWidget extends StatelessWidget {
                               fontFamily: 'Raleway',
                               fontWeight: FontWeight.w600,
                               fontSize: 20,
-                              color: Colors.blue),
+                              color: globalData.mainColor),
                         ),
                         Text(
                           data.text,

@@ -5,7 +5,6 @@ import 'package:space_apps_project/DataObjects/City.dart';
 
 import 'package:space_apps_project/MainView/ExpandedCityView/ExpandedCardView.dart';
 import '../GlobalData.dart';
-import 'WeatherWidget.dart';
 
 var currentLocation;
 
