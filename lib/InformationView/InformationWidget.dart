@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../GlobalData.dart';
+
 class InformationWidget extends StatefulWidget {
   @override
   State<InformationWidget> createState() {
@@ -32,6 +34,7 @@ class InformationWidgetState extends State<InformationWidget> {
   }
 
   Widget infoCard(IconData icon, String title, String text) {
+    var globalData = GlobalData();
     return Padding(
         padding: const EdgeInsets.all(2.0),
         child: Card(
@@ -57,7 +60,7 @@ class InformationWidgetState extends State<InformationWidget> {
                       child: Container(
                         width: 270,
                         height: 0.9,
-                        color: Colors.lightBlueAccent,
+                        color: globalData.mainColor,
                       )),
                   Text(text,
                       textAlign: TextAlign.justify,

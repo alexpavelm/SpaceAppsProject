@@ -58,8 +58,6 @@ class MapSampleState extends State<MapSample> {
   @override
   Widget build(BuildContext context) {
     createCamera();
-    print('To look');
-    print(globalData.pings);
     createMarkers();
     //createMarkers();
     return new Scaffold(
