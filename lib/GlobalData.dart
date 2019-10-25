@@ -11,8 +11,6 @@ import 'package:space_apps_project/DataObjects/City.dart';
 import 'package:space_apps_project/DataObjects/Ping.dart';
 import 'package:space_apps_project/DataObjects/Challenge.dart';
 
-import 'DataObjects/WeatherData.dart';
-
 class GlobalData {
   //COLORS
   Color mainColor = Color.fromRGBO(116, 164, 209, 1);
@@ -21,8 +19,7 @@ class GlobalData {
   List<DocumentSnapshot> cityList;
   City mainCity;
   List<Challenge> quests;
-  List<String> copy;
-
+  List<String> copy ;
   List<FunFact> funFacts;
   List<Ping> pings;
   Future cityAssigned;
@@ -232,10 +229,7 @@ class GlobalData {
   }
 
   saveData(Map<String, dynamic> map) async {
-    print('saveData');
-    pings.add(new Ping(map.values.toList()[1], map.values.toList()[0],
-        map.values.toList()[2]));
-    //print(map.values.toList()[2]);
+    pings.add(new Ping(map.values.toList()[1], map.values.toList()[0], map.values.toList()[2]));
   }
 
   IconData getQualityIcon(int quality) {
