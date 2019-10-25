@@ -25,7 +25,7 @@ class _CitiesViewState extends State<CitiesView> with AutomaticKeepAliveClientMi
       builder: (context, snapshot) {
         if (!snapshot.hasData) return Center(child: CircularProgressIndicator(),);
         globalData.cityList = snapshot.data.documents;
-        globalData.mainCity = City.fromSnapshot(globalData.cityList[0]);
+        //globalData.mainCity = City.fromSnapshot(globalData.cityList[0]);
         return buildList(globalData.cityList);
       },
     );

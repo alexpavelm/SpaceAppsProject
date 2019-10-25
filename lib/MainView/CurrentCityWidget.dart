@@ -168,8 +168,10 @@ class CurrentCityWidgetState extends State<CurrentCityWidget> {
                 longitude: long,
                 cityName: placemark[0].locality,
               );
-              globalData.mainCity =  City.fromSnapshot(globalData.cityList.firstWhere((city)
-              => city.data["name"].toString().contains(globalData.userLocation.cityName)));
+              if(globalData.mainCity == null) {
+                globalData.mainCity =  City.fromSnapshot(globalData.cityList.firstWhere((city)
+                => city.data["name"].toString().contains(globalData.userLocation.cityName)));
+              }
               currentLocation = Future.delayed(new Duration(microseconds: 1));
               setState(() {
 
