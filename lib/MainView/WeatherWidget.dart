@@ -8,7 +8,6 @@ import 'package:space_apps_project/DataObjects/City.dart';
 import 'package:space_apps_project/DataObjects/WeatherData.dart';
 import 'package:http/http.dart' as http;
 import '../GlobalData.dart';
-WeatherData weatherData;
 
 class WeatherWidget extends StatefulWidget {
   final City data;
@@ -19,14 +18,16 @@ class WeatherWidget extends StatefulWidget {
   _WeatherWidgetState createState() => _WeatherWidgetState();
 }
 
-class _WeatherWidgetState extends State<WeatherWidget> with AutomaticKeepAliveClientMixin{
+class _WeatherWidgetState extends State<WeatherWidget>
+    with AutomaticKeepAliveClientMixin {
   final globalData = GlobalData();
   bool isLoading = false;
+  WeatherData weatherData;
 
   @override
   void initState() {
     super.initState();
-    if(weatherData == null) {
+    if (weatherData == null) {
       loadWeather();
     }
   }
@@ -35,21 +36,23 @@ class _WeatherWidgetState extends State<WeatherWidget> with AutomaticKeepAliveCl
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
-     child: isLoading ? CircularProgressIndicator() : Container(
-       child: Row(
-         children: <Widget>[
-       CachedNetworkImage(
-         imageUrl: 'https://openweathermap.org/img/w/${weatherData.icon}.png',
-       placeholder:(context, url) => CircularProgressIndicator(),),
-           Text(
-             weatherData.temp.floor().toString() + "°C",
-             style: TextStyle(
-                 fontSize: 23, fontFamily: 'Raleway'),
-           ),
-         ],
-       ),
-     ),
-     /* child: Container(
+      child: isLoading
+          ? CircularProgressIndicator()
+          : Container(
+              child: Row(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 5.0, bottom: 5),
+                    child: globalData.getWeatherIcon(weatherData.icon),
+                  ),
+                  Text(
+                    weatherData.temp.floor().toString() + "°C",
+                    style: TextStyle(fontSize: 23, fontFamily: 'Raleway'),
+                  ),
+                ],
+              ),
+            ),
+      /* child: Container(
           height: 130,
           color: Colors.white,
             child: Column(
@@ -152,19 +155,17 @@ class _WeatherWidgetState extends State<WeatherWidget> with AutomaticKeepAliveCl
 
     final lat = widget.data.lat;
     final lon = widget.data.long;
-    if(widget.data.weather == null) {
+    if (widget.data.weather == null) {
       widget.data.weather = await http.get(
-          'https://api.openweathermap.org/data/2.5/weather?APPID=28a50b82164ccaedebaed3d2898215a4&lat=${lat
-              .toString()}&lon=${lon.toString()}&units=metric');
+          'https://api.openweathermap.org/data/2.5/weather?APPID=28a50b82164ccaedebaed3d2898215a4&lat=${lat.toString()}&lon=${lon.toString()}&units=metric');
       if (widget.data.weather.statusCode == 200) {
         return setState(() {
-          weatherData = new WeatherData.fromJson(jsonDecode(widget.data.weather.body));
+          weatherData =
+              new WeatherData.fromJson(jsonDecode(widget.data.weather.body));
           isLoading = false;
         });
       }
     }
-
-
 
     setState(() {
       isLoading = false;

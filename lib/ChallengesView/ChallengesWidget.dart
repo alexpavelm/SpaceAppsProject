@@ -268,7 +268,6 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
     if (scoreToPrint == 0) {
       scoreToPrint++;
 
-      print("Score");
       var toPrintScore = "AirPoints: " + globalData.score.toString() + " ";
       return Card(
         color: Colors.green.shade700,
@@ -293,7 +292,6 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
         ),
       );
     } else {
-      print(scoreToPrint);
       scoreToPrint++;
       return data.finishquests == false
           ? Padding(
@@ -318,13 +316,12 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
                       Column(
                         children: <Widget>[
                           Expanded(
-                            child: FlatButton.icon(
+                            child: FlatButton (
                                 color: globalData.secondaryColor,
-                                icon: Icon(FontAwesomeIcons.check),
-                                label: Text('Done?',
+                                child: Text('Done?',
                                     style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w900,
                                         fontFamily: 'Raleway')),
                                 onPressed: () {
                                   confirmDialog(data);
