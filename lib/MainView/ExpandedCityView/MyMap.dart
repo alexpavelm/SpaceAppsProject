@@ -20,10 +20,7 @@ class MyMap extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 250,
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Card(child: MapSample(data)),
-      ),
+      child: Card(child: MapSample(data)),
     );
   }
 }

@@ -176,7 +176,7 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
 
   Widget congrts() {
     final titles = [
-      'You completed your daily challanges !',
+      'You completed your weekly challanges !',
       ' did the first quest.',
       ' did the second quest.',
     ];

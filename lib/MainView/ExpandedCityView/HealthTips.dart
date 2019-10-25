@@ -67,12 +67,15 @@ class HealthTips extends StatelessWidget {
               fontWeight: FontWeight.bold,
             )),
           ),
-          Column(
-            children: <Widget>[
-              tip(getTipsList(data.aqi)[0].icon, getTipsList(data.aqi)[0].string),
-              tip(getTipsList(data.aqi)[1].icon, getTipsList(data.aqi)[1].string),
-              tip(getTipsList(data.aqi)[2].icon, getTipsList(data.aqi)[2].string),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(left: 10, bottom: 10),
+            child: Column(
+              children: <Widget>[
+                tip(getTipsList(data.aqi)[0].icon, getTipsList(data.aqi)[0].string),
+                tip(getTipsList(data.aqi)[1].icon, getTipsList(data.aqi)[1].string),
+                tip(getTipsList(data.aqi)[2].icon, getTipsList(data.aqi)[2].string),
+              ],
+            ),
           )
         ],
 
