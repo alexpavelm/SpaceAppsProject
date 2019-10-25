@@ -1,13 +1,16 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:qrscan/qrscan.dart' as scanner;
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-//import 'package:barcode_scan/barcode_scan.dart';
 import '../GlobalData.dart';
 import '../DataObjects/Challenge.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+//import 'package:qr_flutter/qr_flutter.dart';
+
 class ChallengesWidget extends StatefulWidget {
   @override
   State<ChallengesWidget> createState() {
@@ -156,24 +159,18 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
     );
   }
 
-  Future confirmDialog(Challenge id) async{
-//
-//    try {
-//      String barcode = await BarcodeScanner.scan();
-//      setState(() => this.barcode = barcode);
-//    } on PlatformException catch (e) {
-//      if (e.code == BarcodeScanner.CameraAccessDenied) {
-//        setState(() {
-//          this.barcode = 'The user did not grant the camera permission!';
-//        });
-//      } else {
-//        setState(() => this.barcode = 'Unknown error: $e');
-//      }
-//    } on FormatException{
-//      setState(() => this.barcode = 'null (User returned using the "back"-button before scanning anything. Result)');
-//    } catch (e) {
-//      setState(() => this.barcode = 'Unknown error: $e');
-//    }
+  Future qrScanner(Challenge id) async{
+
+
+    String cameraScanResult = await scanner.scan();
+    print(cameraScanResult);
+    if(cameraScanResult == 'Add 100 points'){
+      globalData.score += 100;
+      setState(() {
+        globalData.quests.remove(id);
+      });
+    }
+    return null;
   }
 
 
@@ -306,7 +303,7 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          new AutoSizeText(qst,
+                            new AutoSizeText(qst,
                               maxLines: 1,
                               maxFontSize: 20,
                               style: TextStyle(
@@ -324,7 +321,7 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
                                         fontWeight: FontWeight.w900,
                                         fontFamily: 'Raleway')),
                                 onPressed: () {
-                                  confirmDialog(data);
+                                  qrScanner(data);
                                 }),
                           ),
                         ],
