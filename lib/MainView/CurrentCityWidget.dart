@@ -28,7 +28,6 @@ class CurrentCityWidgetState extends State<CurrentCityWidget> {
     if(globalData.isGPS){
       getLocation();
     }
-
   }
 
   @override
@@ -145,9 +144,87 @@ class CurrentCityWidgetState extends State<CurrentCityWidget> {
                 ),
               ));
         } else {
-          return Container(
-            child: Text("nu ai selectat oras"),
+          return Padding(
+            padding: const EdgeInsets.only(top:10, left: 2.0, right: 2),
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(3.0),
+                child: Column(
+                  children: <Widget>[
+                    Row (
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(left: 4.0, right: 4),
+                          child: Icon(Icons.location_on,
+                          size: 30,
+                          color: globalData.secondaryColor),
+                        ),
+                        Container(
+                            width: 210,
+                            child: Text("Allow AirApp to access current location with GPS?",
+                              style: TextStyle(
+                                fontFamily: 'Raleway',
+                                fontSize: 15,
+                              ),
+                              maxLines: 3,
+                            ),
+                        ),
+                        FlatButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(10),
+                            ),
+                            color: globalData.secondaryColor,
+                            child: Text( "Allow",
+                                style: TextStyle(
+                                  fontFamily: 'Raleway',
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+
+                                )),
+                          onPressed: () {
+                            setState(() {
+                              globalData.isGPS = true;
+                              globalData.cityAssigned =
+                                  Future.delayed(new Duration(microseconds: 1));
+                              getLocation();
+                            });
+                          },
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
           );
+
+
+          /*Padding(
+            padding: const EdgeInsets.only(top:10.0, left: 20, right: 20),
+            child: FlatButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(10),
+              ),
+              color: globalData.mainColor,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(" Agree",
+                      style: TextStyle(
+                          fontFamily: 'Raleway', fontWeight: FontWeight.bold)),
+                ],
+              ),
+              onPressed: () {
+                setState(() {
+                  globalData.isGPS = true;
+                  globalData.cityAssigned =
+                      Future.delayed(new Duration(microseconds: 1));
+                  getLocation();
+                });
+              },
+            ),
+          );*/
         }
       }
     );
