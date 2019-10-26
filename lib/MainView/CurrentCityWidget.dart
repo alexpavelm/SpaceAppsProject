@@ -8,6 +8,7 @@ import 'package:space_apps_project/DataObjects/City.dart';
 import 'package:space_apps_project/MainView/ExpandedCityView/ExpandedCardView.dart';
 import '../GlobalData.dart';
 import '../user_location.dart';
+import 'ExpandedCityView/5DaysForecast.dart';
 
 var currentLocation;
 
@@ -65,10 +66,6 @@ class CurrentCityWidgetState extends State<CurrentCityWidget> {
                                         fontFamily: 'Raleway',
                                         fontWeight: FontWeight.bold,
                                       )),
-                                  InkWell(
-                                      onTap: () => showListOfCities(),
-                                      child: Icon(Icons.settings,
-                                          color: Colors.black.withOpacity(0.6)))
                                 ],
                               ),
                               Text(
@@ -138,7 +135,7 @@ class CurrentCityWidgetState extends State<CurrentCityWidget> {
                                             ),
                                           ])
                                         ])))),
-                        //WeatherWidget(globalData.mainCity.weatherData)
+                        Days5Forecast(globalData.mainCity)
                       ],
                     ),
                   ),
