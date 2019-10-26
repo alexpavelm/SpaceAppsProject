@@ -72,55 +72,6 @@ class GlobalData {
         "Did you know that traffic jams increace carbon emissions?",
         "https://www.environmentalleader.com/2012/01/how-traffic-jams-affect-air-quality/"));
 
-    /* cityList.add(new City("Amsterdam", "Netherlands", new WeatherData(["rainy", "rainy", "rainy", "cloudy", "cloudy"], [13, 15, 13, 13, 15]), 23, []));
-    cityList.add(new City("Shanghai", "China", new WeatherData(["sunny", "cloudy", "cloudy", "cloudy", "rainy"], [20, 23, 23, 20, 23]), 152, []));
-    cityList.add(new City("Beijing", "China", new WeatherData(["sunny", "sunny", "sunny", "cloudy", "cloudy"], [18, 16, 18, 19, 11]), 215, []));
-    cityList.add(new City("Paris", "France", new WeatherData(["rainy", "rainy", "cloudy", "sunny", "sunny"], [13, 14, 14, 20, 20]), 53, []));
-    cityList.add(new City("Istanbul", "Turkey", new WeatherData(["sunny", "cloudy", "sunny", "rainy", "rainy"], [20, 20, 19, 19, 19]), 114, []));
-    cityList.add(new City("London", "England", new WeatherData(["sunny", "rainy", "sunny", "sunny", "rainy"], [13, 14, 14, 15, 17]), 62, []));
-    cityList.add(new City("Tokyo", "Japan", new WeatherData(["cloudy", "cloudy", "rainy", "cloudy", "cloudy"], [25, 23, 16, 23, 20]), 70, []));
-    cityList.add(new City("Moscow", "Russia", new WeatherData(["cloudy", "cloudy", "cloudy", "cloudy", "cloudy"], [14, 14, 8, 14, 11]), 60, []));
-    cityList.add(new City("New York", "USA", new WeatherData(["rainy", "cloudy", "rainy", "sunny", "sunny"], [18, 21, 18, 17, 18]), 60, []));
-    cityList.add(new City("Berlin", "Germany", new WeatherData(["sunny", "sunny", "sunny", "sunny", "sunny"], [20, 21, 17, 17, 19]), 20, []));
-    cityList.add(new City("Bucharest", "Romania", new WeatherData(["sunny", "sunny", "sunny", "sunny", "sunny"], [24, 22, 23, 21, 21]), 74, []));
-    cityList.add(new City("Buzau", "Romania", new WeatherData(["sunny", "sunny", "cloudy", "rainy", "sunny"], [22, 19, 18, 20, 17]), 19, []));
-
-
-    cityList[0].pings.add(new Ping(52.3545358, 4.7635337, 23));
-    cityList[0].pings.add(new Ping(52.3521007, 4.886793, 34));
-    cityList[0].pings.add(new Ping(52.3478447, 4.7966966, 13));
-    cityList[0].pings.add(new Ping(52.3762867, 4.8651617, 55));
-    cityList[0].pings.add(new Ping(52.3780961, 4.8359141, 27));
-    cityList[1].pings.add(new Ping(31.2231277, 120.9148989, 122));
-    cityList[1].pings.add(new Ping(31.1440299, 121.4306818, 154));
-    cityList[1].pings.add(new Ping(31.2684233, 121.5421838,153));
-    cityList[2].pings.add(new Ping(39.9385449, 116.1165817, 205));
-    cityList[2].pings.add(new Ping(39.9445038, 116.4851008, 192));
-    cityList[2].pings.add(new Ping(39.8291187, 116.12079, 213));
-    cityList[3].pings.add(new Ping(48.8564659, 2.3466072, 58));
-    cityList[3].pings.add(new Ping(48.8526961, 2.3008068, 12));
-    cityList[3].pings.add(new Ping(48.8438557, 2.3195398, 36));
-    cityList[4].pings.add(new Ping(41.1922843, 28.3817107, 87));
-    cityList[5].pings.add(new Ping(51.5076624, -0.1426867, 62));
-    cityList[5].pings.add(new Ping(51.4975425, -0.1439461, 42));
-    cityList[5].pings.add(new Ping(51.5136513, -0.1018143, 55));
-    cityList[6].pings.add(new Ping(35.5040273, 138.6457897, 14));
-    cityList[6].pings.add(new Ping(35.6434372, 139.7400523, 3));
-    cityList[6].pings.add(new Ping(35.6527779, 139.7103776, 10));
-    cityList[7].pings.add(new Ping(55.5807417, 36.8237404, 5));
-    cityList[8].pings.add(new Ping(40.7077029, -74.014515, 30));
-    cityList[8].pings.add(new Ping(40.7644976, -73.9864182, 31));
-    cityList[8].pings.add(new Ping(40.6853428, -73.9105466, 38));
-    cityList[8].pings.add(new Ping(40.7177145, -74.0474245, 56));
-    cityList[8].pings.add(new Ping(40.6463789, -74.1526531, 40));
-    cityList[9].pings.add(new Ping(52.5178642, 13.3978216, 20));
-    cityList[9].pings.add(new Ping(52.5223822, 13.3949681, 12));
-    cityList[9].pings.add(new Ping(52.5143651, 13.4184857, 15));
-    cityList[10].pings.add(new Ping(44.4377397, 25.9542094, 46));
-    cityList[10].pings.add(new Ping(44.4206436, 26.1467312, 52));
-    cityList[10].pings.add(new Ping(44.4542507, 26.0188769, 37));
-    cityList[11].pings.add(new Ping(45.146942, 26.810281, 19));*/
-
     quests.add(new Challenge("Use public transport today.", 0));
     quests.add(new Challenge("Use public transport today.", 1));
     quests.add(new Challenge("Plant a tree.", 2));
