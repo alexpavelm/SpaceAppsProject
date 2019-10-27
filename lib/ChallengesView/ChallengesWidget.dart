@@ -29,9 +29,9 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
       appBar: AppBar(
         title: Center(
             child: Text(
-          "Challenges",
-          style: TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.bold),
-        )),
+              "Challenges",
+              style: TextStyle(fontFamily: 'Raleway', fontWeight: FontWeight.bold),
+            )),
         backgroundColor: globalData.mainColor,
       ),
       body: Column(
@@ -39,17 +39,17 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
           Center(
             child: globalData.quests.length != 1
                 ? Container(
-                    height: 70 * globalData.quests.length.toDouble(),
-                    child: ListView(
-                        children: globalData.quests
-                            .map((object) => quest(object))
-                            .toList()))
+                height: 70 * globalData.quests.length.toDouble(),
+                child: ListView(
+                    children: globalData.quests
+                        .map((object) => quest(object))
+                        .toList()))
                 : congrts(),
           ),
           InkWell(
             child: Padding(
               padding:
-                  const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
+              const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
               child: Container(
                 child: Row(
                   children: <Widget>[
@@ -85,7 +85,7 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
           InkWell(
             child: Padding(
               padding:
-                  const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
+              const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
               child: Container(
                 child: Row(
                   children: <Widget>[
@@ -121,7 +121,7 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
           InkWell(
             child: Padding(
               padding:
-                  const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
+              const EdgeInsets.only(left: 8, top: 20, bottom: 20, right: 8),
               child: Container(
                 child: Row(
                   children: <Widget>[
@@ -198,35 +198,35 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
             color: globalData.secondaryColor,
             child: ListTile(
                 title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(qst[0],
-                    style: TextStyle(
-                      fontSize: 20,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(qst[0],
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontFamily: 'Raleway',
+                        )),
+                    Icon(
+                      Icons.check,
                       color: Colors.white,
-                      fontFamily: 'Raleway',
-                    )),
-                Icon(
-                  Icons.check,
-                  color: Colors.white,
-                )
-              ],
-            ))),
+                    )
+                  ],
+                ))),
         Card(
             color: globalData.secondaryColor,
             child: ListTile(
                 title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text(qst[1],
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                      fontFamily: 'Raleway',
-                    )),
-                Icon(Icons.check, color: Colors.white)
-              ],
-            ))),
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text(qst[1],
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontFamily: 'Raleway',
+                        )),
+                    Icon(Icons.check, color: Colors.white)
+                  ],
+                ))),
         Card(
           color: Colors.green.shade700,
           clipBehavior: Clip.antiAlias,
@@ -260,8 +260,83 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
     );
   }
 
+  Future confirmDialog(Challenge id) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("Please confirm"),
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text('YES'),
+                onPressed: () {
+                  setState(() {
+                    //globalData.copy.add(globalData.quests[id].quest);
+                    globalData.quests.remove(id);
+                  });
+                  Navigator.of(context).pop();
+                },
+              ),
+              new FlatButton(
+                child: new Text('NO'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
+  }
+
   Widget quest(Challenge data) {
     String qst = data.quest;
+    if(data.id == 3){
+      return Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: Card(
+          clipBehavior: Clip.antiAlias,
+          child: Container(
+            height: 70,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    new AutoSizeText(qst,
+                        maxLines: 1,
+                        maxFontSize: 20,
+                        style: TextStyle(
+                            fontSize: 20, fontFamily: 'Raleway')),
+                    Icon(
+                      FontAwesomeIcons.leaf,
+                      size: 15,
+                      color: Colors.green,
+                    )
+                  ],
+                ),
+                Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: FlatButton (
+                          color: globalData.special,
+                          child: Text('Scan it',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w900,
+                                  fontFamily: 'Raleway')),
+                          onPressed: () {
+                            qrScanner(data);
+                          }),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    };
     if (scoreToPrint == 0) {
       scoreToPrint++;
 
@@ -292,60 +367,60 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
       scoreToPrint++;
       return data.finishquests == false
           ? Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: Card(
-                clipBehavior: Clip.antiAlias,
-                child: Container(
-                  height: 70,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                            new AutoSizeText(qst,
-                              maxLines: 1,
-                              maxFontSize: 20,
+        padding: const EdgeInsets.all(2.0),
+        child: Card(
+          clipBehavior: Clip.antiAlias,
+          child: Container(
+            height: 70,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    new AutoSizeText(qst,
+                        maxLines: 1,
+                        maxFontSize: 20,
+                        style: TextStyle(
+                            fontSize: 20, fontFamily: 'Raleway')),
+                  ],
+                ),
+                Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: FlatButton (
+                          color: globalData.secondaryColor,
+                          child: Text('Done?',
                               style: TextStyle(
-                                  fontSize: 20, fontFamily: 'Raleway')),
-                        ],
-                      ),
-                      Column(
-                        children: <Widget>[
-                          Expanded(
-                            child: FlatButton (
-                                color: globalData.secondaryColor,
-                                child: Text('Done?',
-                                    style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w900,
-                                        fontFamily: 'Raleway')),
-                                onPressed: () {
-                                  qrScanner(data);
-                                }),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w900,
+                                  fontFamily: 'Raleway')),
+                          onPressed: () {
+                            confirmDialog(data);
+                          }),
+                    ),
+                  ],
                 ),
-              ),
-            )
+              ],
+            ),
+          ),
+        ),
+      )
           : Padding(
-              padding: const EdgeInsets.all(2.0),
-              child: Card(
-                color: globalData.secondaryColor,
-                clipBehavior: Clip.antiAlias,
-                child: Container(
-                  height: 100,
-                  child: Center(
-                    child: new Text(qst,
-                        style: TextStyle(fontSize: 20, fontFamily: 'Raleway'),
-                        textAlign: TextAlign.center),
-                  ),
-                ),
-              ),
-            );
+        padding: const EdgeInsets.all(2.0),
+        child: Card(
+          color: globalData.secondaryColor,
+          clipBehavior: Clip.antiAlias,
+          child: Container(
+            height: 100,
+            child: Center(
+              child: new Text(qst,
+                  style: TextStyle(fontSize: 20, fontFamily: 'Raleway'),
+                  textAlign: TextAlign.center),
+            ),
+          ),
+        ),
+      );
     }
   }
 }

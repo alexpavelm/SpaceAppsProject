@@ -16,6 +16,7 @@ class GlobalData {
   //COLORS
   Color mainColor = Color.fromRGBO(116, 164, 209, 1);
   Color secondaryColor = Color.fromRGBO(89, 127, 166, 1);
+  Color special = Color.fromRGBO(255,223,0,1);
 
   List<DocumentSnapshot> cityList;
   City mainCity;
@@ -73,8 +74,9 @@ class GlobalData {
         "https://www.environmentalleader.com/2012/01/how-traffic-jams-affect-air-quality/"));
 
     quests.add(new Challenge("Use public transport today.", 0));
-    quests.add(new Challenge("Use public transport today.", 1));
+    quests.add(new Challenge("Sort waste", 1));
     quests.add(new Challenge("Plant a tree.", 2));
+    quests.add(new Challenge("Use public transport today.", 3));
     getDataAboutPings();
   }
 
