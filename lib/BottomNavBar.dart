@@ -32,25 +32,23 @@ class BottomNavBarState extends State<BottomNavBar> {
       length: 3,
       child: Container(
         color: Theme.of(context).scaffoldBackgroundColor,
-        child: SafeArea(
-          child: new Scaffold(
-            body: TabBarView(children: _children), // new
-            bottomNavigationBar: TabBar(
-              tabs: [
-                Tab(
-                  icon: Icon(FontAwesomeIcons.globeAmericas),
-                ),
-                Tab(
-                  icon: Icon(FontAwesomeIcons.clipboardList),
-                ),
-                Tab(
-                  icon: Icon(FontAwesomeIcons.questionCircle),
-                )
-              ],
-              labelColor: globalData.mainColor,
-              unselectedLabelColor: Colors.grey,
-              indicatorColor: Colors.blue,
-            ),
+        child: new Scaffold(
+          body: TabBarView(children: _children), // new
+          bottomNavigationBar: TabBar(
+            tabs: [
+              Tab(
+                icon: Icon(FontAwesomeIcons.globeAmericas),
+              ),
+              Tab(
+                icon: Icon(FontAwesomeIcons.clipboardList),
+              ),
+              Tab(
+                icon: Icon(FontAwesomeIcons.questionCircle),
+              )
+            ],
+            labelColor: globalData.mainColor,
+            unselectedLabelColor: Colors.grey,
+            indicatorColor: Colors.blue,
           ),
         ),
       ),

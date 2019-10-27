@@ -37,10 +37,7 @@ class _MainWidgetState extends State<MainWidget> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.all(25.0),
-                child: Text(
-                  "You don't have a selected city",
-                  style: TextStyle(fontFamily: 'Raleway', fontSize: 20),
-                ),
+                child: Image.asset('assets/LOGO.png'),
               ),
               gpsButton(),
               laterButton()

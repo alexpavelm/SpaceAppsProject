@@ -34,7 +34,7 @@ class _Days5ForecastState extends State<Days5Forecast> with AutomaticKeepAliveCl
 
   @override
   Widget build(BuildContext context) {
-    loadWeather();
+    //loadWeather();
     return Card(
       child: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
