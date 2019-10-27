@@ -18,6 +18,8 @@ class BottomNavBar extends StatefulWidget {
 class BottomNavBarState extends State<BottomNavBar> {
   final List<Widget> _children = [
     //MainPage();
+
+    // Bottom Nav Bar
     MainWidget(),
     ChallengesWidget(),
     InformationWidget(),

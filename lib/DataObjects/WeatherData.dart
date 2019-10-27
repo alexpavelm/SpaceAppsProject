@@ -8,7 +8,9 @@ class WeatherData {
   final String icon;
 
   WeatherData({this.date, this.name, this.temp, this.main, this.icon});
-
+  /*
+  * Get data about the weather
+  * */
   factory WeatherData.fromJson(Map<String, dynamic> json) {
     return WeatherData(
       date: new DateTime.fromMillisecondsSinceEpoch(json['dt'] * 1000, isUtc: false),

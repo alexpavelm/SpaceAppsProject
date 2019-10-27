@@ -12,16 +12,19 @@ import 'package:space_apps_project/DataObjects/City.dart';
 import 'package:space_apps_project/DataObjects/Ping.dart';
 import 'package:space_apps_project/DataObjects/Challenge.dart';
 
+/*
+* Static data class
+* */
 class GlobalData {
   //COLORS
   Color mainColor = Color.fromRGBO(116, 164, 209, 1);
   Color secondaryColor = Color.fromRGBO(89, 127, 166, 1);
-  Color special = Color.fromRGBO(255,223,0,1);
+  Color special = Color.fromRGBO(255, 223, 0, 1);
 
   List<DocumentSnapshot> cityList;
   City mainCity;
   List<Challenge> quests;
-  List<String> copy ;
+  List<String> copy;
   List<FunFact> funFacts;
   List<Ping> pings;
   Future cityAssigned;
@@ -36,6 +39,8 @@ class GlobalData {
       orangeMarker,
       redMarker,
       purpleMarker;
+
+  // Instance for database
   final databaseReference = Firestore.instance;
 
   factory GlobalData() {
@@ -53,6 +58,9 @@ class GlobalData {
 
   GlobalData._internal();
 
+  /*
+  * Initialize data
+  * */
   void create() {
     _createMarkerImageFromAsset();
     funFacts = new List();
@@ -80,6 +88,9 @@ class GlobalData {
     getDataAboutPings();
   }
 
+  /*
+  *   Open url given as input
+  * */
   launchURL(String url) async {
     if (await canLaunch(url)) {
       await launch(url);
@@ -88,6 +99,9 @@ class GlobalData {
     }
   }
 
+  /*
+  *   Generate marker image
+  * */
   Future _createMarkerImageFromAsset() async {
     ImageConfiguration configuration = ImageConfiguration();
     greenMarker = await BitmapDescriptor.fromAssetImage(
@@ -102,10 +116,16 @@ class GlobalData {
         configuration, "assets/purplemarker.png");
   }
 
+  /*
+  *  Get fun fact
+  * */
   FunFact getFunFact() {
     return funFacts[0];
   }
 
+  /*
+  *  Get icon based on the weather
+  * */
   Icon getWeatherIcon(String weather) {
     switch (weather) {
       case "01d":
@@ -171,6 +191,9 @@ class GlobalData {
     }
   }
 
+  /*
+  * Get the quality of the weather
+  * */
   String getQualityText(int quality) {
     if (quality < 51) {
       return "Good";
@@ -185,10 +208,18 @@ class GlobalData {
     }
   }
 
+  /*
+  *  Takes lat, long and quality for pings from
+  * database
+  * */
   saveData(Map<String, dynamic> map) async {
-    pings.add(new Ping(map.values.toList()[1], map.values.toList()[0], map.values.toList()[2]));
+    pings.add(new Ping(map.values.toList()[1], map.values.toList()[0],
+        map.values.toList()[2]));
   }
 
+  /*
+  * Get quality icon
+  * */
   IconData getQualityIcon(int quality) {
     if (quality < 51) {
       return FontAwesomeIcons.grin;
@@ -203,6 +234,9 @@ class GlobalData {
     }
   }
 
+  /*
+  *   Get Card Color
+  * */
   Color getCardColor(int quality) {
     if (quality < 51) {
       return Colors.green.shade500;
@@ -216,6 +250,10 @@ class GlobalData {
       return Colors.purple.shade400;
     }
   }
+
+  /*
+  *   Get Card Color (Darker )
+  * */
 
   Color getCardDarkColor(int quality) {
     if (quality < 51) {

@@ -288,8 +288,13 @@ class ChallengesWidgetState extends State<ChallengesWidget> {
         });
   }
 
+  /*
+  * Create the format for the quest
+  * */
+
   Widget quest(Challenge data) {
     String qst = data.quest;
+    // Special quest
     if(data.id == 3){
       return Padding(
         padding: const EdgeInsets.all(2.0),

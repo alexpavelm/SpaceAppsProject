@@ -15,6 +15,7 @@ class MainWidget extends StatefulWidget {
 class _MainWidgetState extends State<MainWidget> {
   static var globalData = GlobalData();
   final List<Widget> _children = [
+    //Generate need widget for main page
     CurrentCityWidget(),
     FunFactWidget(globalData.getFunFact()),
     CitiesView()
@@ -25,6 +26,7 @@ class _MainWidgetState extends State<MainWidget> {
     return FutureBuilder(
       future: globalData.cityAssigned,
       builder: (context, snapshot) {
+        //Wait till screen is loaded
         if (snapshot.connectionState == ConnectionState.done) {
           return ListView(
             children: _children,
@@ -100,8 +102,6 @@ class _MainWidgetState extends State<MainWidget> {
       onPressed: () {
         setState(() {
           globalData.isGPS = true;
-          //globalData.mainCity = City.fromSnapshot(globalData.cityList[10]);
-
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) {
@@ -115,6 +115,10 @@ class _MainWidgetState extends State<MainWidget> {
       },
     );
   }
+
+  /*
+  * Function that displays all the cities from the database
+  * */
 
   Future showListOfCities() {
     return showDialog(

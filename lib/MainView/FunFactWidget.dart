@@ -15,9 +15,12 @@ class FunFactWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      // When  pressed is opened a link with more info about the fact
       onTap: () => globalData.launchURL(data.link),
+
       child: Padding(
         padding:
+            // Constraints
             const EdgeInsets.only(left: 10, top: 20, bottom: 20, right: 10),
         child: Container(
           child: Row(
@@ -59,27 +62,5 @@ class FunFactWidget extends StatelessWidget {
         ),
       ),
     );
-    /*return SafeArea(
-        child: Container(
-            color: Colors.white,
-            child: Padding(
-                padding: EdgeInsets.all(20),
-                child: Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(right: 15),
-                      child: Icon(FontAwesomeIcons.infoCircle,
-                          color: Colors.lightBlueAccent, size: 30),
-                    ),
-                    const Expanded(
-                        child: Text(
-                      "Fun Fact!\nDid you know that public transport reduces polution by 15%?",
-                      style: TextStyle(
-                        fontFamily: 'Raleway',
-                        fontWeight: FontWeight.w600,
-                      ),
-                    )),
-                  ],
-                ))));*/
   }
 }

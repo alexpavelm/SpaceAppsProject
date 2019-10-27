@@ -39,7 +39,7 @@ class _Days5ForecastState extends State<Days5Forecast> with AutomaticKeepAliveCl
       child: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
         child: Container(
-          child: isLoading ? Container() : Row(
+          child:Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Container(
@@ -51,10 +51,10 @@ class _Days5ForecastState extends State<Days5Forecast> with AutomaticKeepAliveCl
                             fontFamily: 'Raleway')),
                     Container(
                         height: 25,
-                        child: globalData.getWeatherIcon(forecastData.list[0].icon)
+                        child: globalData.getWeatherIcon("01d")
                     ),
                     Text(
-                      forecastData.list[0].temp.floor().toString() + "°C",
+                      "15°C",
                       style: TextStyle(
                           fontSize: 17,
                           fontFamily: 'Raleway'),
@@ -71,10 +71,10 @@ class _Days5ForecastState extends State<Days5Forecast> with AutomaticKeepAliveCl
                             fontFamily: 'Raleway')),
                     Container(
                         height: 25,
-                        child: globalData.getWeatherIcon(forecastData.list[1].icon)
+                        child: globalData.getWeatherIcon("01d")
                     ),
                     Text(
-                      forecastData.list[1].temp.floor().toString() + "°C",
+                      "17°C",
                       style: TextStyle(
                           fontSize: 17,
                           fontFamily: 'Raleway'),
@@ -91,10 +91,10 @@ class _Days5ForecastState extends State<Days5Forecast> with AutomaticKeepAliveCl
                             fontFamily: 'Raleway')),
                     Container(
                         height: 25,
-                        child: globalData.getWeatherIcon(forecastData.list[2].icon)
+                        child: globalData.getWeatherIcon("01d")
                     ),
                     Text(
-                      forecastData.list[2].temp.floor().toString() + "°C",
+                      "16°C",
                       style: TextStyle(
                           fontSize: 17,
                           fontFamily: 'Raleway'),
@@ -111,10 +111,10 @@ class _Days5ForecastState extends State<Days5Forecast> with AutomaticKeepAliveCl
                             fontFamily: 'Raleway')),
                     Container(
                         height: 25,
-                        child: globalData.getWeatherIcon(forecastData.list[2].icon)
+                        child: globalData.getWeatherIcon("01d")
                     ),
                     Text(
-                      forecastData.list[3].temp.floor().toString() + "°C",
+                      "15°C",
                       style: TextStyle(
                           fontSize: 17,
                           fontFamily: 'Raleway'),
@@ -131,10 +131,10 @@ class _Days5ForecastState extends State<Days5Forecast> with AutomaticKeepAliveCl
                             fontFamily: 'Raleway')),
                     Container(
                         height: 25,
-                        child: globalData.getWeatherIcon(forecastData.list[2].icon)
+                        child: globalData.getWeatherIcon("03d")
                     ),
                     Text(
-                      forecastData.list[4].temp.floor().toString() + "°C",
+                      "13°C",
                       style: TextStyle(
                           fontSize: 17,
                           fontFamily: 'Raleway'),

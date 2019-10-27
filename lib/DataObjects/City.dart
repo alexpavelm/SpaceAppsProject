@@ -16,7 +16,7 @@ class City {
   http.Response weather;
   http.Response forecast;
 
-
+  // Data taken from database about cities
   City.fromMap(Map<String, dynamic> map, {this.reference})
       : assert(map['name'] != null),
         assert(map['country'] != null),

@@ -244,7 +244,7 @@ class CurrentCityWidgetState extends State<CurrentCityWidget> {
               );
               if(globalData.mainCity == null) {
                 globalData.mainCity =  City.fromSnapshot(globalData.cityList.firstWhere((city)
-                => city.data["name"].toString().contains(globalData.userLocation.cityName)));
+                => city.data["name"].toString().contains("București")));
               }
               currentLocation = Future.delayed(new Duration(microseconds: 1));
               setState(() {
