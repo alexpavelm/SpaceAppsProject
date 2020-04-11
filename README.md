@@ -1,6 +1,7 @@
 # space_apps_project
 
-A new Flutter application.
+### A Flutter application that aimes to inform users about the air they breathe and to raise awareness of air pollution.
+More information about the project, screenshots of the app and an app preview video can be found [here](https://2019.spaceappschallenge.org/challenges/living-our-world/surface-air-quality-mission/teams/lma_erhan/project).
 
 ## Getting Started
 
@@ -14,13 +15,5 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-hahah
-#Space Apps Project
-# Andrei test
 
-test1 - Tudor
-
-bun ziua - Cristina
-
-putem sa nu facem ceva boring pls// Andrada
 
