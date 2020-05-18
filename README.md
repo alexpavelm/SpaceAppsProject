@@ -6,7 +6,7 @@ More information about the project, screenshots of the app and an app preview vi
 ### Tools used
 * Flutter
 * Dart
-* Mathlab
+* Matlab
 * Adobe Illustrator
 * Python3
 
